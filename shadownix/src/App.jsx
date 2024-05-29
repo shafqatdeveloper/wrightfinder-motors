@@ -8,6 +8,7 @@ import AdminDashboard from "./Pages/Admin/Dashboard/AdminDashboard/AdminDashboar
 import AdminAddCar from "./Pages/Admin/Dashboard/AddCar/AdminAddCar";
 import "./App.css";
 import AdminLogin from "./Pages/Admin/Login/AdminLogin";
+import Regsiter from "./Pages/Admin/Regsiter/Regsiter";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/dashboard/add-car" element={<AdminAddCar />} />
         <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/register" element={<Regsiter />} />
         <Route path="/about" element={<About />} />
       </Routes>
       <Footer />

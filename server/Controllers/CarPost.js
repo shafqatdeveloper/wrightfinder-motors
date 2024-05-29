@@ -57,7 +57,6 @@ export const addCar = async (req, res) => {
 export const getCars = async (req, res) => {
   try {
     const selectedBrand = req.query.brand;
-    const query = buildQuery(selectedBrand);
     console.log(selectedBrand);
     const cars = await Car.find(query, {});
     res.status(201).json({

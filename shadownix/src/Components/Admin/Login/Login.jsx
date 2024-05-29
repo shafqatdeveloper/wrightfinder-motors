@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiHide, BiShow } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -10,6 +10,28 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      try {
+        const response = await axios.get("/api/admin/authenticate", {
+          withCredentials: true,
+        });
+        if (response.data.success) {
+          navigate("/admin/dashboard");
+        } else {
+          return;
+        }
+      } catch (error) {
+        navigate("/admin/login");
+        console.error("Error checking authentication:");
+      } finally {
+      }
+    };
+
+    checkAuthentication();
+  }, []);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
