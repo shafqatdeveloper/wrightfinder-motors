@@ -23,11 +23,14 @@ app.use(cookieParser());
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5000",
-  "https://wrightwaymotor.com/",
-];
+app.use(
+  cors({
+    origin: "*", // Adjust this to your allowed origins
+    methods: "GET,POST,PUT,DELETE,OPTIONS",
+    allowedHeaders: "Origin, Content-Type, Accept, Authorization",
+    credentials: true,
+  })
+);
 // Using CORS
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 
