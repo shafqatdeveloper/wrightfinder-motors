@@ -23,12 +23,6 @@ app.use(cookieParser());
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-<<<<<<< HEAD
-const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5000",
-];
-=======
 app.use(
   cors({
     origin: "*", // Adjust this to your allowed origins
@@ -37,7 +31,6 @@ app.use(
     credentials: true,
   })
 );
->>>>>>> f425b4007069344184de87a8eba651bd58614ea3
 // Using CORS
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 
