@@ -31,8 +31,6 @@ app.use(
     credentials: true,
   })
 );
-// Using CORS
-app.use(cors({ origin: allowedOrigins, credentials: true }));
 
 // API Routes
 
