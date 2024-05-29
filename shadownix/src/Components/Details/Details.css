@@ -1,0 +1,22 @@
+/* carousel.css */
+
+.carousel .control-arrow {
+    background: transparent;
+    border: none;
+  }
+  
+  .carousel .control-arrow:hover {
+    background: transparent; /* Ensure background stays transparent on hover */
+  }
+  
+  .carousel .control-next.control-arrow::before,
+  .carousel .control-prev.control-arrow::before {
+    color: black; /* Change the icon color as needed */
+    font-size: 2rem; /* Adjust the icon size if necessary */
+  }
+  
+  .carousel .control-next.control-arrow:hover::before,
+  .carousel .control-prev.control-arrow:hover::before {
+    color: black; /* Maintain icon color on hover */
+  }
+  

@@ -1,0 +1,7 @@
+#triangle-bottomright {
+    width: 0;
+    height: 0;
+    border-bottom: 600px solid red;
+    border-left: 600px solid transparent;
+    position: relative;
+  }
