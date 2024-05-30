@@ -12,26 +12,26 @@ const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const checkAuthentication = async () => {
-      try {
-        const response = await axios.get("/api/admin/authenticate", {
-          withCredentials: true,
-        });
-        if (response.data.success) {
-          navigate("/admin/dashboard");
-        } else {
-          return;
-        }
-      } catch (error) {
-        navigate("/admin/login");
-        console.error("Error checking authentication:");
-      } finally {
-      }
-    };
+  // useEffect(() => {
+  //   const checkAuthentication = async () => {
+  //     try {
+  //       const response = await axios.get("/api/admin/authenticate", {
+  //         withCredentials: true,
+  //       });
+  //       if (response.data.success) {
+  //         navigate("/admin/dashboard");
+  //       } else {
+  //         return;
+  //       }
+  //     } catch (error) {
+  //       navigate("/admin/login");
+  //       console.error("Error checking authentication:");
+  //     } finally {
+  //     }
+  //   };
 
-    checkAuthentication();
-  }, []);
+  //   checkAuthentication();
+  // }, []);
 
   const handleRegister = async (e) => {
     e.preventDefault();
