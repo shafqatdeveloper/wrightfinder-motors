@@ -25,11 +25,19 @@ const AddCar = () => {
 
   const handleFeatures = (e) => {
     if (e.key === "Enter") {
-      let feature = e.target.value.replace(/\s+/g, " ");
-      if (feature.length > 1 && !features.includes(feature)) {
-        feature.split(",").forEach((feature) => {
-          setFeatures([...features, feature]);
+      let feature = e.target.value.replace(/\s+/g, " ").trim();
+      if (feature.length > 1) {
+        const featureObjects = feature.split(",").map((featureItem) => {
+          return { name: featureItem.trim() };
         });
+
+        setFeatures((prevFeatures) => [
+          ...prevFeatures,
+          ...featureObjects.filter(
+            (featureObj) =>
+              !prevFeatures.some((f) => f.name === featureObj.name)
+          ),
+        ]);
       }
       e.target.value = "";
     }
@@ -97,13 +105,14 @@ const AddCar = () => {
     form.append("color", color);
     form.append("description", description);
     form.append("price", price);
-    form.append("features", features);
+    features.forEach((feature) => {
+      form.append("features", feature.name);
+    });
     galleryImages.forEach((file) => {
       form.append("images", file);
     });
     const response = await axios.post("/api/car/add", form);
     if (response.status == 201) {
-      alert("Upload Successfull");
       setName("");
       setCompanyName("");
       setTitle("");
@@ -118,10 +127,14 @@ const AddCar = () => {
       setDescription("");
       setPrice("");
       setGalleryImages([]);
+      setImages([]);
       setFeatures([]);
-      setThumbnailImage(null);
+      setLoading(false);
+      alert("Upload Successfull");
+    } else {
+      setLoading(false);
+      alert("Error");
     }
-    setLoading(false);
   };
 
   return (
@@ -374,15 +387,15 @@ const AddCar = () => {
                 >
                   <div className="flex items-center gap-2">
                     <span className="">
-                      {String(feature).length > 50
-                        ? String(feature).substring(0, 50)
-                        : feature}
+                      {String(feature.name).length > 50
+                        ? String(feature.name).substring(0, 50)
+                        : feature.name}
                     </span>
-                    {String(feature).length > 50 && <span>...</span>}
+                    {String(feature.name).length > 50 && <span>...</span>}
                   </div>
                   <div className="bg-gray-300">
                     <RxCross2
-                      onClick={() => handleDeleteFeature(feature)}
+                      onClick={() => handleDeleteFeature(feature.name)}
                       className="cursor-pointer"
                     />
                   </div>

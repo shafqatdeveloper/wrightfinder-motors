@@ -41,7 +41,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="mt-32 min-h-[70vh] flex flex-col items-center justify-center">
+    <div className="pt-40 sm:pt-32 bg-gray-200 min-h-[80vh] flex flex-col items-center justify-center">
       <div className="w-full flex items-center justify-center">
         <button
           onClick={handleLogout}

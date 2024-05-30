@@ -13,7 +13,9 @@ const CarDetails = () => {
     };
     fetchCarDetails();
   }, []);
-  return <div className="bg-gray-200">{car && <Details car={car} />}</div>;
+  return (
+    <div className="bg-gray-200 pb-10">{car && <Details car={car} />}</div>
+  );
 };
 
 export default CarDetails;

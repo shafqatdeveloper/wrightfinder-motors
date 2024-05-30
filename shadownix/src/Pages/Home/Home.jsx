@@ -6,7 +6,7 @@ import WhyUs from "../../Components/WhySchooseUs/WhyUs";
 
 const Home = () => {
   return (
-    <div className="bg-gray-200 flex flex-col gap-10 py-10">
+    <div className="bg-gray-200 flex flex-col gap-10 pt-24 pb-12 md:p-10">
       <Hero />
       <Cars />
       <Facts />

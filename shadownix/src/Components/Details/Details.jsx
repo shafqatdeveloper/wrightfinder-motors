@@ -16,6 +16,9 @@ import { IoDocument } from "react-icons/io5";
 const api_Url = import.meta.env.VITE_API_URL;
 
 const Details = ({ car }) => {
+  car.features.map((entry, index) => {
+    console.log(entry);
+  });
   return (
     <div className="w-full">
       <div className="flex flex-col md:flex-row items-center md:items-center justify-center gap-5 sm:gap-8 px-2 sm:px-10">
@@ -94,21 +97,20 @@ const Details = ({ car }) => {
         </div>
       </div>
       <div className="w-full rounded-md mt-20 sm:my-20 md:my-10 flex items-center justify-center px-2 sm:px-12 md:px-20">
-        <div className="w-full grid grid-cols-2 bg-white text-gray-500 rounded-md p-2  md:grid-cols-3 gap-3">
-          {car.features.map((feature) => {
-            return (
-              <span className="flex items-center gap-2">
-                <span className="bg-[#3c2163] p-1.5 rounded-full">
-                  <FaCheckDouble size={13} color="white" />
-                </span>
-                <h1 className="font-medium font-sans text-[#3c2163]">
-                  {feature}
-                </h1>
+        <div className="w-full grid grid-cols-2 bg-white text-gray-500 rounded-md p-2 md:grid-cols-3 gap-3">
+          {car.features.map((feature, index) => (
+            <div key={index} className="flex items-center gap-2">
+              <span className="bg-[#3c2163] p-1.5 rounded-full">
+                <FaCheckDouble size={13} color="white" />
               </span>
-            );
-          })}
+              <h1 className="font-medium font-sans text-[#3c2163]">
+                {feature.name}
+              </h1>
+            </div>
+          ))}
         </div>
       </div>
+
       <div className="w-full rounded-md mt-20 sm:my-20 md:my-10 flex items-center justify-center px-2 sm:px-12 md:px-20">
         <div className="w-full bg-white px-2 sm:px-5 md:px-10 text-black rounded-md p-2 flex flex-col gap-3">
           <div className="py-5">

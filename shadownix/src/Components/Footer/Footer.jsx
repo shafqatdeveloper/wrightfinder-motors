@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { ref: footerRef, inView: isFooterInView } = useInView({
-    threshold: 0.6,
+    threshold: 0.2,
   });
   const footerMainControls = useAnimation();
   useEffect(() => {

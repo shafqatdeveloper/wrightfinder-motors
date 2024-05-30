@@ -1,4 +1,7 @@
 import { Car } from "../Models/Car.js";
+import path, { dirname } from "path";
+import fs from "fs";
+import { fileURLToPath } from "url";
 
 export const addCar = async (req, res) => {
   try {
@@ -19,9 +22,17 @@ export const addCar = async (req, res) => {
       features,
     } = req.body;
     const images = req.files;
+    console.log(images);
+    console.log(features);
     const uploadedFiles = images.map((file) => ({
       imageName: file.filename,
     }));
+    const featuresArray =
+      Array.isArray(features) && features.length > 1
+        ? features.map((feat) => ({
+            name: feat,
+          }))
+        : features;
     const newCar = await Car.create({
       name,
       companyName,
@@ -36,7 +47,10 @@ export const addCar = async (req, res) => {
       color,
       description,
       price,
-      features,
+      features:
+        Array.isArray(features) && features.length > 1
+          ? featuresArray
+          : { name: features },
       galleryImagesArray: uploadedFiles,
     });
     res.status(201).json({
@@ -100,6 +114,32 @@ export const getCarDetails = async (req, res) => {
       car,
       message: "Success",
     });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+//  Delete A Car
+
+export const deleteCar = async (req, res) => {
+  try {
+    const carId = req.params.id;
+    const car = await Car.findById(carId);
+    if (!car) {
+      return res.status(404).json({
+        success: false,
+        message: "Car not found",
+      });
+    } else {
+      await Car.findByIdAndDelete(carId);
+      res.status(200).json({
+        success: true,
+        message: "Car deleted successfully",
+      });
+    }
   } catch (error) {
     res.status(500).json({
       success: false,

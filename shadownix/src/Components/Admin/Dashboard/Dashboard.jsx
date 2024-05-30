@@ -10,41 +10,29 @@ const Dashboard = () => {
         Admin Panel
       </h1>
       <div className="w-full flex items-center justify-center py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Link
             to={"/admin/dashboard/add-car"}
-            className="flex flex-col hover:bg-[#ffa837] cursor-pointer duration-300 transition-all gap-6 items-center justify-center border-2 border-black rounded-md py-3 px-6 sm:px-12"
+            className="flex flex-col hover:bg-[#3c2163] hover:text-white cursor-pointer duration-300 transition-all gap-6 items-center justify-center border-2 border-black rounded-md py-6 px-12 sm:px-10 sm:py-6"
           >
             <MdOutlineAddCircleOutline size={30} />
             <h1 className="font-bold text-lg tracking-wide font-sans">
               Add a New Car
             </h1>
-            <button className="w-full text-white py-1 rounded-md bg-black">
+            <button className="w-full text-white py-1 rounded-md bg-[#17A8E2]">
               Visit
             </button>
           </Link>
           <Link
             to={"/admin/dashboard/all-cars"}
-            className="flex flex-col hover:bg-[#ffa837] cursor-pointer duration-300 transition-all gap-6 items-center justify-center border-2 border-black rounded-md py-3 px-6 sm:px-12"
+            className="flex flex-col hover:bg-[#3c2163] hover:text-white cursor-pointer duration-300 transition-all gap-6 items-center justify-center border-2 border-black rounded-md py-6 px-12 sm:px-3 sm:py-6 "
           >
             <FaCar size={30} />
             <h1 className="font-bold text-lg tracking-wide font-sans">
               View All Cars
             </h1>
-            <button className="w-full text-white py-1 rounded-md bg-black">
+            <button className="w-full text-white py-1 rounded-md bg-[#17A8E2]">
               View
-            </button>
-          </Link>
-          <Link
-            to={"/admin/dashboard/delete-car"}
-            className="flex flex-col hover:bg-[#ffa837] cursor-pointer duration-300 transition-all gap-6 items-center justify-center border-2 border-black rounded-md py-3 px-6 sm:px-12"
-          >
-            <MdDelete size={30} />
-            <h1 className="font-bold text-lg tracking-wide font-sans">
-              Delete a Car
-            </h1>
-            <button className="w-full text-white py-1 rounded-md bg-black">
-              Visit
             </button>
           </Link>
         </div>

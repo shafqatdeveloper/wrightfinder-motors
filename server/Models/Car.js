@@ -53,7 +53,7 @@ const CarModel = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  features: [{ type: String, required: true }],
+  features: [{ name: String }],
   galleryImagesArray: [{ imageName: String }],
 });
 export const Car = mongoose.model("car", CarModel);

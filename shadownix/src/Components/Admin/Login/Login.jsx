@@ -35,18 +35,32 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const emailToLowercase = email.toLowerCase();
-    const response = await axios.post("/api/admin/login", {
-      email: emailToLowercase,
-      password,
-    });
-    if (response.status === 200) {
-      alert(response.data.message);
-      console.log(response.data);
-      navigate("/admin/dashboard");
+
+    try {
+      const emailToLowercase = email.toLowerCase();
+      const response = await axios.post("/api/admin/login", {
+        email: emailToLowercase,
+        password,
+      });
+
+      if (response.status === 200 && response.data) {
+        alert(response.data.message);
+        navigate("/admin/dashboard");
+      } else {
+        alert(response.data.message);
+        console.log(response.data);
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message || "An error occurred during login.");
+      } else {
+        alert(error.message);
+      }
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
+
   return (
     <div className="w-[350px] bg-black rounded-md p-3">
       <form className="w-full p-2 flex flex-col items-center justify-center gap-5">

@@ -12,47 +12,59 @@ const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const checkAuthentication = async () => {
-  //     try {
-  //       const response = await axios.get("/api/admin/authenticate", {
-  //         withCredentials: true,
-  //       });
-  //       if (response.data.success) {
-  //         navigate("/admin/dashboard");
-  //       } else {
-  //         return;
-  //       }
-  //     } catch (error) {
-  //       navigate("/admin/login");
-  //       console.error("Error checking authentication:");
-  //     } finally {
-  //     }
-  //   };
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      try {
+        const response = await axios.get("/api/admin/authenticate", {
+          withCredentials: true,
+        });
+        if (response.data.success) {
+          navigate("/admin/dashboard");
+        } else {
+          return;
+        }
+      } catch (error) {
+        console.error("Error checking authentication:");
+      } finally {
+      }
+    };
 
-  //   checkAuthentication();
-  // }, []);
+    checkAuthentication();
+  }, []);
 
   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const emailToLowerCase = email.toLowerCase();
-    const response = await axios.post("/api/admin/register", {
-      name,
-      email: emailToLowerCase,
-      password,
-    });
-    if (response.status === 200) {
-      alert("Registered");
-      navigate("/admin/dashboard");
-    } else {
-      alert("Error");
+
+    try {
+      const emailToLowerCase = email.toLowerCase();
+      const response = await axios.post("/api/admin/register", {
+        name,
+        email: emailToLowerCase,
+        password,
+      });
+      if (response.status === 200) {
+        alert("Registered");
+        navigate("/admin/dashboard");
+      } else {
+        alert(response.data.message);
+        console.log(response.data);
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(
+          error.response.data.message || "An error occurred during Registration"
+        );
+      } else {
+        alert(error.message);
+      }
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
-    <div className="my-28 w-full flex items-center justify-center">
+    <div className="pb-20 pt-36 sm:pt-20 w-full flex items-center justify-center">
       <div className="bg-black p-3 rounded-md">
         <form className="w-full p-2 flex flex-col items-center justify-center gap-5">
           <h1 className="text-2xl font-bold font-sans text-white">REGISTER</h1>
