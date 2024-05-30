@@ -23,22 +23,17 @@ app.use(cookieParser());
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(
-  cors({
-    origin: "*", // Adjust this to your allowed origins
-    methods: "GET,POST,PUT,DELETE,OPTIONS",
-    allowedHeaders: "Origin, Content-Type, Accept, Authorization",
-    credentials: true,
-  })
-);
+app.use(cors({}));
 
 // API Routes
-
+app.get("/test", (req, res) => {
+  res.json({ message: "Backend is working!" });
+});
 app.use("/api/admin", adminRouter);
 app.use("/api", carPostRouter);
 app.use(express.static("public"));
 // Listening App
-const port = process.env.PORT || 3000;
+const port = 3000;
 app.listen(port, () => {
   console.log(`App is Running on PORT : ${port}`);
 });
