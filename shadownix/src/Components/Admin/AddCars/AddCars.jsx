@@ -144,7 +144,7 @@ const AddCar = () => {
             toast(response.data.message, {
               theme: "dark",
             });
-            location.reload();
+            // location.reload();
           } else {
             setLoading(false);
             toast(response.data.message, {

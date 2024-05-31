@@ -1,7 +1,6 @@
 import { Car } from "../Models/Car.js";
-import path, { dirname } from "path";
-import fs from "fs";
-import { fileURLToPath } from "url";
+import path from "path";
+import sharp from "sharp";
 
 export const addCar = async (req, res) => {
   try {
@@ -21,17 +20,32 @@ export const addCar = async (req, res) => {
       features,
     } = req.body;
     const images = req.files;
-    console.log(images);
-    console.log(req.body);
-    const uploadedFiles = images.map((file) => ({
-      imageName: file.filename,
-    }));
+    // console.log(images);
+    // Process and optimize images using Sharp
+    const uploadedFiles = await Promise.all(
+      images.map(async (file) => {
+        const __dirname = path.resolve();
+        const filename = `optimized-${Date.now()}-${file.originalname}.webp`;
+        const outputPath = path.join(__dirname, "public", "uploads", filename);
+        await sharp(file.path)
+          .resize(800)
+          .toFormat("webp")
+          .webp({ quality: 80 })
+          .toFile(outputPath);
+
+        return {
+          imageName: filename,
+        };
+      })
+    );
+
     const featuresArray =
       Array.isArray(features) && features.length > 1
         ? features.map((feat) => ({
             name: feat,
           }))
         : features;
+
     const newCar = await Car.create({
       name,
       miles,
@@ -51,12 +65,14 @@ export const addCar = async (req, res) => {
           : { name: features },
       galleryImagesArray: uploadedFiles,
     });
+
     res.status(201).json({
       success: true,
-      newCar,
+      // newCar,
       message: "Car Added",
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({
       success: false,
       message: error.message,
