@@ -153,7 +153,7 @@ const AddCar = () => {
           }
         } catch (error) {
           setLoading(false);
-          toast(response.data.message, {
+          toast(error.message, {
             theme: "dark",
           });
         } finally {
