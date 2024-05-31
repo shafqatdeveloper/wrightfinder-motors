@@ -26,15 +26,33 @@ const AllCars = () => {
   const markAsSoldCarHandler = async (id) => {
     const confirmSold = confirm("Are you Sure to Mark this Car as SOLD");
     if (confirmSold) {
-      const response = await axios.put(`/api/admin/car/mark/sold/${id}`);
-      if (response.status === 200) {
-        toast(response.data.message, {
-          theme: "dark",
-        });
-      } else {
-        toast(response.data.message, {
-          theme: "dark",
-        });
+      try {
+        const response = await axios.put(`/api/admin/car/mark/sold/${id}`);
+
+        if (response.status === 200 && response.data) {
+          toast(response.data.message, {
+            theme: "dark",
+          });
+          navigate("/admin/dashboard");
+        } else {
+          toast(response.data.message, {
+            theme: "dark",
+          });
+        }
+      } catch (error) {
+        if (error.response) {
+          toast(
+            error.response.data.message || "An error occurred during login.",
+            {
+              theme: "dark",
+            }
+          );
+        } else {
+          toast(response.data.message, {
+            theme: "dark",
+          });
+        }
+      } finally {
       }
     }
   };
@@ -103,23 +121,17 @@ const AllCars = () => {
       {
         Header: "Action",
         accessor: "_id", // Assuming 'id' is the unique identifier for each row
-        Cell: ({ row }) => (
+        Cell: ({ value }) => (
           <div className="flex space-x-3">
             <button
-              onClick={() => deleteCarPostHandler(row._id)}
+              onClick={() => deleteCarPostHandler(value)}
               className="bg-red-500 text-white p-2 rounded"
             >
               <MdDelete size={25} />
             </button>
             <button
               onClick={() => {
-                if (row.available === true) {
-                  markAsSoldCarHandler(row._id);
-                } else {
-                  toast("This car is already SOLD", {
-                    theme: "dark",
-                  });
-                }
+                markAsSoldCarHandler(value);
               }}
               className="bg-[#3c2163] text-white p-2 rounded"
             >

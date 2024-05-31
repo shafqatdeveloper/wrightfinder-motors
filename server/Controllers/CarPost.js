@@ -157,12 +157,19 @@ export const markCarAsSold = async (req, res) => {
         message: "Car not found",
       });
     } else {
-      car.available = false;
-      await car.save();
-      res.status(200).json({
-        success: true,
-        message: "Car Marked as SOLD",
-      });
+      if (car.available === false) {
+        res.status(401).json({
+          success: true,
+          message: "Car Already marked as SOLD",
+        });
+      } else {
+        car.available = false;
+        await car.save();
+        res.status(200).json({
+          success: true,
+          message: "Car Marked as SOLD",
+        });
+      }
     }
   } catch (error) {
     res.status(500).json({
