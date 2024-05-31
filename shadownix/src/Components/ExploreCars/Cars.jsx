@@ -67,7 +67,7 @@ const Cars = () => {
       id="explore-cars"
       className="flex flex-col items-center justify-center w-full h-full"
     >
-      <motion.div
+      {/* <motion.div
         ref={headingRef}
         variants={{
           hidden: { opacity: 0, y: -75 },
@@ -109,7 +109,7 @@ const Cars = () => {
             );
           })}
         </div>
-      </motion.div>
+      </motion.div> */}
       {cars && cars.length > 0 ? (
         <div className="px-2 sm:px-10 md:px-20 mt-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">

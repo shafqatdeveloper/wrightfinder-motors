@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  TbAutomaticGearbox,
-  TbManualGearbox,
-  TbSteeringWheel,
-} from "react-icons/tb";
-import { IoLocationOutline } from "react-icons/io5";
+import { TbAutomaticGearbox, TbSteeringWheel } from "react-icons/tb";
 import { IoDocument } from "react-icons/io5";
 import { SlSpeedometer } from "react-icons/sl";
 import { MdLocalGasStation } from "react-icons/md";
@@ -14,6 +9,7 @@ import driveLine from "../../assets/driveline.png";
 import { Link } from "react-router-dom";
 
 const Card = ({ car, delay = 0 }) => {
+  console.log(car?.galleryImagesArray[0]?.imageName);
   const [hasAnimated, setHasAnimated] = useState(false);
   const controls = useAnimation();
   const { ref, inView } = useInView();
@@ -43,45 +39,49 @@ const Card = ({ car, delay = 0 }) => {
         to={`/car/details/${car._id}`}
       >
         <div className="w-full overflow-hidden relative rounded-md h-full">
-          <span className="absolute z-20 bg-white/85 rounded-md py-1.5 px-2.5 top-3 right-3 text-black">
-            {car.title}
-          </span>
-          <img
-            className="object-fill h-60 w-96 rounded-md hover:scale-125 duration-200 transition-all"
-            src={`${api_Url}/uploads/${car.galleryImagesArray[0].imageName}`}
-            alt={``}
-          />
+          {car.available === true ? (
+            <span className="absolute z-20 bg-black/80 rounded-md py-1.5 px-4 top-3 right-3 text-white">
+              AV
+            </span>
+          ) : (
+            <span className="absolute z-20 bg-black/80 rounded-md py-1.5 px-4 top-3 right-3 text-white">
+              SOLD
+            </span>
+          )}
+          {car && car.galleryImagesArray[0] && (
+            <img
+              className="object-fill h-60 w-96 rounded-md hover:scale-125 duration-200 transition-all"
+              src={`${api_Url}/uploads/${car?.galleryImagesArray[0]?.imageName}`}
+              alt={`${api_Url}/uploads/${car?.galleryImagesArray[0]?.imageName}`}
+            />
+          )}
         </div>
         <h1 className="text-lg font-bold">{car.name}</h1>
         <div className="w-full h-[1px] bg-gray-200"></div>
         <div className="grid grid-cols-3 gap-4 text-sm capitalize text-gray-500 font-semibold">
           <span className="flex items-center">
             <MdLocalGasStation size={20} />
-            {car.fuelType}
+            Fuel Type
           </span>
           <span className="flex items-center gap-1">
             <TbSteeringWheel size={20} />
-            {car.power}
+            Power
           </span>
           <span className="flex gap-1 items-center">
             <img src={driveLine} alt="driveline" width={15} height={15} />
-            <h1 className="">{car.wheels}</h1>
+            Driveline
           </span>
           <span className="flex w-52 gap-1 items-center">
             <SlSpeedometer size={20} />
-            <h1 className="">{car.miles}</h1>
-          </span>
-          <span className="flex gap-1 items-center">
-            {car.mode === "trans" ? (
-              <TbManualGearbox size={21} />
-            ) : (
-              <TbAutomaticGearbox size={21} />
-            )}
-            <h1 className="">{car.mode}</h1>
+            Odometer
           </span>
           <span className="flex gap-1 items-center">
             <IoDocument size={20} />
-            <h1 className="">{car.title}</h1>
+            Title
+          </span>
+          <span className="flex gap-1 items-center">
+            <TbAutomaticGearbox size={21} />
+            Transmission
           </span>
         </div>
         <div className="bg-gray-100 py-2 pl-1 pr-3 flex items-center justify-between rounded-md">

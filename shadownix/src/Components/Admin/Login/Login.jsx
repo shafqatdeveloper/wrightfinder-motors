@@ -3,6 +3,7 @@ import { BiHide, BiShow } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../../Loader/Spinner";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [isPasswsordVisible, setisPasswsordVisible] = useState(false);
@@ -44,17 +45,27 @@ const Login = () => {
       });
 
       if (response.status === 200 && response.data) {
-        alert(response.data.message);
+        toast(response.data.message, {
+          theme: "dark",
+        });
         navigate("/admin/dashboard");
       } else {
-        alert(response.data.message);
-        console.log(response.data);
+        toast(response.data.message, {
+          theme: "dark",
+        });
       }
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.message || "An error occurred during login.");
+        toast(
+          error.response.data.message || "An error occurred during login.",
+          {
+            theme: "dark",
+          }
+        );
       } else {
-        alert(error.message);
+        toast(response.data.message, {
+          theme: "dark",
+        });
       }
     } finally {
       setLoading(false);

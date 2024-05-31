@@ -7,23 +7,22 @@ export const addCar = async (req, res) => {
   try {
     const {
       name,
-      companyName,
-      title,
-      fuelType,
       miles,
-      mode,
-      wheels,
+      title,
       style,
-      equipments,
-      power,
-      color,
+      engine,
+      transmission,
+      seats,
+      driveline,
+      interiorColor,
+      exteriorColor,
       description,
       price,
       features,
     } = req.body;
     const images = req.files;
     console.log(images);
-    console.log(features);
+    console.log(req.body);
     const uploadedFiles = images.map((file) => ({
       imageName: file.filename,
     }));
@@ -35,16 +34,15 @@ export const addCar = async (req, res) => {
         : features;
     const newCar = await Car.create({
       name,
-      companyName,
-      title,
-      fuelType,
       miles,
-      mode,
-      wheels,
+      title,
       style,
-      equipments,
-      power,
-      color,
+      engine,
+      transmission,
+      seats,
+      driveline,
+      interiorColor,
+      exteriorColor,
       description,
       price,
       features:
@@ -70,9 +68,10 @@ export const addCar = async (req, res) => {
 
 export const getCars = async (req, res) => {
   try {
-    const selectedBrand = req.query.brand;
-    const query = buildQuery(selectedBrand);
-    const cars = await Car.find(query, {});
+    // const selectedBrand = req.query.brand;
+    // console.log(selectedBrand);
+    // const query = buildQuery(selectedBrand);
+    const cars = await Car.find();
     res.status(201).json({
       success: true,
       cars,
@@ -86,21 +85,21 @@ export const getCars = async (req, res) => {
   }
 };
 
-const buildQuery = (brand) => {
-  let query = {};
-  if (brand && brand === "All Brands") {
-    query.companyName = {
-      $regex: "",
-      $options: "i",
-    };
-  } else if (brand) {
-    query.companyName = {
-      $regex: brand,
-      $options: "i",
-    };
-  }
-  return query;
-};
+// const buildQuery = (brand) => {
+//   let query = {};
+//   if (brand && brand === "All Brands") {
+//     query.companyName = {
+//       $regex: "",
+//       $options: "i",
+//     };
+//   } else if (brand) {
+//     query.companyName = {
+//       $regex: brand,
+//       $options: "i",
+//     };
+//   }
+//   return query;
+// };
 
 // Get Car Details
 
@@ -138,6 +137,31 @@ export const deleteCar = async (req, res) => {
       res.status(200).json({
         success: true,
         message: "Car deleted successfully",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const markCarAsSold = async (req, res) => {
+  try {
+    const carId = req.params.id;
+    const car = await Car.findById(carId);
+    if (!car) {
+      return res.status(404).json({
+        success: false,
+        message: "Car not found",
+      });
+    } else {
+      car.available = false;
+      await car.save();
+      res.status(200).json({
+        success: true,
+        message: "Car Marked as SOLD",
       });
     }
   } catch (error) {

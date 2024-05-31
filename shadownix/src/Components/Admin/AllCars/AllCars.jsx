@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
-import { MdDelete, MdModeEdit } from "react-icons/md";
+import { MdDelete, MdModeEdit, MdSell } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useTable, usePagination, useSortBy } from "react-table";
+import { toast } from "react-toastify";
 
 const AllCars = () => {
   const [cars, setCars] = useState([]);
@@ -12,9 +13,28 @@ const AllCars = () => {
     if (confirmDelete) {
       const response = await axios.delete(`/api/admin/car/delete/${id}`);
       if (response.status === 200) {
-        alert(response.data.message);
+        toast(response.data.message, {
+          theme: "dark",
+        });
       } else {
-        alert(response.data.message);
+        toast(response.data.message, {
+          theme: "dark",
+        });
+      }
+    }
+  };
+  const markAsSoldCarHandler = async (id) => {
+    const confirmSold = confirm("Are you Sure to Mark this Car as SOLD");
+    if (confirmSold) {
+      const response = await axios.put(`/api/admin/car/mark/sold/${id}`);
+      if (response.status === 200) {
+        toast(response.data.message, {
+          theme: "dark",
+        });
+      } else {
+        toast(response.data.message, {
+          theme: "dark",
+        });
       }
     }
   };
@@ -37,8 +57,8 @@ const AllCars = () => {
           return (
             <img
               src={`${import.meta.env.VITE_API_URL}/uploads/${imageUrl}`}
-              alt="Car"
-              style={{ width: "20px", height: "20px", borderRadius: "9999px" }}
+              alt="Car Pic"
+              style={{ width: "50px", height: "40px", borderRadius: "10px" }}
             />
           );
         },
@@ -48,28 +68,33 @@ const AllCars = () => {
         accessor: "name",
       },
       {
-        Header: "Company Name",
-        accessor: "companyName",
-      },
-      {
         Header: "Title",
         accessor: "title",
       },
       {
-        Header: "Fuel Type",
-        accessor: "fuelType",
+        Header: "Style",
+        accessor: "style",
       },
       {
-        Header: "Wheels",
-        accessor: "wheels",
+        Header: "Seats",
+        accessor: "seats",
       },
       {
-        Header: "Color",
-        accessor: "color",
+        Header: "Driveline",
+        accessor: "driveline",
       },
       {
-        Header: "Power",
-        accessor: "power",
+        Header: "Exterior Color",
+        accessor: "exteriorColor",
+      },
+      {
+        Header: "Availability",
+        accessor: "available", // Assuming 'id' is the unique identifier for each row
+        Cell: ({ value }) => (
+          <div className="flex space-x-3">
+            {value === true ? <h1>AV</h1> : <h1>SOLD</h1>}
+          </div>
+        ),
       },
       {
         Header: "Price",
@@ -78,13 +103,27 @@ const AllCars = () => {
       {
         Header: "Action",
         accessor: "_id", // Assuming 'id' is the unique identifier for each row
-        Cell: ({ value }) => (
-          <div className="flex space-x-2">
+        Cell: ({ row }) => (
+          <div className="flex space-x-3">
             <button
-              onClick={() => deleteCarPostHandler(value)}
+              onClick={() => deleteCarPostHandler(row._id)}
               className="bg-red-500 text-white p-2 rounded"
             >
-              <MdDelete size={20} />
+              <MdDelete size={25} />
+            </button>
+            <button
+              onClick={() => {
+                if (row.available === true) {
+                  markAsSoldCarHandler(row._id);
+                } else {
+                  toast("This car is already SOLD", {
+                    theme: "dark",
+                  });
+                }
+              }}
+              className="bg-[#3c2163] text-white p-2 rounded"
+            >
+              <MdSell size={25} />
             </button>
           </div>
         ),

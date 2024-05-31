@@ -53,34 +53,30 @@ const Details = ({ car }) => {
             {car.name}
           </h1>
           <div className="w-full h-[1px] bg-gray-200"></div>
-          <div className="grid grid-cols-1 gap-5 mt-6 text-sm capitalize text-gray-500 font-semibold">
+          <div className="grid grid-cols-1 gap-5 text-lg font-bold font-sans mt-6 capitalize text-gray-500">
             <span className="flex border-b-[1px] pb-1 items-center justify-between">
               <MdLocalGasStation size={22} />
-              {car.fuelType}
+              Fuel Type
             </span>
-            <span className="flex border-b-[1px] pb-1 items-center justify-between">
+            <span className="flex border-b-[1px] text-lg font-bold font-sans pb-1 items-center justify-between">
               <TbSteeringWheel size={22} />
-              {car.power}
+              Power
             </span>
-            <span className="flex border-b-[1px] pb-1 items-center justify-between">
+            <span className="flex border-b-[1px] text-lg font-bold font-sans pb-1 items-center justify-between">
               <img src={driveLine} alt="driveline" width={20} height={20} />
-              <h1 className="">{car.wheels}</h1>
+              Driveline
             </span>
-            <span className="flex border-b-[1px] pb-1 items-center justify-between">
+            <span className="flex border-b-[1px] text-lg font-bold font-sans pb-1 items-center justify-between">
               <SlSpeedometer size={22} />
-              <h1 className="">{car.miles}</h1>
+              Miles
             </span>
-            <span className="flex border-b-[1px] pb-1 items-center justify-between">
-              {car.mode === "trans" ? (
-                <TbManualGearbox size={22} />
-              ) : (
-                <TbAutomaticGearbox size={22} />
-              )}
-              <h1 className="">{car.mode}</h1>
+            <span className="flex border-b-[1px] text-lg font-bold font-sans pb-1 items-center justify-between">
+              <TbAutomaticGearbox size={22} />
+              Trans
             </span>
-            <span className="flex border-b-[1px] pb-1 items-center justify-between">
+            <span className="flex border-b-[1px] text-lg font-bold font-sans pb-1 items-center justify-between">
               <IoDocument size={22} />
-              <h1 className="">{car.title}</h1>
+              Title
             </span>
             <div className="bg-gray-100 py-2 pl-1 pr-3 flex items-center justify-between rounded-md">
               <span className="text-lg font-bold tracking-wide font-sans">

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Dashboard from "../../../../Components/Admin/Dashboard/Dashboard";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -32,10 +33,14 @@ const AdminDashboard = () => {
     if (confirmLogout) {
       const response = await axios.get("/api/admin/logout");
       if (response.data.success) {
-        console.log(response.data);
+        toast(response.data.message, {
+          theme: "dark",
+        });
         navigate("/admin/login");
       } else {
-        return null;
+        toast(response.data.message, {
+          theme: "dark",
+        });
       }
     }
   };

@@ -5,43 +5,39 @@ const CarModel = new mongoose.Schema({
     type: String,
     required: true,
   },
-  companyName: {
-    type: String,
+  miles: {
+    type: Number,
     required: true,
   },
   title: {
     type: String,
     required: true,
   },
-  fuelType: {
-    type: String,
-    required: true,
-  },
-  miles: {
-    type: Number,
-    required: true,
-  },
-  mode: {
-    type: String,
-    required: true,
-  },
-  wheels: {
-    type: Number,
-    required: true,
-  },
   style: {
     type: String,
     required: true,
   },
-  equipments: {
+  engine: {
     type: String,
     required: true,
   },
-  power: {
+  transmission: {
     type: String,
     required: true,
   },
-  color: {
+  seats: {
+    type: String,
+    required: true,
+  },
+  driveline: {
+    type: String,
+    required: true,
+  },
+  interiorColor: {
+    type: String,
+    required: true,
+  },
+  exteriorColor: {
     type: String,
     required: true,
   },
@@ -55,5 +51,9 @@ const CarModel = new mongoose.Schema({
   },
   features: [{ name: String }],
   galleryImagesArray: [{ imageName: String }],
+  available: {
+    type: Boolean,
+    default: true,
+  },
 });
 export const Car = mongoose.model("car", CarModel);

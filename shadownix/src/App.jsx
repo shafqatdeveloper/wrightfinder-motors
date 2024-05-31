@@ -11,12 +11,17 @@ import AdminLogin from "./Pages/Admin/Login/AdminLogin";
 import Regsiter from "./Pages/Admin/Regsiter/Regsiter";
 import ScrollToTop from "./Components/Scroller/ScrollToTop";
 import AdminAllCars from "./Pages/Admin/Dashboard/AllCars/AdminAllCars";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import TopLoadingBar from "./Components/Loader/TopLoadingBar";
 
 function App() {
   return (
     <>
       <Navbar />
       <ScrollToTop>
+        <ToastContainer />
+        <TopLoadingBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/car/details/:id" element={<CarDetails />} />
@@ -24,7 +29,7 @@ function App() {
           <Route path="/admin/dashboard/add-car" element={<AdminAddCar />} />
           <Route path="/admin/dashboard/all-cars" element={<AdminAllCars />} />
           <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/register" element={<Regsiter />} />
+          {/* <Route path="/admin/register" element={<Regsiter />} /> */}
           <Route path="/about" element={<About />} />
         </Routes>
       </ScrollToTop>

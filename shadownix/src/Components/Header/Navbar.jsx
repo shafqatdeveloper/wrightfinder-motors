@@ -23,8 +23,8 @@ const Navbar = () => {
           <span className="border-[1.5px] border-[#3c2163] rounded-full p-1.5">
             <IoMdMail size={18} color="#3c2163" />
           </span>
-          <span className="flex flex-col text-sm font-medium font-sans">
-            <Link to={"mailto:shadownix4@gmail.com"}>shadownix4@gmail.com</Link>
+          <span className="flex flex-col font-medium font-sans">
+            <Link to={"mailto:shadownix4@gmail.com"}>Shadownix4@gmail.com</Link>
           </span>
         </li>
       </div>

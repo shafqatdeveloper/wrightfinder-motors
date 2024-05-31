@@ -6,6 +6,7 @@ import { MdPhoneInTalk } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
+import { IoMdMail } from "react-icons/io";
 
 const Footer = () => {
   const { ref: footerRef, inView: isFooterInView } = useInView({
@@ -76,6 +77,16 @@ const Footer = () => {
                 </Link>
                 <Link target="_blank" to={"https://wa.me/9372706688"}>
                   937-270-6688
+                </Link>
+              </span>
+            </div>
+            <div className="flex items-center gap-3 my-5">
+              <span className="bg-[#3c2163] rounded-md p-2.5">
+                <IoMdMail size={22} color="white" />
+              </span>
+              <span className="flex flex-col font-medium font-sans">
+                <Link target="_blank" to={"mailto:shadownix4@gmail.com"}>
+                  shadownix4@gmail.com
                 </Link>
               </span>
             </div>
