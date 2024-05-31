@@ -81,7 +81,7 @@ const Card = ({ car, delay = 0 }) => {
           </span>
           <span className="flex gap-1 items-center">
             <TbAutomaticGearbox size={21} />
-            Transmission
+            Trans.
           </span>
         </div>
         <div className="bg-gray-100 py-2 pl-1 pr-3 flex items-center justify-between rounded-md">
