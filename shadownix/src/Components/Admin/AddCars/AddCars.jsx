@@ -12,8 +12,8 @@ const initialValues = {
   miles: "",
   title: "Clean",
   style: "2 Doors",
-  engine: "",
-  transmission: "Sports",
+  engine: "Sports",
+  transmission: "Automatic",
   seats: "Heated",
   driveline: "FWD",
   interiorColor: "Black",
@@ -27,7 +27,7 @@ const AddCar = () => {
     { name: "CD/mp3" },
     { name: "Navigation System" },
     { name: "Bluetooth Wireless" },
-    { name: "COmfort and Convenience" },
+    { name: "Comfort and Convenience" },
     { name: "Keyless Entry" },
     { name: "Keyless Start" },
     { name: "Air Conditioning" },
@@ -38,9 +38,6 @@ const AddCar = () => {
   const [images, setImages] = useState([]);
   const [galleryImages, setGalleryImages] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  // console.log(errors);
-  // console.log(values);
 
   const handleFeatures = (e) => {
     if (e.key === "Enter") {
@@ -136,6 +133,7 @@ const AddCar = () => {
         });
         try {
           const response = await axios.post("/api/car/add", form);
+          console.log(response);
           if (response.status == 201) {
             setGalleryImages([]);
             setImages([]);
@@ -144,7 +142,7 @@ const AddCar = () => {
             toast(response.data.message, {
               theme: "dark",
             });
-            // location.reload();
+            location.reload();
           } else {
             setLoading(false);
             toast(response.data.message, {
@@ -153,7 +151,7 @@ const AddCar = () => {
           }
         } catch (error) {
           setLoading(false);
-          toast(error, {
+          toast(error.message, {
             theme: "dark",
           });
         } finally {
@@ -258,11 +256,14 @@ const AddCar = () => {
                 className="focus:outline-none w-full rounded-md bg-gray-100 py-2"
               >
                 <option value={values.title}>Clean</option>
+                <option value="Original">Original</option>
+                <option value="Rebuild">Rebuild</option>
                 <option value="Rebuild">Rebuild</option>
                 <option value="Salvage">Salvage</option>
                 <option value="Duplicate">Duplicate</option>
                 <option value="Replacement">Replacement</option>
                 <option value="Unknown">Unknown</option>
+                <option value="N/a">N/a</option>
               </select>
             </div>
             {errors.title && touched.title ? (
@@ -287,6 +288,7 @@ const AddCar = () => {
               >
                 <option value={values.style}>2 Doors</option>
                 <option value="4 Doors">4 Doors</option>
+                <option value="N/a">N/a</option>
               </select>
             </div>
             {errors.style && touched.style ? (
@@ -302,15 +304,17 @@ const AddCar = () => {
                 errors.engine && touched.engine ? "border-2 border-red-500" : ""
               } bg-white rounded-md text-black`}
             >
-              <input
-                value={values.engine}
-                name="engine"
+              <select
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="text"
-                className="bg-transparent outline-lime-50 focus:outline-none w-full rounded-md p-2"
-                placeholder="Engine"
-              />
+                name="engine"
+                id="engine"
+                className="focus:outline-none w-full rounded-md bg-gray-100 py-2"
+              >
+                <option value={values.engine}>Sports</option>
+                <option value="Non Sports">Non Sports</option>
+                <option value="N/a">N/a</option>
+              </select>
             </div>
             {errors.engine && touched.engine ? (
               <p className="text-red-500 text-sm capitalize">{errors.engine}</p>
@@ -334,8 +338,9 @@ const AddCar = () => {
                 id="transmission"
                 className="focus:outline-none w-full rounded-md bg-gray-100 py-2"
               >
-                <option value={values.style}>Sports</option>
-                <option value="Non Sports">Non Sports</option>
+                <option value={values.transmission}>Automatic</option>
+                <option value="Stickshift">Stickshift</option>
+                <option value="N/a">N/a</option>
               </select>
             </div>
             {errors.transmission && touched.transmission ? (
@@ -363,7 +368,8 @@ const AddCar = () => {
                 className="focus:outline-none w-full rounded-md bg-gray-100 py-2"
               >
                 <option value={values.driveline}>FWD</option>
-                <option value="Non Sports">2WD</option>
+                <option value="2WD">2WD</option>
+                <option value="N/a">N/a</option>
               </select>
             </div>
             {errors.driveline && touched.driveline ? (
@@ -388,10 +394,11 @@ const AddCar = () => {
                 id="seats"
                 className="focus:outline-none w-full rounded-md bg-gray-100 py-2"
               >
-                <option value={values.style}>Heated</option>
+                <option value={values.seats}>Heated</option>
                 <option value="Power Seats">Power Seats</option>
                 <option value="Leather">Leather</option>
                 <option value="Clothes">Clothes</option>
+                <option value="N/a">N/a</option>
               </select>
             </div>
             {errors.seats && touched.seats ? (
@@ -458,6 +465,7 @@ const AddCar = () => {
                 <option value="Beige">Beige</option>
                 <option value="Brown">Brown</option>
                 <option value="White">White</option>
+                <option value="N/a">N/a</option>
               </select>
             </div>
             {errors.interiorColor && touched.interiorColor ? (
@@ -495,6 +503,7 @@ const AddCar = () => {
                 <option value="Yellow">Yellow</option>
                 <option value="Orange">Orange</option>
                 <option value="Green">Green</option>
+                <option value="N/a">N/a</option>
               </select>
             </div>
             {errors.exteriorColor && touched.exteriorColor ? (

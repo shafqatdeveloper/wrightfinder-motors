@@ -14,7 +14,9 @@ const CarDetails = () => {
     fetchCarDetails();
   }, []);
   return (
-    <div className="bg-gray-200 pb-10">{car && <Details car={car} />}</div>
+    <div className="bg-gray-200 pb-10 pt-40 md:pt-0">
+      {car && <Details car={car} />}
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div className="w-full mt-1 h-screen">
+    <div className="w-full pt-28 h-screen">
       <div className="px-2 sm:px-20 flex flex-col sm:flex-row items-center justify-center gap-10 sm:gap-0 sm:justify-between w-full h-full">
         <div className="">
           <motion.div

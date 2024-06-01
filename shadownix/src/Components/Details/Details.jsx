@@ -2,12 +2,9 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import "./Details.css";
-import {
-  TbAutomaticGearbox,
-  TbManualGearbox,
-  TbSteeringWheel,
-} from "react-icons/tb";
-import { MdLocalGasStation } from "react-icons/md";
+import { TbAutomaticGearbox, TbSteeringWheel } from "react-icons/tb";
+import { PiEngine } from "react-icons/pi";
+import { MdEventSeat } from "react-icons/md";
 import { SlSpeedometer } from "react-icons/sl";
 import driveLine from "../../assets/driveline.png";
 import { FaCheckDouble } from "react-icons/fa";
@@ -39,7 +36,7 @@ const Details = ({ car }) => {
                   <img
                     height={300}
                     width={400}
-                    className="object-cover w-full h-[60vh] rounded-md"
+                    className="object-center w-full h-[60vh] rounded-md"
                     src={`${api_Url}/uploads/${singlePic.imageName}`}
                     alt={`${api_Url}/uploads/${singlePic.imageName}`}
                   />
@@ -53,31 +50,49 @@ const Details = ({ car }) => {
             {car.name}
           </h1>
           <div className="w-full h-[1px] bg-gray-200"></div>
-          <div className="grid grid-cols-1 gap-5 text-lg font-semibold font-sans mt-6 capitalize text-gray-500">
-            <span className="flex border-b-[1px] pb-1 items-center justify-between">
-              <MdLocalGasStation size={22} />
-              Fuel Type
-            </span>
-            <span className="flex border-b-[1px] text-lg font-semibold font-sans pb-1 items-center justify-between">
-              <TbSteeringWheel size={22} />
-              Power
-            </span>
-            <span className="flex border-b-[1px] text-lg font-semibold font-sans pb-1 items-center justify-between">
-              <img src={driveLine} alt="driveline" width={20} height={20} />
-              Driveline
-            </span>
-            <span className="flex border-b-[1px] text-lg font-semibold font-sans pb-1 items-center justify-between">
-              <SlSpeedometer size={22} />
-              Miles
-            </span>
-            <span className="flex border-b-[1px] text-lg font-semibold font-sans pb-1 items-center justify-between">
-              <TbAutomaticGearbox size={22} />
-              Transmission
-            </span>
-            <span className="flex border-b-[1px] text-lg font-semibold font-sans pb-1 items-center justify-between">
-              <IoDocument size={22} />
-              Title
-            </span>
+          <div className="grid grid-cols-1 gap-5 font-semibold font-sans mt-6 capitalize text-gray-500">
+            <div className="flex border-b-[1px] pb-1 items-center justify-between">
+              <span className="flex items-center gap-2">
+                <PiEngine size={22} />
+                Engine
+              </span>
+              <h6 className=" text-lg">{car.engine}</h6>
+            </div>
+            <div className="flex border-b-[1px] pb-1 items-center justify-between">
+              <span className="flex items-center gap-2">
+                <MdEventSeat size={22} />
+                Seats
+              </span>
+              <h6 className=" text-lg">{car.seats}</h6>
+            </div>
+            <div className="flex border-b-[1px] pb-1 items-center justify-between">
+              <span className="flex items-center gap-2">
+                <img src={driveLine} alt="driveline" className="w-5 h-5" />
+                Driveline
+              </span>
+              <h6 className=" text-lg">{car.driveline}</h6>
+            </div>
+            <div className="flex border-b-[1px] pb-1 items-center justify-between">
+              <span className="flex items-center gap-2">
+                <SlSpeedometer size={22} />
+                Miles
+              </span>
+              <h6 className=" text-lg">{car.miles}</h6>
+            </div>
+            <div className="flex border-b-[1px] pb-1 items-center justify-between">
+              <span className="flex items-center gap-2">
+                <TbAutomaticGearbox size={22} />
+                Trans.
+              </span>
+              <h6 className=" text-lg">{car.transmission}</h6>
+            </div>
+            <div className="flex border-b-[1px] pb-1 items-center justify-between">
+              <span className="flex items-center gap-2">
+                <IoDocument size={22} />
+                Title
+              </span>
+              <h6 className=" text-lg">{car.title}</h6>
+            </div>
             <div className="bg-gray-100 py-2 pl-1 pr-3 flex items-center justify-between rounded-md">
               <span className="text-lg font-bold tracking-wide font-sans">
                 Price :
