@@ -2,6 +2,7 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { IoMdThumbsUp } from "react-icons/io";
 import HeroPic from "../../assets/hero-bg.png";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -32,13 +33,16 @@ const Hero = () => {
         </div>
         <div className="bg-[#3c2163] rounded-full p-10">
           <div>
-            {/* <img
+            <motion.img
+              initial={{ opacity: 0, y: -70 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
               height={500}
               width={500}
               className="w-[24rem] sm:w-[30rem]"
               src={HeroPic}
               alt="Hero Pic"
-            /> */}
+            />
           </div>
         </div>
       </div>
