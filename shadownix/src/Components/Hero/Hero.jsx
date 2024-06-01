@@ -32,13 +32,13 @@ const Hero = () => {
         </div>
         <div className="bg-[#3c2163] rounded-full p-10">
           <div>
-            <img
+            {/* <img
               height={500}
               width={500}
               className="w-[24rem] sm:w-[30rem]"
               src={HeroPic}
               alt="Hero Pic"
-            />
+            /> */}
           </div>
         </div>
       </div>
