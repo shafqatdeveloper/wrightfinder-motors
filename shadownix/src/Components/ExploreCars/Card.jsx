@@ -9,7 +9,6 @@ import driveLine from "../../assets/driveline.png";
 import { Link } from "react-router-dom";
 
 const Card = ({ car, delay = 0 }) => {
-  console.log(car?.galleryImagesArray[0]?.imageName);
   const [hasAnimated, setHasAnimated] = useState(false);
   const controls = useAnimation();
   const { ref, inView } = useInView();
@@ -50,7 +49,7 @@ const Card = ({ car, delay = 0 }) => {
           )}
           {car && car.galleryImagesArray[0] && (
             <img
-              className="object-fill h-60 w-96 rounded-md hover:scale-125 duration-200 transition-all"
+              className="object-cover h-60 w-full rounded-md hover:scale-125 duration-200 transition-all"
               src={`${api_Url}/uploads/${car?.galleryImagesArray[0]?.imageName}`}
               alt={`${api_Url}/uploads/${car?.galleryImagesArray[0]?.imageName}`}
             />
@@ -95,12 +94,9 @@ const Card = ({ car, delay = 0 }) => {
             </h1>
           </span>
         </div>
-        <Link
-          to={`/car/details/${car._id}`}
-          className="w-full border-2 border-[#3c2163] text-white transition-all duration-300 rounded-md text-center py-2 text-lg font-medium tracking-wide font-sans bg-[#3c2163] hover:bg-[#17A8E2] hover:border-[#17A8E2]"
-        >
+        <div className="w-full border-2 border-[#3c2163] text-white transition-all duration-300 rounded-md text-center py-2 text-lg font-medium tracking-wide font-sans bg-[#3c2163] hover:bg-[#17A8E2] hover:border-[#17A8E2]">
           <button className="w-full">Explore</button>
-        </Link>
+        </div>
       </Link>
     </motion.div>
   );

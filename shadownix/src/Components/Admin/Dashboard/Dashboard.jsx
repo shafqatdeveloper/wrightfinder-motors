@@ -1,5 +1,5 @@
 import React from "react";
-import { MdOutlineAddCircleOutline, MdDelete } from "react-icons/md";
+import { MdOutlineAddCircleOutline } from "react-icons/md";
 import { FaCar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 

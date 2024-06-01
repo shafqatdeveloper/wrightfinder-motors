@@ -1,6 +1,7 @@
 import { Car } from "../Models/Car.js";
 import path from "path";
 import sharp from "sharp";
+import fs from "fs";
 
 export const addCar = async (req, res) => {
   try {
@@ -41,9 +42,15 @@ export const addCar = async (req, res) => {
           await sharp(file.path)
             .resize(800)
             .toFormat("webp")
-            .webp({ quality: 80 })
+            .webp({ quality: 90 })
             .toFile(outputPath);
-
+          const deletePath = path.join(
+            __dirname,
+            "public",
+            "uploads",
+            file.filename
+          );
+          fs.unlinkSync(deletePath);
           return {
             imageName: filename,
           };
@@ -196,6 +203,38 @@ export const markCarAsSold = async (req, res) => {
         res.status(200).json({
           success: true,
           message: "Car Marked as SOLD",
+        });
+      }
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const markCarAsAvailable = async (req, res) => {
+  try {
+    const carId = req.params.id;
+    const car = await Car.findById(carId);
+    if (!car) {
+      return res.status(404).json({
+        success: false,
+        message: "Car not found",
+      });
+    } else {
+      if (car.available === true) {
+        res.status(401).json({
+          success: true,
+          message: "Car Already marked as AV",
+        });
+      } else {
+        car.available = true;
+        await car.save();
+        res.status(200).json({
+          success: true,
+          message: "Car Marked as AV",
         });
       }
     }

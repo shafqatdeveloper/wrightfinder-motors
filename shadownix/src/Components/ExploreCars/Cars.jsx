@@ -16,57 +16,64 @@ import {
   SiSubaru,
   SiJeep,
 } from "react-icons/si";
-import { motion, useAnimation, useInView } from "framer-motion";
+// import { motion, useAnimation, useInView } from "framer-motion";
 import Card from "./Card";
 import { BsRainbow } from "react-icons/bs";
 import axios from "axios";
 import { FaCar } from "react-icons/fa";
 
-const brands = [
-  { name: "All Brands", icon: <FaCar /> },
-  { name: "ford", icon: <SiFord /> },
-  { name: "mercedez", icon: <SiMercedes /> },
-  { name: "honda", icon: <SiHonda /> },
-  { name: "toyota", icon: <SiToyota /> },
-  { name: "ferrari", icon: <SiFerrari /> },
-  { name: "audi", icon: <SiAudi /> },
-  { name: "acura", icon: <SiAcura /> },
-  { name: "tesla", icon: <SiTesla /> },
-  { name: "hyundai", icon: <SiHyundai /> },
-  { name: "kia", icon: <SiKia /> },
-  { name: "nissan", icon: <SiNissan /> },
-  { name: "ram", icon: <SiRam /> },
-  { name: "subaru", icon: <SiSubaru /> },
-  { name: "jeep", icon: <SiJeep /> },
-];
+// const brands = [
+//   { name: "All Brands", icon: <FaCar /> },
+//   { name: "ford", icon: <SiFord /> },
+//   { name: "mercedez", icon: <SiMercedes /> },
+//   { name: "honda", icon: <SiHonda /> },
+//   { name: "toyota", icon: <SiToyota /> },
+//   { name: "ferrari", icon: <SiFerrari /> },
+//   { name: "audi", icon: <SiAudi /> },
+//   { name: "acura", icon: <SiAcura /> },
+//   { name: "tesla", icon: <SiTesla /> },
+//   { name: "hyundai", icon: <SiHyundai /> },
+//   { name: "kia", icon: <SiKia /> },
+//   { name: "nissan", icon: <SiNissan /> },
+//   { name: "ram", icon: <SiRam /> },
+//   { name: "subaru", icon: <SiSubaru /> },
+//   { name: "jeep", icon: <SiJeep /> },
+// ];
 
 const Cars = () => {
-  const [selectedBrand, setselectedBrand] = useState(brands[0]);
-  const [selectedBrandName, setSelectedBrandName] = useState("All Brands");
+  // const [selectedBrand, setselectedBrand] = useState(brands[0]);
+  // const [selectedBrandName, setSelectedBrandName] = useState("All Brands");
   const [cars, setCars] = useState([]);
-  const headingRef = useRef(null);
-  const isHeadingInView = useInView(headingRef, { once: true });
-  const mainControls = useAnimation();
+  // const headingRef = useRef(null);
+  // const isHeadingInView = useInView(headingRef, { once: true });
+  // const mainControls = useAnimation();
 
   useEffect(() => {
     const fetchCars = async () => {
-      const response = await axios.get(`/api/cars?brand=${selectedBrandName}`);
-      console.log(response.data);
+      const response = await axios.get(`/api/cars`);
       setCars(response.data.cars);
     };
     fetchCars();
-  }, [selectedBrandName]);
+  }, []);
 
-  useEffect(() => {
-    if (isHeadingInView) {
-      mainControls.start("visible");
-    }
-  }, [isHeadingInView]);
+  // useEffect(() => {
+  //   if (isHeadingInView) {
+  //     mainControls.start("visible");
+  //   }
+  // }, [isHeadingInView]);
   return (
     <div
       id="explore-cars"
       className="flex flex-col items-center justify-center w-full h-full"
     >
+      <div className="flex flex-col justify-center items-center w-full gap-6">
+        <h1 className="text-center text-3xl font-extrabold font-sans sm:text-4xl md:text-5xl">
+          Explore Most Popular Cars
+        </h1>
+        <span>
+          <BsRainbow size={55} color="#3c2163" />
+        </span>
+      </div>
       {/* <motion.div
         ref={headingRef}
         variants={{

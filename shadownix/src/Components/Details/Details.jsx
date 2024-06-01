@@ -2,7 +2,7 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import "./Details.css";
-import { TbAutomaticGearbox, TbSteeringWheel } from "react-icons/tb";
+import { TbAutomaticGearbox } from "react-icons/tb";
 import { PiEngine } from "react-icons/pi";
 import { MdEventSeat } from "react-icons/md";
 import { SlSpeedometer } from "react-icons/sl";
@@ -13,9 +13,6 @@ import { IoDocument } from "react-icons/io5";
 const api_Url = import.meta.env.VITE_API_URL;
 
 const Details = ({ car }) => {
-  car.features.map((entry, index) => {
-    console.log(entry);
-  });
   return (
     <div className="w-full">
       <div className="flex flex-col md:flex-row items-center md:items-center justify-center gap-5 sm:gap-8 px-2 sm:px-10">
@@ -36,7 +33,7 @@ const Details = ({ car }) => {
                   <img
                     height={300}
                     width={400}
-                    className="object-center w-full h-[60vh] rounded-md"
+                    className="object-cover w-full h-[63vh] rounded-md"
                     src={`${api_Url}/uploads/${singlePic.imageName}`}
                     alt={`${api_Url}/uploads/${singlePic.imageName}`}
                   />

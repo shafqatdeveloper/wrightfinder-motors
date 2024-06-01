@@ -1,5 +1,5 @@
 import { useAnimation, motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { BsRainbow } from "react-icons/bs";
 import { useInView } from "react-intersection-observer";
 import { FaRegHeart, FaCar, FaHeadphones } from "react-icons/fa";

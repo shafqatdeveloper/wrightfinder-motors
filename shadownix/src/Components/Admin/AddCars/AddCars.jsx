@@ -110,7 +110,6 @@ const AddCar = () => {
       initialValues: initialValues,
       validationSchema: AddCarSchema,
       onSubmit: async (values) => {
-        console.log(values);
         setLoading(true);
         const form = new FormData();
         form.append("name", values.name);
@@ -133,7 +132,6 @@ const AddCar = () => {
         });
         try {
           const response = await axios.post("/api/car/add", form);
-          console.log(response);
           if (response.status == 201) {
             setGalleryImages([]);
             setImages([]);
@@ -142,7 +140,7 @@ const AddCar = () => {
             toast(response.data.message, {
               theme: "dark",
             });
-            location.reload();
+            // location.reload();
           } else {
             setLoading(false);
             toast(response.data.message, {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
-import { MdDelete, MdModeEdit, MdSell } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { MdDelete, MdSell } from "react-icons/md";
+import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { useTable, usePagination, useSortBy } from "react-table";
 import { toast } from "react-toastify";
 
@@ -33,7 +33,6 @@ const AllCars = () => {
           toast(response.data.message, {
             theme: "dark",
           });
-          navigate("/admin/dashboard");
         } else {
           toast(response.data.message, {
             theme: "dark",
@@ -42,7 +41,41 @@ const AllCars = () => {
       } catch (error) {
         if (error.response) {
           toast(
-            error.response.data.message || "An error occurred during login.",
+            error.response.data.message ||
+              "An error occurred during SOLD Request",
+            {
+              theme: "dark",
+            }
+          );
+        } else {
+          toast(response.data.message, {
+            theme: "dark",
+          });
+        }
+      } finally {
+      }
+    }
+  };
+  const markAsAvCarHandler = async (id) => {
+    const confirmAV = confirm("Are you Sure to Mark this Car as AV");
+    if (confirmAV) {
+      try {
+        const response = await axios.put(`/api/admin/car/mark/av/${id}`);
+
+        if (response.status === 200 && response.data) {
+          toast(response.data.message, {
+            theme: "dark",
+          });
+        } else {
+          toast(response.data.message, {
+            theme: "dark",
+          });
+        }
+      } catch (error) {
+        if (error.response) {
+          toast(
+            error.response.data.message ||
+              "An error occurred during AV Request",
             {
               theme: "dark",
             }
@@ -136,6 +169,14 @@ const AllCars = () => {
               className="bg-[#3c2163] text-white p-2 rounded"
             >
               <MdSell size={25} />
+            </button>
+            <button
+              onClick={() => {
+                markAsAvCarHandler(value);
+              }}
+              className="bg-[#2ada50] text-white p-2 rounded"
+            >
+              <IoCheckmarkCircleOutline size={25} />
             </button>
           </div>
         ),

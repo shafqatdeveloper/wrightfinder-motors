@@ -1,10 +1,8 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { IoMdThumbsUp } from "react-icons/io";
-import "./Hero.css";
-import { MdArrowDownward } from "react-icons/md";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import HeroPic from "../../assets/hero-bg.png";
 
 const Hero = () => {
   return (
@@ -27,7 +25,7 @@ const Hero = () => {
             <h1 className="uppercase text-4xl sm:text-4xl md:text-6xl font-sans font-extrabold text-[#3c2163]">
               Dream Cars
             </h1>
-            <div className="w-full flex items-center sm:items-start sm:justify-start pt-3 sm:pt-0 justify-center">
+            {/* <div className="w-full flex items-center sm:items-start sm:justify-start pt-3 sm:pt-0 justify-center">
               <Link
                 to={"#explore-cars"}
                 className="flex items-center gap-2 border-2 border-black rounded-md w-max py-2.5 sm:py-2 px-3 font-sans font-medium hover:border-[#17a8e2] transition-all duration-300 cursor-pointer hover:text-white hover:bg-[#17a8e2]"
@@ -35,7 +33,7 @@ const Hero = () => {
                 <button>Explore Now</button>
                 <MdArrowDownward />
               </Link>
-            </div>
+            </div> */}
           </motion.div>
         </div>
         <div className="bg-[#3c2163] rounded-full p-10">
@@ -48,8 +46,8 @@ const Hero = () => {
               height={500}
               width={500}
               className="w-[24rem] sm:w-[30rem]"
-              src="https://res.cloudinary.com/dq0qjcgnp/image/upload/v1716556381/pexels-mikebirdy-116675-removebg-preview_eknb0p.png"
-              alt=""
+              src={HeroPic}
+              alt="Hero Pic"
             />
           </motion.div>
         </div>
