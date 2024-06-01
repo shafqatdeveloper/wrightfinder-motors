@@ -1,38 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { TbAutomaticGearbox, TbSteeringWheel } from "react-icons/tb";
 import { IoDocument } from "react-icons/io5";
 import { SlSpeedometer } from "react-icons/sl";
 import { MdLocalGasStation } from "react-icons/md";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+// import { motion, useAnimation } from "framer-motion";
+// import { useInView } from "react-intersection-observer";
 import driveLine from "../../assets/driveline.png";
 import { Link } from "react-router-dom";
 
 const Card = ({ car, delay = 0 }) => {
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const controls = useAnimation();
-  const { ref, inView } = useInView();
-  useEffect(() => {
-    if (inView && !hasAnimated) {
-      controls.start("visible");
-      setHasAnimated(true);
-    }
-  }, [inView, hasAnimated, controls]);
+  // const [hasAnimated, setHasAnimated] = useState(false);
+  // const controls = useAnimation();
+  // const { ref, inView } = useInView();
+  // useEffect(() => {
+  //   if (inView && !hasAnimated) {
+  //     controls.start("visible");
+  //     setHasAnimated(true);
+  //   }
+  // }, [inView, hasAnimated, controls]);
 
   const api_Url = import.meta.env.VITE_API_URL;
 
-  const variants = {
-    hidden: { opacity: 0, y: 70 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay } },
-  };
+  // const variants = {
+  //   hidden: { opacity: 0, y: 70 },
+  //   visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay } },
+  // };
   return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={variants}
-      className=""
-    >
+    <div className="">
       <Link
         className="bg-white cursor-pointer hover:shadow-xl duration-200 transition-all rounded-md p-3 flex flex-col gap-4"
         to={`/car/details/${car._id}`}
@@ -98,7 +92,7 @@ const Card = ({ car, delay = 0 }) => {
           <button className="w-full">Explore</button>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 };
 

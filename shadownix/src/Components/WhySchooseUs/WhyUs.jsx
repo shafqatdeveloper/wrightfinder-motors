@@ -1,7 +1,7 @@
-import { useAnimation, motion } from "framer-motion";
+// import { useAnimation, motion } from "framer-motion";
 import React, { useEffect } from "react";
 import { BsRainbow } from "react-icons/bs";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 import { FaCar, FaCheckCircle, FaHandsHelping } from "react-icons/fa";
 
 const features = [
@@ -26,25 +26,25 @@ const features = [
 ];
 
 const WhyUs = () => {
-  const { ref: whyUsHeadingRef, inView: isWhyUsHeadingInView } = useInView({
-    threshold: 0.2,
-  });
-  const mainControls = useAnimation();
-  useEffect(() => {
-    if (isWhyUsHeadingInView) {
-      mainControls.start("visible");
-    }
-  }, [isWhyUsHeadingInView, mainControls]);
+  // const { ref: whyUsHeadingRef, inView: isWhyUsHeadingInView } = useInView({
+  //   threshold: 0.2,
+  // });
+  // const mainControls = useAnimation();
+  // useEffect(() => {
+  //   if (isWhyUsHeadingInView) {
+  //     mainControls.start("visible");
+  //   }
+  // }, [isWhyUsHeadingInView, mainControls]);
   return (
-    <motion.div
-      ref={whyUsHeadingRef}
-      variants={{
-        hidden: { opacity: 0, y: -75 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      initial="hidden"
-      animate={mainControls}
-      transition={{ duration: 0.8, delay: 0.2 }}
+    <div
+      // ref={whyUsHeadingRef}
+      // variants={{
+      //   hidden: { opacity: 0, y: -75 },
+      //   visible: { opacity: 1, y: 0 },
+      // }}
+      // initial="hidden"
+      // animate={mainControls}
+      // transition={{ duration: 0.8, delay: 0.2 }}
       className="h-full flex flex-col gap-10 sm:gap-14 items-center justify-center"
     >
       <div className="flex flex-col gap-4 items-center justify-center">
@@ -76,7 +76,7 @@ const WhyUs = () => {
           );
         })}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

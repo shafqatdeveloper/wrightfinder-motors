@@ -1,34 +1,34 @@
 "use client";
-import { useAnimation, motion } from "framer-motion";
+// import { useAnimation, motion } from "framer-motion";
 import React, { useEffect } from "react";
 import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { MdPhoneInTalk } from "react-icons/md";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { IoMdMail } from "react-icons/io";
 
 const Footer = () => {
-  const { ref: footerRef, inView: isFooterInView } = useInView({
-    threshold: 0.2,
-  });
-  const footerMainControls = useAnimation();
-  useEffect(() => {
-    if (isFooterInView) {
-      footerMainControls.start("visible");
-    }
-  }, [isFooterInView, footerMainControls]);
+  // const { ref: footerRef, inView: isFooterInView } = useInView({
+  //   threshold: 0.2,
+  // });
+  // const footerMainControls = useAnimation();
+  // useEffect(() => {
+  //   if (isFooterInView) {
+  //     footerMainControls.start("visible");
+  //   }
+  // }, [isFooterInView, footerMainControls]);
   return (
     <div className="w-full h-full bg-gray-300 px-5">
-      <motion.div
-        ref={footerRef}
-        variants={{
-          hidden: { opacity: 0, y: -75 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        initial="hidden"
-        animate={footerMainControls}
-        transition={{ duration: 0.8, delay: 0.2 }}
+      <div
+      // ref={footerRef}
+      // variants={{
+      //   hidden: { opacity: 0, y: -75 },
+      //   visible: { opacity: 1, y: 0 },
+      // }}
+      // initial="hidden"
+      // animate={footerMainControls}
+      // transition={{ duration: 0.8, delay: 0.2 }}
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 pt-5 gap-4 text-black">
           <div>
@@ -142,7 +142,7 @@ const Footer = () => {
           All Rights Reserved &copy;
           <span className="text-[#3c2163] font-semibold"> SHADOWNIX</span>
         </h1>
-      </motion.div>
+      </div>
     </div>
   );
 };

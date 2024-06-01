@@ -1,7 +1,7 @@
-import { useAnimation, motion } from "framer-motion";
+// import { useAnimation, motion } from "framer-motion";
 import React, { useEffect } from "react";
 import { BsRainbow } from "react-icons/bs";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 import { FaRegHeart, FaCar, FaHeadphones } from "react-icons/fa";
 
 const facts = [
@@ -19,25 +19,25 @@ const facts = [
 ];
 
 const Facts = () => {
-  const { ref: factsHeadingRef, inView: isFactsHeadingInView } = useInView({
-    threshold: 0.2,
-  });
-  const factMainControls = useAnimation();
-  useEffect(() => {
-    if (isFactsHeadingInView) {
-      factMainControls.start("visible");
-    }
-  }, [isFactsHeadingInView, factMainControls]);
+  // const { ref: factsHeadingRef, inView: isFactsHeadingInView } = useInView({
+  //   threshold: 0.2,
+  // });
+  // const factMainControls = useAnimation();
+  // useEffect(() => {
+  //   if (isFactsHeadingInView) {
+  //     factMainControls.start("visible");
+  //   }
+  // }, [isFactsHeadingInView, factMainControls]);
   return (
-    <motion.div
-      ref={factsHeadingRef}
-      variants={{
-        hidden: { opacity: 0, y: -75 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      initial="hidden"
-      animate={factMainControls}
-      transition={{ duration: 0.8, delay: 0.2 }}
+    <div
+      // ref={factsHeadingRef}
+      // variants={{
+      //   hidden: { opacity: 0, y: -75 },
+      //   visible: { opacity: 1, y: 0 },
+      // }}
+      // initial="hidden"
+      // animate={factMainControls}
+      // transition={{ duration: 0.8, delay: 0.2 }}
       className="py-20 h-full bg-[#201f1d] flex flex-col gap-10 sm:gap-14 items-center justify-center"
     >
       <div className="flex flex-col gap-4 items-center justify-center">
@@ -72,7 +72,7 @@ const Facts = () => {
           );
         })}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
