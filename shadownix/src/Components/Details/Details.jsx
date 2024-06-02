@@ -1,14 +1,14 @@
 import React from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import "./Details.css";
 import { TbAutomaticGearbox } from "react-icons/tb";
-import { PiEngine } from "react-icons/pi";
 import { MdEventSeat } from "react-icons/md";
 import { SlSpeedometer } from "react-icons/sl";
 import driveLine from "../../assets/driveline.png";
 import { FaCheckDouble } from "react-icons/fa";
 import { IoDocument } from "react-icons/io5";
+import { BsFillFuelPumpFill } from "react-icons/bs";
 
 const api_Url = import.meta.env.VITE_API_URL;
 
@@ -19,7 +19,6 @@ const Details = ({ car }) => {
         <div className="w-full md:w-3/5">
           <Carousel
             className="h-[40vh]"
-            showArrows={false}
             autoPlay={true}
             swipeable={true}
             infiniteLoop={true}
@@ -33,7 +32,7 @@ const Details = ({ car }) => {
                   <img
                     height={300}
                     width={400}
-                    className="object-center md:object-fill w-full h-[63vh] rounded-md"
+                    className="object-cover w-full h-[63vh] rounded-md"
                     src={`${api_Url}/uploads/${singlePic.imageName}`}
                     alt={`${api_Url}/uploads/${singlePic.imageName}`}
                   />
@@ -50,8 +49,8 @@ const Details = ({ car }) => {
           <div className="grid grid-cols-1 gap-5 font-semibold font-sans mt-6 capitalize text-gray-500">
             <div className="flex border-b-[1px] pb-1 items-center justify-between">
               <span className="flex items-center gap-2">
-                <PiEngine size={22} />
-                Engine
+                <BsFillFuelPumpFill size={20} />
+                Fuel Type
               </span>
               <h6 className=" text-lg">{car.engine}</h6>
             </div>

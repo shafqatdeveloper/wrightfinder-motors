@@ -1,0 +1,18 @@
+.swiper-container {
+    position: relative; /* This makes it the reference for absolute children */
+  }
+  
+  .prev-btn, .next-btn {
+    position: absolute;
+    top: 50%; /* Centers vertically */
+    transform: translateY(-50%); /* Aligns center to the middle vertically */
+  }
+  
+  .prev-btn {
+    left: 10px; /* Adjust as needed */
+  }
+  
+  .next-btn {
+    right: 10px; /* Adjust as needed */
+  }
+  
