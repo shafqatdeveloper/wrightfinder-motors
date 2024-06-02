@@ -33,7 +33,7 @@ const Details = ({ car }) => {
                   <img
                     height={300}
                     width={400}
-                    className="object-cover w-full h-[63vh] rounded-md"
+                    className="object-center w-full h-[63vh] rounded-md"
                     src={`${api_Url}/uploads/${singlePic.imageName}`}
                     alt={`${api_Url}/uploads/${singlePic.imageName}`}
                   />

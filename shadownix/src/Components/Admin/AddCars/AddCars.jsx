@@ -185,7 +185,7 @@ const AddCar = () => {
                   key={index}
                   src={file}
                   alt={`Selected ${index}`}
-                  className="h-40 object-cover"
+                  className="w-full object-center"
                 />
               ))}
             </div>
@@ -365,8 +365,10 @@ const AddCar = () => {
                 id="driveline"
                 className="focus:outline-none w-full rounded-md bg-gray-100 py-2"
               >
-                <option value={values.driveline}>FWD</option>
+                <option value={values.driveline}>4WD</option>
                 <option value="2WD">2WD</option>
+                <option value="FWD">FWD</option>
+                <option value="BWD">BWD</option>
                 <option value="N/a">N/a</option>
               </select>
             </div>
@@ -562,13 +564,13 @@ const AddCar = () => {
             ) : null}
           </div>
           <div className="w-full flex items-center justify-center mb-8">
-            <div className="w-60 sm:w-80 xl:w-96 bg-[#17A8E2] py-2 rounded-md hover:bg-[#3d9fc6] flex items-center justify-center h-20">
+            <div className="w-60 sm:w-80 xl:w-96 bg-[#17A8E2] py-2 rounded-md hover:bg-[#3d9fc6] flex items-center justify-center h-16">
               {loading ? (
                 <Spinner></Spinner>
               ) : (
                 <button
                   type="submit"
-                  className="w-full text-white text-lg font-bold tracking-wider"
+                  className="w-full h-full text-white text-lg font-bold tracking-wider"
                 >
                   ADD
                 </button>

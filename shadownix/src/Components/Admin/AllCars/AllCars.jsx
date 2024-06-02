@@ -4,6 +4,7 @@ import { MdDelete, MdSell } from "react-icons/md";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { useTable, usePagination, useSortBy } from "react-table";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const AllCars = () => {
   const [cars, setCars] = useState([]);
@@ -155,7 +156,7 @@ const AllCars = () => {
         Header: "Action",
         accessor: "_id", // Assuming 'id' is the unique identifier for each row
         Cell: ({ value }) => (
-          <div className="flex space-x-3">
+          <div className="flex space-x-3 items-center">
             <button
               onClick={() => deleteCarPostHandler(value)}
               className="bg-red-500 text-white p-2 rounded"
@@ -178,6 +179,13 @@ const AllCars = () => {
             >
               <IoCheckmarkCircleOutline size={25} />
             </button>
+            <Link
+              target="_blank"
+              className="bg-[#3c2163] px-1 py-2 rounded-md"
+              to={`/car/details/${value}`}
+            >
+              Details
+            </Link>
           </div>
         ),
       },

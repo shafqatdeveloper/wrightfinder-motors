@@ -2,11 +2,12 @@ import React from "react";
 import { TbAutomaticGearbox, TbSteeringWheel } from "react-icons/tb";
 import { IoDocument } from "react-icons/io5";
 import { SlSpeedometer } from "react-icons/sl";
-import { MdLocalGasStation } from "react-icons/md";
+import { MdEventSeat, MdLocalGasStation } from "react-icons/md";
 // import { motion, useAnimation } from "framer-motion";
 // import { useInView } from "react-intersection-observer";
 import driveLine from "../../assets/driveline.png";
 import { Link } from "react-router-dom";
+import { PiEngine } from "react-icons/pi";
 
 const Card = ({ car, delay = 0 }) => {
   // const [hasAnimated, setHasAnimated] = useState(false);
@@ -43,7 +44,7 @@ const Card = ({ car, delay = 0 }) => {
           )}
           {car && car.galleryImagesArray[0] && (
             <img
-              className="object-cover h-60 w-full rounded-md hover:scale-125 duration-200 transition-all"
+              className="object-center h-52 w-full rounded-md hover:scale-125 duration-200 transition-all"
               src={`${api_Url}/uploads/${car?.galleryImagesArray[0]?.imageName}`}
               alt={`${api_Url}/uploads/${car?.galleryImagesArray[0]?.imageName}`}
             />
@@ -52,29 +53,29 @@ const Card = ({ car, delay = 0 }) => {
         <h1 className="text-lg font-bold">{car.name}</h1>
         <div className="w-full h-[1px] bg-gray-200"></div>
         <div className="grid grid-cols-3 gap-4 text-sm capitalize text-gray-500 font-semibold">
-          <span className="flex items-center">
-            <MdLocalGasStation size={20} />
-            Fuel Type
+          <span className="flex items-center gap-1">
+            <PiEngine size={20} />
+            <h6 className="">{car.engine}</h6>
           </span>
           <span className="flex items-center gap-1">
-            <TbSteeringWheel size={20} />
-            Power
+            <MdEventSeat size={20} />
+            <h6 className="">{car.seats}</h6>
           </span>
-          <span className="flex gap-1 items-center">
-            <img src={driveLine} alt="driveline" width={15} height={15} />
-            Driveline
+          <span className="flex items-center gap-1">
+            <img src={driveLine} alt="driveline" className="w-4 h-4" />
+            <h6 className="">{car.driveline}</h6>
           </span>
-          <span className="flex w-52 gap-1 items-center">
+          <span className="flex items-center gap-1">
             <SlSpeedometer size={20} />
-            Odometer
+            {car.miles}
           </span>
-          <span className="flex gap-1 items-center">
+          <span className="flex items-center gap-1">
+            <TbAutomaticGearbox size={20} />
+            {car.transmission}
+          </span>
+          <span className="flex items-center gap-1">
             <IoDocument size={20} />
-            Title
-          </span>
-          <span className="flex gap-1 items-center">
-            <TbAutomaticGearbox size={21} />
-            Trans.
+            {car.title}
           </span>
         </div>
         <div className="bg-gray-100 py-2 pl-1 pr-3 flex items-center justify-between rounded-md">
