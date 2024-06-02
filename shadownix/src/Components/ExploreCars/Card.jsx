@@ -1,13 +1,20 @@
 import React from "react";
-import { TbAutomaticGearbox, TbSteeringWheel } from "react-icons/tb";
+import { TbAutomaticGearbox } from "react-icons/tb";
 import { IoDocument } from "react-icons/io5";
 import { SlSpeedometer } from "react-icons/sl";
-import { MdEventSeat, MdLocalGasStation } from "react-icons/md";
+import { MdEventSeat } from "react-icons/md";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 // import { motion, useAnimation } from "framer-motion";
 // import { useInView } from "react-intersection-observer";
 import driveLine from "../../assets/driveline.png";
 import { Link } from "react-router-dom";
 import { PiEngine } from "react-icons/pi";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
 const Card = ({ car, delay = 0 }) => {
   // const [hasAnimated, setHasAnimated] = useState(false);
@@ -42,12 +49,42 @@ const Card = ({ car, delay = 0 }) => {
               SOLD
             </span>
           )}
-          {car && car.galleryImagesArray[0] && (
-            <img
-              className="object-center h-52 w-full rounded-md hover:scale-125 duration-200 transition-all"
-              src={`${api_Url}/uploads/${car?.galleryImagesArray[0]?.imageName}`}
-              alt={`${api_Url}/uploads/${car?.galleryImagesArray[0]?.imageName}`}
-            />
+          {car && car.galleryImagesArray && (
+            <Swiper
+              modules={[Navigation]}
+              navigation={{
+                nextEl: ".next-btn",
+                prevEl: ".prev-btn",
+                clickable: true,
+              }}
+              slidesPerView={1}
+              observer={true}
+              loop={true}
+              className="flex items-center justify-center w-full"
+              watchSlidesProgress={true}
+            >
+              {car.galleryImagesArray.map((singleImage, index) => (
+                <div>
+                  <SwiperSlide key={index} className="rounded-md">
+                    <div className="w-full h-[32vh] overflow-hidden rounded-md flex items-center justify-center">
+                      <img
+                        className="h-full object-center w-full rounded-md hover:scale-125 duration-200 transition-all"
+                        src={`${api_Url}/uploads/${singleImage.imageName}`}
+                        alt={`${api_Url}/uploads/${singleImage.imageName}`}
+                      />
+                    </div>
+                  </SwiperSlide>
+                  <div className="flex items-center justify-center w-full text-gray-900 dark:text-gray-100 gap-10 py-10 pt-10">
+                    <div className="prev-btn bg-[#fff] dark:bg-dark-2 rounded-full h-8 w-8 flex justify-center shadow-lg items-center cursor-pointer">
+                      <BsArrowLeft className="hover:scale-125 active:scale-100 transition-all duration-300" />
+                    </div>
+                    <div className="next-btn bg-[#fff] dark:bg-dark-2 rounded-full h-8 w-8 flex justify-center shadow-lg items-center cursor-pointer">
+                      <BsArrowRight className="hover:scale-125 active:scale-100 transition-all duration-300" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </Swiper>
           )}
         </div>
         <h1 className="text-lg font-bold">{car.name}</h1>

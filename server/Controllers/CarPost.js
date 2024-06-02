@@ -44,13 +44,13 @@ export const addCar = async (req, res) => {
             .toFormat("webp")
             .webp({ quality: 90 })
             .toFile(outputPath);
-          const deletePath = path.join(
-            __dirname,
-            "public",
-            "uploads",
-            file.filename
-          );
-          fs.unlinkSync(deletePath);
+          // const deletePath = path.join(
+          //   __dirname,
+          //   "public",
+          //   "uploads",
+          //   file.filename
+          // );
+          // fs.unlinkSync(deletePath);
           return {
             imageName: filename,
           };
