@@ -395,7 +395,7 @@ const AddCar = () => {
                 className="focus:outline-none w-full rounded-md bg-gray-100 py-2"
               >
                 <option value={values.seats}>Heated</option>
-                <option value="Power Seats">Power Seats</option>
+                <option value="Power Seats">Power</option>
                 <option value="Leather">Leather</option>
                 <option value="Clothes">Clothes</option>
                 <option value="N/a">N/a</option>
