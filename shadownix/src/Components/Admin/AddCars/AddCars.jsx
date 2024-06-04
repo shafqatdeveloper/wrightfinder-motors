@@ -14,6 +14,8 @@ const initialValues = {
   style: "2 Doors",
   engine: "Sports",
   transmission: "Automatic",
+  power: "Keyless",
+  fuelType: "Gas",
   seats: "Heated",
   driveline: "FWD",
   interiorColor: "Black",
@@ -118,6 +120,8 @@ const AddCar = () => {
         form.append("style", values.style);
         form.append("engine", values.engine);
         form.append("transmission", values.transmission);
+        form.append("power", values.power);
+        form.append("fuelType", values.fuelType);
         form.append("seats", values.seats);
         form.append("driveline", values.driveline);
         form.append("interiorColor", values.interiorColor);
@@ -256,7 +260,6 @@ const AddCar = () => {
                 <option value={values.title}>Clean</option>
                 <option value="Original">Original</option>
                 <option value="Rebuild">Rebuild</option>
-                <option value="Rebuild">Rebuild</option>
                 <option value="Salvage">Salvage</option>
                 <option value="Duplicate">Duplicate</option>
                 <option value="Replacement">Replacement</option>
@@ -344,6 +347,61 @@ const AddCar = () => {
             {errors.transmission && touched.transmission ? (
               <p className="text-red-500 text-sm capitalize">
                 {errors.transmission}
+              </p>
+            ) : null}
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="power">
+              Power <span className="text-lg text-red-400">*</span>
+            </label>
+            <div
+              className={`w-full ${
+                errors.power && touched.power ? "border-2 border-red-500" : ""
+              } bg-white rounded-md text-black`}
+            >
+              <select
+                onChange={handleChange}
+                onBlur={handleBlur}
+                name="power"
+                id="power"
+                className="focus:outline-none w-full rounded-md bg-gray-100 py-2"
+              >
+                <option value={values.power}>Keyless</option>
+                <option value="Remote">Remote</option>
+                <option value="Key Entry">Key Entry</option>
+              </select>
+            </div>
+            {errors.power && touched.power ? (
+              <p className="text-red-500 text-sm capitalize">{errors.power}</p>
+            ) : null}
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="fuelType">
+              Fuel Type <span className="text-lg text-red-400">*</span>
+            </label>
+            <div
+              className={`w-full ${
+                errors.fuelType && touched.fuelType
+                  ? "border-2 border-red-500"
+                  : ""
+              } bg-white rounded-md text-black`}
+            >
+              <select
+                onChange={handleChange}
+                onBlur={handleBlur}
+                name="fuelType"
+                id="fuelType"
+                className="focus:outline-none w-full rounded-md bg-gray-100 py-2"
+              >
+                <option value={values.fuelType}>Gas</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Other">Other</option>
+                <option value="N/a">N/a</option>
+              </select>
+            </div>
+            {errors.fuelType && touched.fuelType ? (
+              <p className="text-red-500 text-sm capitalize">
+                {errors.fuelType}
               </p>
             ) : null}
           </div>

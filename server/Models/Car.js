@@ -25,6 +25,14 @@ const CarModel = new mongoose.Schema({
     type: String,
     required: true,
   },
+  power: {
+    type: String,
+    required: true,
+  },
+  fuelType: {
+    type: String,
+    required: true,
+  },
   seats: {
     type: String,
     required: true,

@@ -7,16 +7,17 @@ import { MdEventSeat } from "react-icons/md";
 import { SlSpeedometer } from "react-icons/sl";
 import driveLine from "../../assets/driveline.png";
 import { FaCheckDouble } from "react-icons/fa";
-import { IoDocument } from "react-icons/io5";
+import { IoDocument, IoPower } from "react-icons/io5";
 import { BsFillFuelPumpFill } from "react-icons/bs";
+import { PiEngine } from "react-icons/pi";
 
 const api_Url = import.meta.env.VITE_API_URL;
 
 const Details = ({ car }) => {
   return (
     <div className="w-full">
-      <div className="flex flex-col md:flex-row items-center md:items-center justify-center gap-5 sm:gap-8 px-2 sm:px-10">
-        <div className="w-full md:w-3/5">
+      <div className="flex flex-col md:flex-row items-center md:items-start  justify-center gap-5 sm:gap-8 px-2 sm:px-10">
+        <div className="w-full md:w-3/5 md:pt-40">
           <Carousel
             className="h-[40vh]"
             autoPlay={true}
@@ -52,42 +53,56 @@ const Details = ({ car }) => {
                 <BsFillFuelPumpFill size={20} />
                 Fuel Type
               </span>
-              <h6 className=" text-lg">{car.engine}</h6>
+              <h6 className=" text-lg">{car?.fuelType}</h6>
+            </div>
+            <div className="flex border-b-[1px] pb-1 items-center justify-between">
+              <span className="flex items-center gap-2">
+                <IoPower size={20} />
+                Power
+              </span>
+              <h6 className=" text-lg">{car?.power}</h6>
+            </div>
+            <div className="flex border-b-[1px] pb-1 items-center justify-between">
+              <span className="flex items-center gap-2">
+                <PiEngine size={20} />
+                Engine
+              </span>
+              <h6 className=" text-lg">{car?.engine}</h6>
             </div>
             <div className="flex border-b-[1px] pb-1 items-center justify-between">
               <span className="flex items-center gap-2">
                 <MdEventSeat size={22} />
                 Seats
               </span>
-              <h6 className=" text-lg">{car.seats}</h6>
+              <h6 className=" text-lg">{car?.seats}</h6>
             </div>
             <div className="flex border-b-[1px] pb-1 items-center justify-between">
               <span className="flex items-center gap-2">
                 <img src={driveLine} alt="driveline" className="w-5 h-5" />
                 Driveline
               </span>
-              <h6 className=" text-lg">{car.driveline}</h6>
+              <h6 className=" text-lg">{car?.driveline}</h6>
             </div>
             <div className="flex border-b-[1px] pb-1 items-center justify-between">
               <span className="flex items-center gap-2">
                 <SlSpeedometer size={22} />
                 Miles
               </span>
-              <h6 className=" text-lg">{car.miles}</h6>
+              <h6 className=" text-lg">{car?.miles}</h6>
             </div>
             <div className="flex border-b-[1px] pb-1 items-center justify-between">
               <span className="flex items-center gap-2">
                 <TbAutomaticGearbox size={22} />
                 Trans.
               </span>
-              <h6 className=" text-lg">{car.transmission}</h6>
+              <h6 className=" text-lg">{car?.transmission}</h6>
             </div>
             <div className="flex border-b-[1px] pb-1 items-center justify-between">
               <span className="flex items-center gap-2">
                 <IoDocument size={22} />
                 Title
               </span>
-              <h6 className=" text-lg">{car.title}</h6>
+              <h6 className=" text-lg">{car?.title}</h6>
             </div>
             <div className="bg-gray-100 py-2 pl-1 pr-3 flex items-center justify-between rounded-md">
               <span className="text-lg font-bold tracking-wide font-sans">
@@ -96,7 +111,7 @@ const Details = ({ car }) => {
               <span>
                 <h1 className="text-lg font-bold text-[#3c2163] tracking-wide font-sans">
                   <span className="text-xl">$ </span>
-                  {car.price}
+                  {car?.price}
                 </h1>
               </span>
             </div>
@@ -126,7 +141,7 @@ const Details = ({ car }) => {
             </h1>
             <div className="w-14 h-1 mt-0.5 bg-[#3c2163]"></div>
           </div>
-          <p>{car.description}</p>
+          <p>{car?.description}</p>
         </div>
       </div>
     </div>

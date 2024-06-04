@@ -1,6 +1,6 @@
 import React from "react";
-import { TbAutomaticGearbox } from "react-icons/tb";
-import { IoDocument } from "react-icons/io5";
+import { TbAutomaticGearbox, TbSteeringWheel } from "react-icons/tb";
+import { IoDocument, IoPower } from "react-icons/io5";
 import { SlSpeedometer } from "react-icons/sl";
 import { MdEventSeat } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -61,7 +61,10 @@ const Card = ({ car, delay = 0 }) => {
               {car.galleryImagesArray.map((singleImage, index) => (
                 <div className="">
                   <SwiperSlide key={index} className="rounded-md">
-                    <div className="w-full h-[30vh] overflow-hidden  relative rounded-md flex items-center justify-center">
+                    <div
+                      key={index}
+                      className="w-full h-[30vh] overflow-hidden  relative rounded-md flex items-center justify-center"
+                    >
                       <img
                         className="h-full object-center object-cover w-full rounded-md sm:hover:scale-125 duration-200 sm:transition-transform sm:transform"
                         src={`${api_Url}/uploads/${singleImage.imageName}`}
@@ -82,28 +85,28 @@ const Card = ({ car, delay = 0 }) => {
         <div className="w-full h-[1px] bg-gray-200"></div>
         <div className="grid grid-cols-3 gap-4 text-sm capitalize text-gray-500 font-semibold">
           <span className="flex items-center gap-1">
-            <BsFillFuelPumpFill size={18} />
-            <h6 className="">{car.engine}</h6>
+            <BsFillFuelPumpFill size={20} />
+            <h6 className="">{car?.fuelType}</h6>
           </span>
           <span className="flex items-center gap-1">
-            <MdEventSeat size={22} />
-            <h6 className="">{car.seats}</h6>
+            <IoPower size={20} />
+            <h6 className="">{car?.power}</h6>
           </span>
           <span className="flex items-center gap-1">
             <img src={driveLine} alt="driveline" className="w-4 h-4" />
-            <h6 className="">{car.driveline}</h6>
+            <h6 className="">{car?.driveline}</h6>
           </span>
           <span className="flex items-center gap-1">
             <SlSpeedometer size={20} />
-            {car.miles}
+            {car?.miles}
           </span>
           <span className="flex items-center gap-1">
             <TbAutomaticGearbox size={20} />
-            {car.transmission}
+            {car?.transmission}
           </span>
           <span className="flex items-center gap-1">
             <IoDocument size={20} />
-            {car.title}
+            {car?.title}
           </span>
         </div>
         <div className="bg-gray-100 py-2 pl-1 pr-3 flex items-center justify-between rounded-md">
@@ -113,12 +116,12 @@ const Card = ({ car, delay = 0 }) => {
           <span>
             <h1 className="text-lg font-bold text-[#3c2163] tracking-wide font-sans">
               <span className="text-xl">$ </span>
-              {car.price}
+              {car?.price}
             </h1>
           </span>
         </div>
         <Link
-          to={`/car/details/${car._id}`}
+          to={`/car/details/${car?._id}`}
           className="w-full border-2 border-[#3c2163] text-white transition-all duration-300 rounded-md text-center py-2 text-lg font-medium tracking-wide font-sans bg-[#3c2163] hover:bg-[#17A8E2] hover:border-[#17A8E2]"
         >
           <button className="w-full">Explore</button>

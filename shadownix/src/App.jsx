@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TopLoadingBar from "./Components/Loader/TopLoadingBar";
 import Home from "./Pages/Home/Home";
+import Loader from "./Components/Loader/Loader";
 
 // import Footer from "./Components/Footer/Footer";
 // const WhyUs = lazy(() => import("../../Components/WhySchooseUs/WhyUs"));
@@ -40,22 +41,22 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
-        <Suspense fallback={<div>Loding...</div>}>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/car/details/:id" element={<CarDetails />} />
           </Routes>
         </Suspense>
-        <Suspense fallback={<div>Loding...</div>}>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
           </Routes>
         </Suspense>
-        <Suspense fallback={<div>Loding...</div>}>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/admin/dashboard/add-car" element={<AdminAddCar />} />
           </Routes>
         </Suspense>
-        <Suspense fallback={<div>Loding...</div>}>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route
               path="/admin/dashboard/all-cars"
@@ -63,21 +64,19 @@ function App() {
             />
           </Routes>
         </Suspense>
-        <Suspense fallback={<div>Loding...</div>}>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/admin/login" element={<AdminLogin />} />
           </Routes>
         </Suspense>
-        <Suspense fallback={<div>Loding...</div>}>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/about" element={<About />} />
           </Routes>
         </Suspense>
         {/* <Route path="/admin/register" element={<Regsiter />} /> */}
       </ScrollToTop>
-      <Suspense fallback={<div>Loding...</div>}>
-        <Footer />
-      </Suspense>
+      <Footer />
     </>
   );
 }
