@@ -85,8 +85,8 @@ const Footer = () => {
                 <IoMdMail size={22} color="white" />
               </span>
               <span className="flex flex-col font-medium font-sans">
-                <Link target="_blank" to={"mailto:shadownix4@gmail.com"}>
-                  shadownix4@gmail.com
+                <Link target="_blank" to={"mailto:rightfindermotors@gmail.com"}>
+                  Rightfindermotors@gmail.com
                 </Link>
               </span>
             </div>
@@ -140,7 +140,7 @@ const Footer = () => {
         </div>
         <h1 className="text-center pt-5 pb-2 text-black">
           All Rights Reserved &copy;
-          <span className="text-[#3c2163] font-semibold"> SHADOWNIX</span>
+          <span className="text-[#3c2163] font-semibold"> RightwayMotors</span>
         </h1>
       </div>
     </div>

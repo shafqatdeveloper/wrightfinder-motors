@@ -178,6 +178,7 @@ const AddCar = () => {
             <input
               onChange={handleGalleryImagesSelect}
               type="file"
+              accept="image/*"
               required
               multiple
             />

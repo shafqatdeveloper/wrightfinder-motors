@@ -24,7 +24,9 @@ const Navbar = () => {
             <IoMdMail size={18} color="#3c2163" />
           </span>
           <span className="flex flex-col font-medium font-sans">
-            <Link to={"mailto:shadownix4@gmail.com"}>Shadownix4@gmail.com</Link>
+            <Link to={"mailto:wrightfindermotors@gmail.com"}>
+              Rightfindermotors@gmail.com
+            </Link>
           </span>
         </li>
       </div>

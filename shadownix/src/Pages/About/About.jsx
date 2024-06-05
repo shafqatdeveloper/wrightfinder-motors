@@ -73,7 +73,7 @@ const About = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className=""
               >
-                Welcome to Shadow Nix, where passion for automobiles meets
+                Welcome to Rightway Motors, where passion for automobiles meets
                 unparalleled service. Founded on a vision of redefining the car
                 buying experience, we pride ourselves on offering more than just
                 vehicles
@@ -83,12 +83,13 @@ const About = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                At Shadow Nix, we believe in more than just selling cars; we
-                believe in fostering relationships. Whether you seek the thrill
-                of a high-performance machine, the elegance of a luxury cruiser,
-                or the practicality of a family SUV, we are here to turn your
-                automotive fantasies into reality. Step into our showroom and
-                immerse yourself in a world of automotive excellence.
+                At Rightway Motors, we believe in more than just selling cars;
+                we believe in fostering relationships. Whether you seek the
+                thrill of a high-performance machine, the elegance of a luxury
+                cruiser, or the practicality of a family SUV, we are here to
+                turn your automotive fantasies into reality. Step into our
+                showroom and immerse yourself in a world of automotive
+                excellence.
               </motion.p>
               <div className="grid grid-cols-2 sm:text-sm font-medium sm:grid-cols-2 gap-2">
                 <span className="flex items-center gap-2">
