@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const Hero = () => {
   return (
     <div className="w-full pt-28 h-screen">
-      <div className="px-2 sm:px-20 flex flex-col sm:flex-row items-center justify-center gap-10 sm:gap-0 sm:justify-between w-full h-full">
+      <div className="px-2 lg:px-20 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-0 lg:justify-between w-full h-full">
         <div className="">
           <div className="flex flex-col gap-3">
             <span className="bg-white rounded-full py-2 px-2 sm:px-4 flex items-center gap-2">

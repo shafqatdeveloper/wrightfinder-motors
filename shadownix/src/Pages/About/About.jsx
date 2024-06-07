@@ -5,11 +5,11 @@ import heroPic from "../../assets/hero-bg.png";
 import { motion } from "framer-motion";
 const About = () => {
   return (
-    <div className="mt-28 md:mt-20">
+    <div className="mt-28 xmd:mt-20">
       <div className="w-full">
         <div className="w-full relative flex flex-col bg-[#210f1d] items-center py-10 gap-7 justify-center">
-          <div className="w-32 h-20 blur-3xl left-3 top-5 bg-[#764d18] absolute"></div>
-          <div className="w-32 h-20 blur-3xl right-3 bottom-5 bg-[#764d18] absolute"></div>
+          <div className="w-32 h-20 blur-3xl left-3 top-5 bg-[#3c2163] absolute"></div>
+          <div className="w-32 h-20 blur-3xl right-3 bottom-5 bg-[#3c2163] absolute"></div>
           <motion.h1
             initial={{ opacity: 0, y: 70 }}
             animate={{ opacity: 1, y: 0 }}
@@ -31,9 +31,9 @@ const About = () => {
             </Link>
           </motion.span>
         </div>
-        <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 items-center my-12 px-3 sm:px-0 gap-8 md:gap-0 justify-center place-items-center">
+        <div className="w-full h-full grid grid-cols-1 lg:grid-cols-2 items-center lg:my-5 px-3 sm:px-0 gap-8 lg:gap-0 justify-center place-items-center">
           <div className="mt-10 w-11/12 sm:w-3/4 self-center items-center">
-            <div className="bg-[#3c2163] rounded-full p-10">
+            <div className="bg-[#3c2163] flex items-center justify-center rounded-full p-10">
               <motion.div
                 initial={{ opacity: 0, y: -70 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -7,7 +7,7 @@ import Logo from "../../assets/logo.png";
 const Navbar = () => {
   const location = useLocation();
   return (
-    <div className="w-full h-32 md:h-24 py-2 sm:py-0 z-30 bg-white shadow-lg gap-3 sm:gap-0 shadow-black/15 flex flex-col md:flex-row fixed top-0 md:items-center items-stretch justify-between px-2 sm:px-8 md:px-20">
+    <div className="w-full h-32 xmd:h-24 py-2 sm:py-0 z-30 bg-white shadow-lg gap-3 sm:gap-0 shadow-black/15 flex flex-col xmd:flex-row fixed top-0 xmd:items-center items-stretch justify-between px-2 sm:px-8 xmd:px-20">
       <div className="flex items-center gap-5 justify-between px-5 sm:px-10 md:px-0">
         <Link
           to={"/"}

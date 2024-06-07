@@ -58,7 +58,7 @@ const WhyUs = () => {
           <BsRainbow size={55} color="#3c2163" />
         </span>
       </div>
-      <div className="grid grid-cols-1 px-4 sm:px-10 md:grid-cols-3 gap-7 md:gap-10">
+      <div className="grid grid-cols-1 px-4 sm:px-10 md:grid-cols-3 gap-4 xmd:gap-10">
         {features.map((feature, index) => {
           return (
             <div
