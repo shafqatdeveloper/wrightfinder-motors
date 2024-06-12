@@ -21,11 +21,27 @@ const adminSchema = new mongoose.Schema({
 
 adminSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
-    next();
-  } else {
-    this.password = await bcrypt.hash(this.password, 10);
+    return next(); // Make sure to return after calling next
   }
+  this.password = await bcrypt.hash(this.password, 10);
+  next(); // Call next after hashing
 });
+
+adminSchema.pre("findOneAndUpdate", async function (next) {
+  const update = this.getUpdate();
+  if (update.password) {
+    update.password = await bcrypt.hash(update.password, 10);
+  }
+  next();
+});
+
+// adminSchema.pre("save", async function (next) {
+//   if (!this.isModified("password")) {
+//     next();
+//   } else {
+//     this.password = await bcrypt.hash(this.password, 10);
+//   }
+// });
 
 // Generating JSON Web Token
 adminSchema.methods.JWTTOKEN = function () {

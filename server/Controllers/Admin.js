@@ -37,6 +37,40 @@ export const registerAdmin = async (req, res) => {
   }
 };
 
+// Update Admin
+export const updateAdmin = async (req, res) => {
+  const { name, email, password, oldPassword } = req.body;
+  console.log(req.admin._id);
+  try {
+    const adminExist = await Admin.findById(req.admin._id);
+    if (!adminExist) {
+      res.status(401).json({
+        success: false,
+        message: "Admin Not Exist",
+      });
+    } else {
+      const isPasswordMatched = await adminExist.comparePassword(oldPassword);
+      if (!isPasswordMatched) {
+        res.status(401).json({
+          success: false,
+          message: "Invalid Credentials",
+        });
+      } else {
+        await Admin.findByIdAndUpdate(adminExist, { name, email, password });
+        res.json({
+          success: true,
+          message: "Admin Information Updated",
+        });
+      }
+    }
+  } catch (error) {
+    res.status(501).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 // Login Admin
 
 export const loginUser = async (req, res) => {
@@ -58,7 +92,6 @@ export const loginUser = async (req, res) => {
         const isPasswordMatched = await loggingInAdmin.comparePassword(
           password
         );
-        // console.log(isPasswordMatched);
         if (!isPasswordMatched) {
           res.status(404).json({
             success: false,
@@ -108,7 +141,7 @@ export const logout = async (req, res) => {
     });
   }
 };
-
+// Logged In Admin Details
 export const loggedInAdmin = async (req, res) => {
   try {
     const loggedInAdmin = await Admin.findById(req.admin);

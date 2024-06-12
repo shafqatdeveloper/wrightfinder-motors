@@ -13,6 +13,9 @@ import CookieConsent from "./Components/Cookie/CookieConsent";
 import Cookie from "./Pages/Policy/Cookie";
 import Privacy from "./Pages/Policy/Privacy";
 import Terms from "./Pages/Policy/Terms";
+import AdminInfo from "./Pages/Admin/Information/AdminInfo";
+import Regsiter from "./Pages/Admin/Regsiter/Regsiter";
+import UpdateAdmin from "./Pages/Admin/UpdateProfile/UpdateAdmin";
 
 // import Footer from "./Components/Footer/Footer";
 // const WhyUs = lazy(() => import("../../Components/WhySchooseUs/WhyUs"));
@@ -73,6 +76,7 @@ function App() {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/register" element={<Regsiter />} />
           </Routes>
         </Suspense>
         <Suspense fallback={<Loader />}>
@@ -95,7 +99,16 @@ function App() {
             <Route path="/terms-and-conditions" element={<Terms />} />
           </Routes>
         </Suspense>
-        {/* <Route path="/admin/register" element={<Regsiter />} /> */}
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/admin/info" element={<AdminInfo />} />
+          </Routes>
+        </Suspense>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/admin/info/edit" element={<UpdateAdmin />} />
+          </Routes>
+        </Suspense>
         {!cookies.cookieConsent && <CookieConsent />}
       </ScrollToTop>
       <Footer />
