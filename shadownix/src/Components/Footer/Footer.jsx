@@ -31,7 +31,7 @@ const Footer = () => {
       // transition={{ duration: 0.8, delay: 0.2 }}
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 pt-5 gap-4 text-black">
-          <div>
+          <div className="flex flex-col gap-1">
             <Link
               to={"/"}
               className="text-2xl text-center sm:text-start text-[#3c2163] font-bold font-sans tracking-wide"
@@ -41,6 +41,18 @@ const Footer = () => {
                 alt="Shadow Nix"
                 className="w-32 h-20 sm:w-40 sm:h-24 xl:w-48 xl:h-32"
               />
+            </Link>
+            <Link
+              className="mt-5 w-max border-b-2 border-b-gray-700 "
+              to={"/privacy-policy"}
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              className=" w-max border-b-2 border-b-gray-700 "
+              to={"/terms-and-conditions"}
+            >
+              Terms and Conditions
             </Link>
           </div>
           <div>
@@ -85,8 +97,11 @@ const Footer = () => {
                 <IoMdMail size={22} color="white" />
               </span>
               <span className="flex flex-col font-medium font-sans">
-                <Link target="_blank" to={"mailto:rightfindermotors@gmail.com"}>
-                  Rightfindermotors@gmail.com
+                <Link
+                  target="_blank"
+                  to={"mailto:wrightfindermotors@gmail.com"}
+                >
+                  wrightfindermotors@gmail.com
                 </Link>
               </span>
             </div>
@@ -140,7 +155,10 @@ const Footer = () => {
         </div>
         <h1 className="text-center pt-5 pb-2 text-black">
           All Rights Reserved &copy;
-          <span className="text-[#3c2163] font-semibold"> RightwayMotors</span>
+          <span className="text-[#3c2163] font-semibold">
+            {" "}
+            WrightfinderMotors
+          </span>
         </h1>
       </div>
     </div>

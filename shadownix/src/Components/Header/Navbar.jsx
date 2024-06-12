@@ -25,7 +25,7 @@ const Navbar = () => {
           </span>
           <span className="flex flex-col font-medium font-sans">
             <Link to={"mailto:wrightfindermotors@gmail.com"}>
-              Rightfindermotors@gmail.com
+              wrightfindermotors@gmail.com
             </Link>
           </span>
         </li>

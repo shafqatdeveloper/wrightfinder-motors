@@ -172,6 +172,18 @@ export const deleteCar = async (req, res) => {
         message: "Car not found",
       });
     } else {
+      Promise.all(
+        car.galleryImagesArray.map(async (file) => {
+          const __dirname = path.resolve();
+          const delPath = path.join(
+            __dirname,
+            "public",
+            "uploads",
+            file.imageName
+          );
+          fs.unlinkSync(delPath);
+        })
+      );
       await Car.findByIdAndDelete(carId);
       res.status(200).json({
         success: true,

@@ -8,6 +8,11 @@ import "react-toastify/dist/ReactToastify.css";
 import TopLoadingBar from "./Components/Loader/TopLoadingBar";
 import Home from "./Pages/Home/Home";
 import Loader from "./Components/Loader/Loader";
+import { useCookies } from "react-cookie";
+import CookieConsent from "./Components/Cookie/CookieConsent";
+import Cookie from "./Pages/Policy/Cookie";
+import Privacy from "./Pages/Policy/Privacy";
+import Terms from "./Pages/Policy/Terms";
 
 // import Footer from "./Components/Footer/Footer";
 // const WhyUs = lazy(() => import("../../Components/WhySchooseUs/WhyUs"));
@@ -32,6 +37,7 @@ const AdminLogin = lazy(() => import("./Pages/Admin/Login/AdminLogin"));
 const About = lazy(() => import("./Pages/About/About"));
 
 function App() {
+  const [cookies] = useCookies(["cookieConsent"]);
   return (
     <>
       <Navbar />
@@ -74,7 +80,23 @@ function App() {
             <Route path="/about" element={<About />} />
           </Routes>
         </Suspense>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/cookie-policy" element={<Cookie />} />
+          </Routes>
+        </Suspense>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/privacy-policy" element={<Privacy />} />
+          </Routes>
+        </Suspense>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/terms-and-conditions" element={<Terms />} />
+          </Routes>
+        </Suspense>
         {/* <Route path="/admin/register" element={<Regsiter />} /> */}
+        {!cookies.cookieConsent && <CookieConsent />}
       </ScrollToTop>
       <Footer />
     </>
