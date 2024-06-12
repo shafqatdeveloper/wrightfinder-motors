@@ -19,7 +19,7 @@ const Navbar = () => {
             className="w-16 h-10 sm:w-28 sm:h-16 xl:w-32 xl:h-20"
           />
         </Link>
-        <li className="flex items-center gap-3">
+        <li className="flex items-center gap-3 text-sm sm:text-lg">
           <span className="border-[1.5px] border-[#3c2163] rounded-full p-1.5">
             <IoMdMail size={18} color="#3c2163" />
           </span>
