@@ -521,6 +521,8 @@ const AddCar = () => {
               >
                 <option value={values.interiorColor}>Black</option>
                 <option value="Gray">Gray</option>
+                <option value="Ivory">Ivory</option>
+                <option value="Multi-Color">Multi-Color</option>
                 <option value="Beige">Beige</option>
                 <option value="Brown">Brown</option>
                 <option value="White">White</option>
@@ -552,8 +554,9 @@ const AddCar = () => {
                 className="focus:outline-none w-full rounded-md bg-gray-100 py-2"
               >
                 <option value={values.exteriorColor}>Black</option>
-                <option value="Black">Black</option>
                 <option value="Blue">Blue</option>
+                <option value="Ivory">Ivory</option>
+                <option value="Tan">Tan</option>
                 <option value="Gray">Gray</option>
                 <option value="Red">Red</option>
                 <option value="Silver">Silver</option>
@@ -613,7 +616,7 @@ const AddCar = () => {
                 name="price"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="number"
+                type="text"
                 className="bg-transparent outline-lime-50 focus:outline-none w-full rounded-md p-2"
                 placeholder="12000"
               />

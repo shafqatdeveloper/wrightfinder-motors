@@ -1,32 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Dashboard from "../../../../Components/Admin/Dashboard/Dashboard";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
-  useEffect(() => {
-    const checkAuthentication = async () => {
-      try {
-        const response = await axios.get("/api/admin/authenticate", {
-          withCredentials: true,
-        });
-        if (response.data.success) {
-          return;
-        } else {
-          navigate("/admin/login");
-        }
-      } catch (error) {
-        navigate("/admin/login");
-        console.error("Error checking authentication:");
-      } finally {
-      }
-    };
-
-    checkAuthentication();
-  }, []);
-
   const handleLogout = async (e) => {
     e.preventDefault();
     const confirmLogout = confirm("Are You Sure to Logout");

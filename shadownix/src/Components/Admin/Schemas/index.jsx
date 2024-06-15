@@ -14,5 +14,5 @@ export const AddCarSchema = Yup.object({
   interiorColor: Yup.string().min(2).required("Please Select intertot Color"),
   exteriorColor: Yup.string().min(2).required("Please Select Exterior Color"),
   description: Yup.string().min(2).required("Please Enter Car Description"),
-  price: Yup.number().min(1000).max(100000000).required("Price is Required"),
+  price: Yup.string().min(2).max(100000000).required("Price is Required"),
 });

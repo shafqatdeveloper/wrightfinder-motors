@@ -3,6 +3,7 @@ import upload from "../Config/Multer.js";
 import {
   addCar,
   deleteCar,
+  editCar,
   getCarDetails,
   getCars,
   markCarAsAvailable,
@@ -13,6 +14,7 @@ import { isAuthenticatedAdmin } from "../Utils/Authentication.js";
 const Router = express.Router();
 
 Router.post("/car/add", upload.array("images", 25), addCar);
+Router.put("/car/edit", isAuthenticatedAdmin, editCar);
 Router.delete("/admin/car/delete/:id", isAuthenticatedAdmin, deleteCar);
 Router.put("/admin/car/mark/sold/:id", isAuthenticatedAdmin, markCarAsSold);
 Router.put("/admin/car/mark/av/:id", isAuthenticatedAdmin, markCarAsAvailable);

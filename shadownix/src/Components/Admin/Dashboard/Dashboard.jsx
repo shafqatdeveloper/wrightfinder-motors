@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
 import { FaCar, FaUserAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const [adminInfo, setAdminInfo] = useState({
+    name: "Shadow Nix",
+    email: "shadownix4@gmail.com",
+  });
+  console.log(adminInfo);
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      try {
+        const response = await axios.get("/api/admin/authenticate", {
+          withCredentials: true,
+        });
+        if (response.data.success) {
+          setAdminInfo(response.data.loggedInAdmin);
+          return;
+        } else {
+          navigate("/admin/login");
+        }
+      } catch (error) {
+        navigate("/admin/login");
+        console.error("Error checking authentication:");
+      } finally {
+      }
+    };
+
+    checkAuthentication();
+  }, []);
   return (
     <div className="w-full h-full">
       <h1 className="text-center py-5 text-3xl font-sans font-bold">
-        Admin Panel
+        {adminInfo.name === "Shadow Nix" ? <span>Shadow</span> : "WFM"} Panel
       </h1>
       <div className="w-full flex items-center justify-center py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

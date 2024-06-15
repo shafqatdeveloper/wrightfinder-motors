@@ -3,6 +3,7 @@ import path from "path";
 import sharp from "sharp";
 import fs from "fs";
 
+// Add Car
 export const addCar = async (req, res) => {
   try {
     const {
@@ -96,6 +97,76 @@ export const addCar = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// Edit Car
+
+export const editCar = async (req, res) => {
+  try {
+    const {
+      name,
+      miles,
+      title,
+      style,
+      engine,
+      transmission,
+      power,
+      fuelType,
+      seats,
+      driveline,
+      interiorColor,
+      exteriorColor,
+      description,
+      price,
+      features,
+    } = req.body;
+
+    const id = req.query.id;
+    const featuresArray =
+      Array.isArray(features) && features.length > 1
+        ? features.map((feat) => ({
+            name: feat.name,
+          }))
+        : features;
+    const car = await Car.findById(id);
+    if (!car) {
+      res.status(401).json({
+        success: false,
+        message: "Car not Exist",
+      });
+    } else {
+      await Car.findByIdAndUpdate(
+        id,
+        {
+          name,
+          miles,
+          title,
+          style,
+          engine,
+          transmission,
+          power,
+          fuelType,
+          seats,
+          driveline,
+          interiorColor,
+          exteriorColor,
+          description,
+          price,
+          features: featuresArray,
+        },
+        { runValidators: true }
+      );
+      res.status(201).json({
+        success: true,
+        message: "Car Updated",
+      });
+    }
+  } catch (error) {
     res.status(500).json({
       success: false,
       message: error.message,

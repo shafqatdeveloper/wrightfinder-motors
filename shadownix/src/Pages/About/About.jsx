@@ -73,41 +73,70 @@ const About = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className=""
               >
-                Welcome to Rightway Motors, where passion for automobiles meets
-                unparalleled service. Founded on a vision of redefining the car
-                buying experience, we pride ourselves on offering more than just
-                vehicles
+                Welcome to <strong>Wright Finder Motors</strong> a name that is
+                embodied the spirit of innovation, precision, discovery,
+                reliable, cost effective and compact cars. WFM was founded on a
+                vision of redefining the car buying experience. We believe in
+                fostering relationships. Whether you seek the thrill of a
+                high-performance machine, the elegance of a luxury cruiser, or
+                the practicality of a family SUV, we are here to turn your
+                automotive fantasies into reality. Step into our showroom and
+                immerse yourself in a world of automotive excellence. We pride
+                ourselves on offering more than just vehicles We are dedicated
+                to find the right solutions and guiding you towards your dream
+                car. At Wright Finder Motors we will make your dream come true,
+                Together in a smart choice
               </motion.p>
-              <motion.p
+              <motion.h1
                 initial={{ opacity: 0, x: -70 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-xl font-bold font-sans uppercase underline"
               >
-                At Rightway Motors, we believe in more than just selling cars;
-                we believe in fostering relationships. Whether you seek the
-                thrill of a high-performance machine, the elegance of a luxury
-                cruiser, or the practicality of a family SUV, we are here to
-                turn your automotive fantasies into reality. Step into our
-                showroom and immerse yourself in a world of automotive
-                excellence.
-              </motion.p>
-              <div className="grid grid-cols-2 sm:text-sm font-medium sm:grid-cols-2 gap-2">
-                <span className="flex items-center gap-2">
-                  <FaCheckCircle className="text-[#17A8E2]" size={22} />
-                  <h1>Exceptional Vehicle Selection</h1>
-                </span>
-                <span className="flex items-center gap-2">
-                  <FaCheckCircle className="text-[#17A8E2]" size={22} />
-                  <h1>Unmatched Customer Service</h1>
-                </span>
-                <span className="flex items-center gap-2">
-                  <FaCheckCircle className="text-[#17A8E2]" size={22} />
-                  <h1>Expertise and Knowledge</h1>
-                </span>
-                <span className="flex items-center gap-2">
-                  <FaCheckCircle className="text-[#17A8E2]" size={22} />
-                  <h1>Innovative and Convenient Services</h1>
-                </span>
+                Our Values:
+              </motion.h1>
+              <div className="flex items-center gap-2">
+                <h1>
+                  <strong>1. Collaboration: </strong>
+                  We believe in working together as a team to achieve our goals
+                  and support each other.
+                </h1>
+              </div>
+              <div className="flex items-center gap-2">
+                <h1>
+                  <strong>2. Customer-centricity: </strong>
+                  We prioritize the needs and satisfaction of our customers
+                  above all else.
+                </h1>
+              </div>
+              <div className="flex items-center gap-2">
+                <h1>
+                  <strong>3. Diversity and inclusion: </strong>e embrace
+                  diversity and create an inclusive environment where all voices
+                  are valued and respected.
+                </h1>
+              </div>
+              <div className="flex items-center gap-2">
+                <h1>
+                  <strong>4. Innovation: </strong>
+                  We constantly seek new ideas and solutions to drive creativity
+                  and growth.
+                </h1>
+              </div>
+              <div className="flex items-center gap-2">
+                <h1>
+                  <strong>5. Integrity: </strong>
+                  We are committed to honesty, transparency, and ethical
+                  behavior in all our dealings.
+                </h1>
+              </div>
+              <div className="flex items-center gap-2">
+                <h1>
+                  <strong>6. Professionalism: </strong>
+                  We maintain a high standard of professionalism in all aspects
+                  of our business, from customer service to vehicle maintenance
+                  and sales.
+                </h1>
               </div>
             </div>
           </div>

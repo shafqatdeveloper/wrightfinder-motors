@@ -42,18 +42,6 @@ const Footer = () => {
                 className="w-32 h-20 sm:w-40 sm:h-24 xl:w-48 xl:h-32"
               />
             </Link>
-            <Link
-              className="mt-5 w-max border-b-2 border-b-gray-700 "
-              to={"/privacy-policy"}
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              className=" w-max border-b-2 border-b-gray-700 "
-              to={"/terms-and-conditions"}
-            >
-              Terms and Conditions
-            </Link>
           </div>
           <div>
             <h1 className="text-xl font-bold font-sans tracking-wide">
@@ -65,13 +53,13 @@ const Footer = () => {
                 <MdPhoneInTalk size={22} color="white" />
               </span>
               <span className="flex flex-col font-medium font-sans">
-                <Link target="_blank" to={"tel:9378388616"}>
+                <Link target="_blank" to={"tel:+19378388616"}>
                   937-838-8616
                 </Link>
-                <Link target="_blank" to={"tel:9374754737"}>
+                <Link target="_blank" to={"tel:+19374754737"}>
                   937-475-4737
                 </Link>
-                <Link target="_blank" to={"tel:9372706688"}>
+                <Link target="_blank" to={"tel:+19372706688"}>
                   937-270-6688
                 </Link>
               </span>
@@ -81,13 +69,13 @@ const Footer = () => {
                 <FaWhatsapp size={22} color="white" />
               </span>
               <span className="flex flex-col font-medium font-sans">
-                <Link target="_blank" to={"https://wa.me/9378388616"}>
+                <Link target="_blank" to={"https://wa.me/+19378388616"}>
                   937-838-8616
                 </Link>
-                <Link target="_blank" to={"https://wa.me/9374754737"}>
+                <Link target="_blank" to={"https://wa.me/+19374754737"}>
                   937-475-4737
                 </Link>
-                <Link target="_blank" to={"https://wa.me/9372706688"}>
+                <Link target="_blank" to={"https://wa.me/+19372706688"}>
                   937-270-6688
                 </Link>
               </span>
@@ -125,13 +113,6 @@ const Footer = () => {
                 >
                   <FaInstagram size={18} color="white" />
                 </Link>
-                <Link
-                  target="_blank"
-                  to={"https://facebook.com"}
-                  className="bg-sky-500 rounded-md p-2.5 w-auto"
-                >
-                  <FaTwitter size={18} color="white" />
-                </Link>
               </div>
             </div>
           </div>
@@ -151,6 +132,19 @@ const Footer = () => {
               className="mt-5"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
+          </div>
+        </div>
+        <div className="w-full flex items-center justify-center mt-10 text-lg font-medium text-gray-700">
+          <div className="grid grid-cols-3 sm:flex gap-5 w-full justify-center">
+            <Link className="w-max" to={"/privacy-policy"}>
+              Privacy Policy
+            </Link>
+            <Link className="w-max" to={"/terms-and-conditions"}>
+              Terms and Conditions
+            </Link>
+            <Link className="w-max" to={"/cookie-policy"}>
+              Cookies Policy
+            </Link>
           </div>
         </div>
         <h1 className="text-center pt-5 pb-2 text-black">

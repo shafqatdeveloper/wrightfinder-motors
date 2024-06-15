@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
-import { MdDelete, MdSell } from "react-icons/md";
+import { MdDelete, MdEdit, MdSell } from "react-icons/md";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { useTable, usePagination, useSortBy } from "react-table";
 import { toast } from "react-toastify";
@@ -110,7 +110,7 @@ const AllCars = () => {
             <img
               src={`${import.meta.env.VITE_API_URL}/uploads/${imageUrl}`}
               alt="Car Pic"
-              style={{ width: "50px", height: "40px", borderRadius: "10px" }}
+              style={{ width: "55px", height: "40px", borderRadius: "10px" }}
             />
           );
         },
@@ -163,6 +163,12 @@ const AllCars = () => {
             >
               <MdDelete size={25} />
             </button>
+            <Link
+              to={`/admin/dashboard/edit-car/${value}`}
+              className="bg-[#2ada50] text-white p-2 rounded"
+            >
+              <MdEdit size={25} />
+            </Link>
             <button
               onClick={() => {
                 markAsSoldCarHandler(value);

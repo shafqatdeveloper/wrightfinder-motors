@@ -16,6 +16,7 @@ import Terms from "./Pages/Policy/Terms";
 import AdminInfo from "./Pages/Admin/Information/AdminInfo";
 import Regsiter from "./Pages/Admin/Regsiter/Regsiter";
 import UpdateAdmin from "./Pages/Admin/UpdateProfile/UpdateAdmin";
+import AdminEditCar from "./Pages/Admin/Dashboard/EditCar/AdminEditCar";
 
 // import Footer from "./Components/Footer/Footer";
 // const WhyUs = lazy(() => import("../../Components/WhySchooseUs/WhyUs"));
@@ -45,7 +46,7 @@ function App() {
     <>
       <Navbar />
       <ScrollToTop>
-        <ToastContainer autoClose={2500} />
+        <ToastContainer autoClose={12000} />
         <TopLoadingBar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -63,6 +64,14 @@ function App() {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/admin/dashboard/add-car" element={<AdminAddCar />} />
+          </Routes>
+        </Suspense>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route
+              path="/admin/dashboard/edit-car/:id"
+              element={<AdminEditCar />}
+            />
           </Routes>
         </Suspense>
         <Suspense fallback={<Loader />}>

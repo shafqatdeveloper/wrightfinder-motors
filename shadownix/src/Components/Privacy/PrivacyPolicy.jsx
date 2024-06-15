@@ -177,9 +177,9 @@ const PrivacyPolicy = () => {
           <p className="flex gap-1">
             <span className="font-semibold">Phone: </span>
             <div className="flex flex-col gap-1">
-              <Link to={"tel:9378388616"}>937-838-8616</Link>
-              <Link to={"tel:9374754737"}>937-475-4737</Link>
-              <Link to={"tel:937-270-688"}>937-270-6688</Link>
+              <Link to={"tel:+19378388616"}>+1937-838-8616</Link>
+              <Link to={"tel:+19374754737"}>+1937-475-4737</Link>
+              <Link to={"tel:+19372706688"}>+1937-270-6688</Link>
             </div>
           </p>
         </div>
