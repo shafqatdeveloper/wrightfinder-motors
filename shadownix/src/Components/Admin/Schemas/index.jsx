@@ -16,3 +16,10 @@ export const AddCarSchema = Yup.object({
   description: Yup.string().min(2).required("Please Enter Car Description"),
   price: Yup.string().min(2).max(100000000).required("Price is Required"),
 });
+
+export const sendMessage = Yup.object({
+  name: Yup.string().min(3).max(70).required("Enter Name"),
+  email: Yup.string().email("Invalid Email").required("Enter Email"),
+  subject: Yup.string().min(3).max(70).required("Enter Subject"),
+  message: Yup.string().min(2).max(1000).required("Enter Your message"),
+});

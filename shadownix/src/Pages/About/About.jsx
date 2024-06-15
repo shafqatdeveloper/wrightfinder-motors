@@ -65,7 +65,7 @@ const About = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="text-4xl font-extrabold text-[#3c2163] font-sans"
               >
-                Best Solution For Cleaning Services
+                The Solution you have been Looking For
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, x: 70 }}
@@ -91,9 +91,9 @@ const About = () => {
                 initial={{ opacity: 0, x: -70 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-xl font-bold font-sans uppercase underline"
+                className="text-xl font-extrabold font-sans uppercase tracking-wider underline"
               >
-                Our Values:
+                Why Choosing us
               </motion.h1>
               <div className="flex items-center gap-2">
                 <h1>

@@ -165,7 +165,7 @@ const EditCar = ({ car, id }) => {
             <img
               src={`${api_Url}/uploads/${car.galleryImagesArray[0].imageName}`}
               alt={`${api_Url}/uploads/${car.galleryImagesArray[0].imageName}`}
-              className="w-full object-center"
+              className="w-full object-cover rounded-md"
             />
           </div>
           {/*  Car Name */}

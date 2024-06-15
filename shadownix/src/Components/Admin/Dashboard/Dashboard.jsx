@@ -35,7 +35,12 @@ const Dashboard = () => {
   return (
     <div className="w-full h-full">
       <h1 className="text-center py-5 text-3xl font-sans font-bold">
-        {adminInfo.name === "Shadow Nix" ? <span>Shadow</span> : "WFM"} Panel
+        {adminInfo.name === "Shadow Nix" ? (
+          <span>Shadow</span>
+        ) : (
+          <span>WFM</span>
+        )}{" "}
+        Panel
       </h1>
       <div className="w-full flex items-center justify-center py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

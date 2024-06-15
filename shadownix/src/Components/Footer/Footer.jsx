@@ -7,6 +7,7 @@ import { MdPhoneInTalk } from "react-icons/md";
 import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { IoMdMail } from "react-icons/io";
+import "./footer.css";
 
 const Footer = () => {
   // const { ref: footerRef, inView: isFooterInView } = useInView({
@@ -54,13 +55,13 @@ const Footer = () => {
               </span>
               <span className="flex flex-col font-medium font-sans">
                 <Link target="_blank" to={"tel:+19378388616"}>
-                  937-838-8616
+                  +1937-838-8616
                 </Link>
                 <Link target="_blank" to={"tel:+19374754737"}>
-                  937-475-4737
+                  +1937-475-4737
                 </Link>
                 <Link target="_blank" to={"tel:+19372706688"}>
-                  937-270-6688
+                  +1937-270-6688
                 </Link>
               </span>
             </div>
@@ -70,13 +71,13 @@ const Footer = () => {
               </span>
               <span className="flex flex-col font-medium font-sans">
                 <Link target="_blank" to={"https://wa.me/+19378388616"}>
-                  937-838-8616
+                  +1937-838-8616
                 </Link>
                 <Link target="_blank" to={"https://wa.me/+19374754737"}>
-                  937-475-4737
+                  +1937-475-4737
                 </Link>
                 <Link target="_blank" to={"https://wa.me/+19372706688"}>
-                  937-270-6688
+                  +1937-270-6688
                 </Link>
               </span>
             </div>
@@ -117,32 +118,32 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="">
+          <div className="sm:col-span-2 lg:col-span-1">
             <h1 className="text-xl font-bold font-sans tracking-wide">
               Locate Us
             </h1>
             <div className="w-5 h-1 mt-0.5 bg-[#3c2163]"></div>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48962.72431018159!2d-83.08010311817102!3d39.915205643510475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8838859f1f27910f%3A0xef8a7153f0ac2f3!2sSouthwest%20Columbus%2C%20Columbus%2C%20OH%2C%20USA!5e0!3m2!1sen!2s!4v1716619878101!5m2!1sen!2s"
-              width="300"
-              height="200"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              className="mt-5"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+            <div className="mt-3">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d196147.20641391812!2d-84.36697126591616!3d39.81147557059361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884080d5aedd1403%3A0xa640e392f20e4ce4!2sDayton%2C%20OH%2C%20USA!5e0!3m2!1sen!2s!4v1718465629106!5m2!1sen!2s"
+                style={{ border: 0, width: "100%", height: "350px" }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </div>
         </div>
+
         <div className="w-full flex items-center justify-center mt-10 text-lg font-medium text-gray-700">
-          <div className="grid grid-cols-3 sm:flex gap-5 w-full justify-center">
+          <div className="grid grid-cols-2 sm:flex gap-3 sm:gap-8 w-full justify-center">
             <Link className="w-max" to={"/privacy-policy"}>
               Privacy Policy
             </Link>
             <Link className="w-max" to={"/terms-and-conditions"}>
-              Terms and Conditions
+              Terms & Conditions
             </Link>
-            <Link className="w-max" to={"/cookie-policy"}>
+            <Link className="w-max " to={"/cookie-policy"}>
               Cookies Policy
             </Link>
           </div>

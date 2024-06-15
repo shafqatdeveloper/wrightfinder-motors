@@ -53,9 +53,9 @@ const Navbar = () => {
               <MdPhoneInTalk size={18} color="#3c2163" />
             </span>
             <span className="flex flex-col gap-0 text-sm font-medium font-sans">
-              <Link to={"tel:+19378388616"}>937-838-8616</Link>
-              <Link to={"tel:+19374754737"}>937-475-4737</Link>
-              <Link to={"tel:+19372706688"}>937-270-6688</Link>
+              <Link to={"tel:+19378388616"}>+1937-838-8616</Link>
+              <Link to={"tel:+19374754737"}>+1937-475-4737</Link>
+              <Link to={"tel:+19372706688"}>+1937-270-6688</Link>
             </span>
           </li>
         </ul>

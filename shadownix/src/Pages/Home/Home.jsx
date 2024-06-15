@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import Hero from "../../Components/Hero/Hero";
 import Cars from "../../Components/ExploreCars/Cars";
+import Contact from "../../Components/ContactUs/Contact";
 const Facts = lazy(() => import("../../Components/Facts/Facts"));
 const WhyUs = lazy(() => import("../../Components/WhySchooseUs/WhyUs"));
 
@@ -14,6 +15,9 @@ const Home = () => {
       </Suspense>
       <Suspense fallback={<div>Loading...</div>}>
         <WhyUs />
+      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Contact />
       </Suspense>
     </div>
   );
