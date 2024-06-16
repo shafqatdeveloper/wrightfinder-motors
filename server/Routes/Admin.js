@@ -5,6 +5,8 @@ import {
   loginUser,
   logout,
   registerAdmin,
+  resetPassword,
+  sendResetPasswordPin,
   updateAdmin,
 } from "../Controllers/Admin.js";
 import { isAuthenticatedAdmin } from "../Utils/Authentication.js";
@@ -16,6 +18,8 @@ Router.get("/authenticate", isAuthenticatedAdmin, loggedInAdmin);
 Router.put("/update", isAuthenticatedAdmin, updateAdmin);
 Router.get("/logout", isAuthenticatedAdmin, logout);
 Router.post("/send-message", EmailMessage);
+Router.post("/password/forget", sendResetPasswordPin);
+Router.put("/password/reset", resetPassword);
 
 // Router.get("/details/:id", isAuthenticatedUser, singleUserDetails);
 

@@ -17,6 +17,7 @@ import AdminInfo from "./Pages/Admin/Information/AdminInfo";
 import Regsiter from "./Pages/Admin/Regsiter/Regsiter";
 import UpdateAdmin from "./Pages/Admin/UpdateProfile/UpdateAdmin";
 import AdminEditCar from "./Pages/Admin/Dashboard/EditCar/AdminEditCar";
+import ForgetPassword from "./Pages/Admin/PasswordManagement/ForgetPassword";
 
 // import Footer from "./Components/Footer/Footer";
 // const WhyUs = lazy(() => import("../../Components/WhySchooseUs/WhyUs"));
@@ -86,6 +87,11 @@ function App() {
           <Routes>
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/register" element={<Regsiter />} />
+          </Routes>
+        </Suspense>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/admin/password/reset" element={<ForgetPassword />} />
           </Routes>
         </Suspense>
         <Suspense fallback={<Loader />}>

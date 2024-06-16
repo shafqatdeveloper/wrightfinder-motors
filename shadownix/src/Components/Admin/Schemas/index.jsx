@@ -23,3 +23,7 @@ export const sendMessage = Yup.object({
   subject: Yup.string().min(3).max(70).required("Enter Subject"),
   message: Yup.string().min(2).max(1000).required("Enter Your message"),
 });
+
+export const forgetPasswordSchema = Yup.object({
+  email: Yup.string().email("Invalid Email").required("Enter Email"),
+});

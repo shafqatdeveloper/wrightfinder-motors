@@ -136,7 +136,7 @@ const Login = () => {
         </div>
         <div className="text-white flex items-center justify-center">
           <button className="text-center text-sm">
-            <Link to={"/admin/login/password/forget"}>Forgot Password?</Link>
+            <Link to={"/admin/password/reset"}>Forgot Password?</Link>
           </button>
         </div>
       </form>

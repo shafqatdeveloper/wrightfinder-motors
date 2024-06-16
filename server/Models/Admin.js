@@ -15,6 +15,7 @@ const adminSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  resetPasswordPin: String,
 });
 
 // Hashing Password

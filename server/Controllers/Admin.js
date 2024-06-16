@@ -1,5 +1,7 @@
 import Admin from "../Models/Admin.js";
 import { sendMessage } from "../Utils/SendEmail.js";
+import crypto from "crypto";
+import { SendResetPasswordPin } from "../Utils/SendResetPin.js";
 
 // Register an Admin
 export const registerAdmin = async (req, res) => {
@@ -182,7 +184,80 @@ export const EmailMessage = async (req, res) => {
       message: "Message Sent",
     });
   } catch (error) {
-    res.status(404).json({
+    res.status(501).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+const generateOTP = () => {
+  return crypto.randomBytes(3).toString("hex").toUpperCase();
+};
+
+export const sendResetPasswordPin = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const emailExists = await Admin.findOne({ email });
+    console.log(emailExists);
+    if (!emailExists) {
+      console.log("401");
+      res.status(401).json({
+        success: false,
+        message: "Invalid Email",
+      });
+    } else {
+      const OTP = generateOTP();
+      const options = {
+        OTP,
+        email,
+      };
+      await SendResetPasswordPin(options);
+      emailExists.resetPasswordPin = OTP;
+      await emailExists.save();
+      res.status(201).json({
+        success: true,
+        message: `OTP sent to ${email}`,
+      });
+    }
+  } catch (error) {
+    res.status(501).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  try {
+    const { otp, newPassword } = req.body;
+    const otpString = Array.isArray(otp) ? otp.join("") : otp;
+    const validatedOtp = await Admin.findOne({ resetPasswordPin: otpString });
+    if (!validatedOtp) {
+      res.status(401).json({
+        success: false,
+        message: "Invalid OTP",
+      });
+    } else {
+      const checkPreviousPass = await validatedOtp.comparePassword(newPassword);
+      if (checkPreviousPass) {
+        res.status(401).json({
+          success: false,
+          message:
+            "Can't Use Previously using Password. Enter a Different Passowrd",
+        });
+      } else {
+        validatedOtp.password = newPassword;
+        validatedOtp.resetPasswordPin = undefined;
+        await validatedOtp.save();
+        res.status(201).json({
+          success: false,
+          message: "Password Updated",
+        });
+      }
+    }
+  } catch (error) {
+    res.status(501).json({
       success: false,
       message: error.message,
     });
