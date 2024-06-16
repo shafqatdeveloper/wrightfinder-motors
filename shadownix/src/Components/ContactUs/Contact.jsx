@@ -14,39 +14,52 @@ const initialValues = {
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
-  const { values, errors, handleBlur, handleChange, touched, handleSubmit } =
-    useFormik({
-      initialValues: initialValues,
-      validationSchema: sendMessage,
-      onSubmit: async (values) => {
-        setLoading(true);
-        try {
-          const name = values.name;
-          const email = values.email;
-          const subject = values.subject;
-          const message = values.message;
-          const response = await axios.post("/api/send-message");
-          if (response.status == 201) {
-            setLoading(false);
-            toast(response.data.message, {
-              theme: "dark",
-            });
-          } else {
-            setLoading(false);
-            toast(response.data.message, {
-              theme: "dark",
-            });
-          }
-        } catch (error) {
+  const {
+    values,
+    errors,
+    handleBlur,
+    handleChange,
+    touched,
+    handleSubmit,
+    resetForm,
+  } = useFormik({
+    initialValues: initialValues,
+    validationSchema: sendMessage,
+    onSubmit: async (values) => {
+      setLoading(true);
+      try {
+        const name = values.name;
+        const email = values.email;
+        const subject = values.subject;
+        const message = values.message;
+        const response = await axios.post("/api/admin/send-message", {
+          name,
+          email,
+          subject,
+          message,
+        });
+        if (response.status == 200) {
           setLoading(false);
-          toast(error.message, {
+          resetForm();
+          toast(response.data.message, {
             theme: "dark",
           });
-        } finally {
+        } else {
           setLoading(false);
+          toast(response.data.message, {
+            theme: "dark",
+          });
         }
-      },
-    });
+      } catch (error) {
+        setLoading(false);
+        toast(error.message, {
+          theme: "dark",
+        });
+      } finally {
+        setLoading(false);
+      }
+    },
+  });
 
   return (
     <div className="w-full py-12 bg-[#210F1D] flex flex-col items-center justify-center gap-6">
@@ -166,7 +179,7 @@ const Contact = () => {
             </div>
           </div>
           <div className="w-full flex items-center justify-center my-8">
-            <div className=" bg-[#17A8E2] py-3.5 rounded-md hover:bg-[#3d9fc6] flex items-center justify-center px-12">
+            <div className=" bg-[#17A8E2] h-12 rounded-md hover:bg-[#3d9fc6] flex items-center justify-center w-32">
               {loading ? (
                 <Spinner></Spinner>
               ) : (

@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  EmailMessage,
   loggedInAdmin,
   loginUser,
   logout,
@@ -14,6 +15,7 @@ Router.post("/login", loginUser);
 Router.get("/authenticate", isAuthenticatedAdmin, loggedInAdmin);
 Router.put("/update", isAuthenticatedAdmin, updateAdmin);
 Router.get("/logout", isAuthenticatedAdmin, logout);
+Router.post("/send-message", EmailMessage);
 
 // Router.get("/details/:id", isAuthenticatedUser, singleUserDetails);
 

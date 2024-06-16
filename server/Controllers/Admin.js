@@ -1,4 +1,5 @@
 import Admin from "../Models/Admin.js";
+import { sendMessage } from "../Utils/SendEmail.js";
 
 // Register an Admin
 export const registerAdmin = async (req, res) => {
@@ -158,6 +159,30 @@ export const loggedInAdmin = async (req, res) => {
     }
   } catch (error) {
     res.status(501).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// Send Messge to Admin
+
+export const EmailMessage = async (req, res) => {
+  try {
+    const { name, email, subject, message } = req.body;
+    const options = {
+      name,
+      email,
+      subject,
+      message,
+    };
+    await sendMessage(options);
+    res.status(200).json({
+      success: true,
+      message: "Message Sent",
+    });
+  } catch (error) {
+    res.status(404).json({
       success: false,
       message: error.message,
     });
