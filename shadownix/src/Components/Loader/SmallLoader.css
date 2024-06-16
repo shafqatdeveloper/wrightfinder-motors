@@ -1,17 +1,17 @@
-.loader {
+.small-loader {
     border: 4px solid black;
     border-left-color: transparent;
     border-radius: 50%;
   }
   
-  .loader {
+  .small-loader {
     border: 4px solid black;
     border-left-color: transparent;
     width: 36px;
     height: 36px;
   }
   
-  .loader {
+  .small-loader {
     border: 4px solid black;
     border-left-color: transparent;
     width: 30px;
