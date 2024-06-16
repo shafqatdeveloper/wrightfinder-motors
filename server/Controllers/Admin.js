@@ -35,7 +35,7 @@ export const registerAdmin = async (req, res) => {
   } catch (error) {
     res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -69,7 +69,7 @@ export const updateAdmin = async (req, res) => {
   } catch (error) {
     res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -117,9 +117,9 @@ export const loginUser = async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(503).json({
+    res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -138,9 +138,9 @@ export const logout = async (req, res) => {
         message: "Logged Out",
       });
   } catch (error) {
-    res.status(404).json({
+    res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -162,7 +162,7 @@ export const loggedInAdmin = async (req, res) => {
   } catch (error) {
     res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -186,7 +186,7 @@ export const EmailMessage = async (req, res) => {
   } catch (error) {
     res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -223,7 +223,7 @@ export const sendResetPasswordPin = async (req, res) => {
   } catch (error) {
     res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -259,7 +259,7 @@ export const resetPassword = async (req, res) => {
   } catch (error) {
     res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };

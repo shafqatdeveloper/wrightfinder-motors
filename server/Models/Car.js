@@ -6,7 +6,7 @@ const CarModel = new mongoose.Schema({
     required: true,
   },
   miles: {
-    type: Number,
+    type: String,
     required: true,
   },
   title: {

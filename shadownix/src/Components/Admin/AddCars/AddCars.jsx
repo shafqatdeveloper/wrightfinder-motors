@@ -233,9 +233,9 @@ const AddCar = () => {
                 name="miles"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="number"
+                type="text"
                 className="bg-transparent outline-lime-50 focus:outline-none w-full rounded-md p-2"
-                placeholder="12000"
+                placeholder="2100"
               />
             </div>
             {errors.miles && touched.miles ? (

@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 export const AddCarSchema = Yup.object({
   name: Yup.string().min(3).max(70).required("Enter Car Name/Model/Year"),
-  miles: Yup.number().min(0).required("Miles are Required"),
+  miles: Yup.string().min(2).max(100000000).required("Miles are Required"),
   title: Yup.string().min(2).max(50).required("Please Select a Title"),
   style: Yup.string().min(2).max(50).required("Please Select a Style"),
   engine: Yup.string().min(2).max(50).required("Please Enter Engine"),

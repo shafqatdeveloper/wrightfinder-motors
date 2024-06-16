@@ -96,10 +96,9 @@ export const addCar = async (req, res) => {
       });
     }
   } catch (error) {
-    console.error(error);
-    res.status(500).json({
+    res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -167,9 +166,9 @@ export const editCar = async (req, res) => {
       });
     }
   } catch (error) {
-    res.status(500).json({
+    res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -188,9 +187,9 @@ export const getCars = async (req, res) => {
       message: "Car Added",
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -224,9 +223,9 @@ export const getCarDetails = async (req, res) => {
       message: "Success",
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -262,9 +261,9 @@ export const deleteCar = async (req, res) => {
       });
     }
   } catch (error) {
-    res.status(500).json({
+    res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -294,9 +293,9 @@ export const markCarAsSold = async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).json({
+    res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };
@@ -326,9 +325,9 @@ export const markCarAsAvailable = async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).json({
+    res.status(501).json({
       success: false,
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 };

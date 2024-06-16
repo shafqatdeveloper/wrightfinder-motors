@@ -49,32 +49,55 @@ const WhyUs = () => {
     >
       <div className="flex flex-col gap-4 items-center justify-center">
         <h1 className="text-center text-3xl font-extrabold font-sans sm:text-4xl md:text-5xl">
-          Why Choose Us
-        </h1>
-        <h1 className="text-lg px-5 sm:px-0 sm:text-xl capitalize">
-          We have proven record of happy customers
+          Why Choosing us
         </h1>
         <span>
           <BsRainbow size={55} color="#3c2163" />
         </span>
       </div>
-      <div className="grid grid-cols-1 px-4 sm:px-10 md:grid-cols-3 gap-4 xmd:gap-10">
-        {features.map((feature, index) => {
-          return (
-            <div
-              key={index}
-              className="flex flex-col cursor-pointer gap-3 hover:text-white duration-500 transition-all hover:bg-[#17A8E2] bg-white rounded-md px-3 py-5"
-            >
-              <span className="bg-[#3c2163] text-white py-5 flex items-center justify-center rounded-md">
-                {feature.icon}
-              </span>
-              <span className="text-center text-xl font-bold font-sans">
-                {feature.name}
-              </span>
-              <span className="">{feature.description}</span>
-            </div>
-          );
-        })}
+      <div className="w-full sm:w-2/4 md:w-3/5 px-2 sm:px-0 flex flex-col gap-5 md:gap-7">
+        <div className="flex items-center text-justify gap-2">
+          <h1>
+            <strong>1. Collaboration: </strong>
+            We believe in working together as a team to achieve our goals and
+            support each other.
+          </h1>
+        </div>
+        <div className="flex items-center text-justify gap-2">
+          <h1>
+            <strong>2. Customer-centricity: </strong>
+            We prioritize the needs and satisfaction of our customers above all
+            else.
+          </h1>
+        </div>
+        <div className="flex items-center text-justify gap-2">
+          <h1>
+            <strong>3. Diversity and inclusion: </strong>We embrace diversity
+            and create an inclusive environment where all voices are valued and
+            respected.
+          </h1>
+        </div>
+        <div className="flex items-center text-justify gap-2">
+          <h1>
+            <strong>4. Innovation: </strong>
+            We constantly seek new ideas and solutions to drive creativity and
+            growth.
+          </h1>
+        </div>
+        <div className="flex items-center text-justify gap-2">
+          <h1>
+            <strong>5. Integrity: </strong>
+            We are committed to honesty, transparency, and ethical behavior in
+            all our dealings.
+          </h1>
+        </div>
+        <div className="flex items-center text-justify gap-2">
+          <h1>
+            <strong>6. Professionalism: </strong>
+            We maintain a high standard of professionalism in all aspects of our
+            business, from customer service to vehicle maintenance and sales.
+          </h1>
+        </div>
       </div>
     </div>
   );
