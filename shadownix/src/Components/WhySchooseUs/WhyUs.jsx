@@ -1,52 +1,54 @@
-// import { useAnimation, motion } from "framer-motion";
-import React, { useEffect } from "react";
+import React from "react";
 import { BsRainbow } from "react-icons/bs";
-// import { useInView } from "react-intersection-observer";
-import { FaCar, FaCheckCircle, FaHandsHelping } from "react-icons/fa";
+import collaborationIcon from "../../assets/collaboration.png";
+import customerCentricityIcon from "../../assets/centralized.png";
+import diversityAndInclusionIcon from "../../assets/diversity.png";
+import innovationIcon from "../../assets/innovation.png";
+import integrityIcon from "../../assets/integrity.png";
+import professionalismIcon from "../../assets/expertise.png";
 
 const features = [
   {
-    name: "Unmatched Quality",
-    icon: <FaCheckCircle size={25} />,
+    name: "Collaboration",
+    icon: collaborationIcon,
     description:
-      "Experience top-notch quality with our meticulously inspected and certified cars, ensuring you drive away with peace of mind.",
+      "We believe in working together as a team to achieve our goals and support each other.",
   },
   {
-    name: "Exceptional Service",
-    icon: <FaHandsHelping size={25} />,
+    name: "Customer-centricity",
+    icon: customerCentricityIcon,
     description:
-      "Our dedicated team provides personalized assistance and exceptional customer service, making your car buying experience seamless and enjoyable.",
+      "We prioritize the needs and satisfaction of our customers above all else.",
   },
   {
-    name: "Wide Selection",
-    icon: <FaCar size={25} />,
+    name: "Diversity and inclusion",
+    icon: diversityAndInclusionIcon,
     description:
-      "Choose from over 150 cars from 25 renowned brands, including 30 luxury models, ensuring you find the perfect vehicle for your needs.",
+      "We embrace diversity and create an inclusive environment where all are valued and respected.",
+  },
+  {
+    name: "Innovation",
+    icon: innovationIcon,
+    description:
+      "We constantly seek new ideas and solutions to drive creativity and growth.",
+  },
+  {
+    name: "Integrity",
+    icon: integrityIcon,
+    description:
+      "We are committed to honesty, transparency, and ethical behavior in all our dealings.",
+  },
+  {
+    name: "Professionalism",
+    icon: professionalismIcon,
+    description:
+      "We maintain a high standard of professionalism in all aspects of our business, from customer service to vehicle maintenance and sales.",
   },
 ];
 
 const WhyUs = () => {
-  // const { ref: whyUsHeadingRef, inView: isWhyUsHeadingInView } = useInView({
-  //   threshold: 0.2,
-  // });
-  // const mainControls = useAnimation();
-  // useEffect(() => {
-  //   if (isWhyUsHeadingInView) {
-  //     mainControls.start("visible");
-  //   }
-  // }, [isWhyUsHeadingInView, mainControls]);
   return (
-    <div
-      // ref={whyUsHeadingRef}
-      // variants={{
-      //   hidden: { opacity: 0, y: -75 },
-      //   visible: { opacity: 1, y: 0 },
-      // }}
-      // initial="hidden"
-      // animate={mainControls}
-      // transition={{ duration: 0.8, delay: 0.2 }}
-      className="h-full flex flex-col gap-10 sm:gap-14 items-center justify-center"
-    >
+    <div className="h-full my-10 flex flex-col gap-10 sm:gap-14 items-center justify-center">
       <div className="flex flex-col gap-4 items-center justify-center">
         <h1 className="text-center text-3xl font-extrabold font-sans sm:text-4xl md:text-5xl">
           Why Choosing us
@@ -55,49 +57,29 @@ const WhyUs = () => {
           <BsRainbow size={55} color="#3c2163" />
         </span>
       </div>
-      <div className="w-full sm:w-2/4 md:w-3/5 px-2 sm:px-0 flex flex-col gap-5 md:gap-7">
-        <div className="flex items-center text-justify gap-2">
-          <h1>
-            <strong>1. Collaboration: </strong>
-            We believe in working together as a team to achieve our goals and
-            support each other.
-          </h1>
-        </div>
-        <div className="flex items-center text-justify gap-2">
-          <h1>
-            <strong>2. Customer-centricity: </strong>
-            We prioritize the needs and satisfaction of our customers above all
-            else.
-          </h1>
-        </div>
-        <div className="flex items-center text-justify gap-2">
-          <h1>
-            <strong>3. Diversity and inclusion: </strong>We embrace diversity
-            and create an inclusive environment where all voices are valued and
-            respected.
-          </h1>
-        </div>
-        <div className="flex items-center text-justify gap-2">
-          <h1>
-            <strong>4. Innovation: </strong>
-            We constantly seek new ideas and solutions to drive creativity and
-            growth.
-          </h1>
-        </div>
-        <div className="flex items-center text-justify gap-2">
-          <h1>
-            <strong>5. Integrity: </strong>
-            We are committed to honesty, transparency, and ethical behavior in
-            all our dealings.
-          </h1>
-        </div>
-        <div className="flex items-center text-justify gap-2">
-          <h1>
-            <strong>6. Professionalism: </strong>
-            We maintain a high standard of professionalism in all aspects of our
-            business, from customer service to vehicle maintenance and sales.
-          </h1>
-        </div>
+      <div className="w-full px-5 sm:px-0 sm:w-4/5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 sm:gap-8">
+        {features.map((feature, index) => {
+          return (
+            <div
+              key={index}
+              className="px-3 py-5 rounded-md bg-white flex flex-col gap-5 items-center"
+            >
+              <div className="w-full bg-[#17a8e2] py-2 rounded-md flex items-center justify-center">
+                <img
+                  className="w-10 h-10"
+                  src={feature.icon}
+                  alt={feature.name}
+                />
+              </div>
+              <h1 className="text-lg font-bold tracking-wide font-sans">
+                {feature.name}
+              </h1>
+              <div className="px-2">
+                <p className="">{feature.description}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
