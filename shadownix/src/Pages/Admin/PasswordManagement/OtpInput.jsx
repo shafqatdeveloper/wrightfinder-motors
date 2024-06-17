@@ -115,7 +115,7 @@ const OTPInput = ({ length = 6, disable }) => {
   }, [disable]);
 
   return (
-    <div className="w-96 flex items-center justify-center">
+    <div className="w-[350px] flex items-center justify-center">
       <form
         className="flex w-full flex-col gap-4"
         onSubmit={handleResetPassword}

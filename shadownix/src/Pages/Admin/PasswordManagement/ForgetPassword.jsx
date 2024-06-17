@@ -61,7 +61,7 @@ const ForgetPassword = () => {
       <div className="text-center text-white text-3xl font-bold font-sans py-10">
         <h1>Forget Password</h1>
       </div>
-      <form onSubmit={handleSubmit} className="w-96">
+      <form onSubmit={handleSubmit} className="w-[350px]">
         <div className="flex w-full flex-col gap-1.5 relative">
           <label htmlFor="email" className="text-white">
             Email <span className="text-lg text-red-400">*</span>
