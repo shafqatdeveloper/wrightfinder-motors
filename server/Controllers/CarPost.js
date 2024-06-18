@@ -98,7 +98,7 @@ export const addCar = async (req, res) => {
   } catch (error) {
     res.status(501).json({
       success: false,
-      message: "Internal Server Error",
+      message: `Internal Server Error ${error.message}`,
     });
   }
 };
