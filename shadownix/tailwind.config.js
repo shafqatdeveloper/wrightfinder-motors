@@ -2,8 +2,14 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "global-dark-blue": "#1E2252",
+        "global-dark-RED": "#FF6764",
+      }
+    },
     screens: {
+      xsm: "375px",
       sm: "640px",
       // => @media (min-width: 640px) { ... }
       md: "768px",

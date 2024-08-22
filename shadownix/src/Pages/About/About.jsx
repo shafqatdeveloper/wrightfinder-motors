@@ -11,8 +11,8 @@ const About = () => {
       <div className="mt-28 mb-20 xmd:mt-20">
         <div className="w-full">
           <div className="w-full relative flex flex-col bg-[#210f1d] items-center py-10 gap-7 justify-center">
-            <div className="w-32 h-20 blur-3xl left-3 top-5 bg-[#3c2163] absolute"></div>
-            <div className="w-32 h-20 blur-3xl right-3 bottom-5 bg-[#3c2163] absolute"></div>
+            <div className="w-32 h-20 blur-3xl left-3 top-5 bg-global-dark-blue absolute"></div>
+            <div className="w-32 h-20 blur-3xl right-3 bottom-5 bg-global-dark-blue absolute"></div>
             <motion.h1
               initial={{ opacity: 0, y: 70 }}
               animate={{ opacity: 1, y: 0 }}
@@ -36,7 +36,7 @@ const About = () => {
           </div>
           <div className="w-full h-full grid grid-cols-1 lg:grid-cols-2 items-center lg:my-5 px-3 sm:px-0 gap-8 lg:gap-0 justify-center place-items-center">
             <div className="mt-10 w-11/12 sm:w-3/4 self-center items-center">
-              <div className="bg-[#3c2163] flex items-center justify-center rounded-full p-10">
+              <div className="bg-global-dark-blue flex items-center justify-center rounded-full p-10">
                 <motion.div
                   initial={{ opacity: 0, y: -70 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ const About = () => {
                   initial={{ opacity: 0, y: -70 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
-                  className="text-xl font-bold font-sans text-[#3c2163]"
+                  className="text-xl font-bold font-sans text-global-dark-blue"
                 >
                   ABOUT OUR COMPANY
                 </motion.h1>
@@ -66,7 +66,7 @@ const About = () => {
                   initial={{ opacity: 0, y: 70 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
-                  className="text-4xl font-extrabold text-[#3c2163] font-sans"
+                  className="text-4xl font-extrabold text-global-dark-blue font-sans"
                 >
                   The Solution you have been Looking For
                 </motion.h1>

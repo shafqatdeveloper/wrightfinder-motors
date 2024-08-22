@@ -43,7 +43,7 @@ const AdminInfo = () => {
       <div className="pt-6">
         <Link
           to={"/admin/info/edit"}
-          className="px-5 py-2 bg-[#3C2163] rounded-md text-white"
+          className="px-5 py-2 bg-global-dark-blue rounded-md text-white"
         >
           Edit Profile Info
         </Link>

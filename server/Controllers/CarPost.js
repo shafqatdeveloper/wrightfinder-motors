@@ -63,8 +63,8 @@ export const addCar = async (req, res) => {
       const featuresArray =
         Array.isArray(features) && features.length > 1
           ? features.map((feat) => ({
-              name: feat,
-            }))
+            name: feat,
+          }))
           : features;
 
       const newCar = await Car.create({
@@ -123,48 +123,57 @@ export const editCar = async (req, res) => {
       description,
       price,
       features,
+      removedPhotos,
     } = req.body;
 
     const id = req.query.id;
     const featuresArray =
       Array.isArray(features) && features.length > 1
         ? features.map((feat) => ({
-            name: feat.name,
-          }))
+          name: feat.name,
+        }))
         : features;
+
     const car = await Car.findById(id);
     if (!car) {
-      res.status(401).json({
+      return res.status(401).json({
         success: false,
         message: "Car not Exist",
       });
-    } else {
-      await Car.findByIdAndUpdate(
-        id,
-        {
-          name,
-          miles,
-          title,
-          style,
-          engine,
-          transmission,
-          power,
-          fuelType,
-          seats,
-          driveline,
-          interiorColor,
-          exteriorColor,
-          description,
-          price,
-          features: featuresArray,
-        },
-        { runValidators: true }
-      );
-      res.status(201).json({
-        success: true,
-        message: "Car Updated",
-      });
     }
+
+    // Remove the specified photos from the galleryImagesArray
+    car.galleryImagesArray = car.galleryImagesArray.filter(
+      (photo) => !removedPhotos.includes(photo.imageName)
+    );
+
+    await Car.findByIdAndUpdate(
+      id,
+      {
+        name,
+        miles,
+        title,
+        style,
+        engine,
+        transmission,
+        power,
+        fuelType,
+        seats,
+        driveline,
+        interiorColor,
+        exteriorColor,
+        description,
+        price,
+        features: featuresArray,
+        galleryImagesArray: car.galleryImagesArray, // Update with the new array
+      },
+      { runValidators: true }
+    );
+
+    res.status(201).json({
+      success: true,
+      message: "Car Updated",
+    });
   } catch (error) {
     res.status(501).json({
       success: false,
@@ -172,6 +181,7 @@ export const editCar = async (req, res) => {
     });
   }
 };
+
 
 // Get All Cars
 

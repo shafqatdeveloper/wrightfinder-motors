@@ -39,6 +39,17 @@ const EditCar = ({ car, id }) => {
 
   const [features, setFeatures] = useState(car.features);
   const [loading, setLoading] = useState(false);
+  const [removedPhotos, setRemovedPhotos] = useState([]);
+
+
+  const handleRemovePhoto = (e, photoName) => {
+    e.preventDefault()
+    setRemovedPhotos((prev) => [...prev, photoName]);
+    car.galleryImagesArray = car.galleryImagesArray.filter(
+      (photo) => photo.imageName !== photoName
+    );
+  };
+
 
   const handleFeatures = (e) => {
     if (e.key === "Enter") {
@@ -87,44 +98,17 @@ const EditCar = ({ car, id }) => {
     const updatedFeatures = features.filter((t) => feature !== t.name);
     setFeatures(updatedFeatures);
   };
-
   const { values, errors, handleBlur, handleChange, touched, handleSubmit } =
     useFormik({
       initialValues: initialValues,
       validationSchema: AddCarSchema,
       onSubmit: async (values) => {
         setLoading(true);
-        const name = values.name;
-        const miles = values.miles;
-        const title = values.title;
-        const style = values.style;
-        const engine = values.engine;
-        const transmission = values.transmission;
-        const power = values.power;
-        const fuelType = values.fuelType;
-        const seats = values.seats;
-        const driveline = values.driveline;
-        const interiorColor = values.interiorColor;
-        const exteriorColor = values.exteriorColor;
-        const description = values.description;
-        const price = values.price;
         try {
           const response = await axios.put(`/api/car/edit?id=${id}`, {
-            name,
-            miles,
-            title,
-            style,
-            engine,
-            transmission,
-            power,
-            fuelType,
-            seats,
-            driveline,
-            interiorColor,
-            exteriorColor,
-            description,
-            price,
+            ...values,
             features,
+            removedPhotos,
           });
           if (response.status == 201) {
             setFeatures([]);
@@ -149,34 +133,45 @@ const EditCar = ({ car, id }) => {
         }
       },
     });
+
   const api_Url = import.meta.env.VITE_API_URL;
   return (
     <div className="w-full h-full  flex flex-col items-center justify-center px-2">
-      <h1 className="mt-5 mb-10 text-4xl text-[#3c2163] font-bold font-sans">
+      <h1 className="mt-5 mb-10 text-4xl text-global-dark-blue font-bold font-sans">
         Edit Car
       </h1>
-      <div className="bg-[#3c2163] w-full sm:w-2/3 md:w-2/4 p-3 h-full  my-5 rounded-md flex-col flex items-center justify-center gap-5">
+      <div className="bg-global-dark-blue w-full sm:w-2/3 md:w-2/4 p-3 h-full  my-5 rounded-md flex-col flex items-center justify-center gap-5">
         <form
           onSubmit={handleSubmit}
           className="rounded-md w-full text-white flex flex-col gap-6"
         >
           {/* Images */}
-          <div className="w-full flex items-center justify-center gap-3">
-            <img
-              src={`${api_Url}/uploads/${car.galleryImagesArray[0].imageName}`}
-              alt={`${api_Url}/uploads/${car.galleryImagesArray[0].imageName}`}
-              className="w-full object-cover rounded-md"
-            />
+          <div className="w-full grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-2">
+            {car.galleryImagesArray.map((photo, index) => (
+              <div key={index} className="relative">
+                <img
+                  src={`${api_Url}/uploads/${photo.imageName}`}
+                  alt={photo.imageName}
+                  className="w-full object-cover rounded-md h-32"
+                />
+                <button
+                  className="absolute top-2 right-2 bg-red-500 text-white rounded-full"
+                  onClick={(e) => handleRemovePhoto(e, photo.imageName)}
+                >
+                  <RxCross2 />
+                </button>
+              </div>
+            ))}
           </div>
+
           {/*  Car Name */}
           <div className="flex flex-col gap-1.5">
             <label htmlFor="name">
               Car Name <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.name && touched.name ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.name && touched.name ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <input
                 value={values.name}
@@ -197,9 +192,8 @@ const EditCar = ({ car, id }) => {
               Miles <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.miles && touched.miles ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.miles && touched.miles ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <input
                 value={values.miles}
@@ -220,9 +214,8 @@ const EditCar = ({ car, id }) => {
               Title <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.title && touched.title ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.title && touched.title ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -252,9 +245,8 @@ const EditCar = ({ car, id }) => {
               Style of Car <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.style && touched.style ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.style && touched.style ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -284,9 +276,8 @@ const EditCar = ({ car, id }) => {
               Engine<span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.engine && touched.engine ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.engine && touched.engine ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -316,11 +307,10 @@ const EditCar = ({ car, id }) => {
               Transmission <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.transmission && touched.transmission
-                  ? "border-2 border-red-500"
-                  : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.transmission && touched.transmission
+                ? "border-2 border-red-500"
+                : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -354,9 +344,8 @@ const EditCar = ({ car, id }) => {
               Power <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.power && touched.power ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.power && touched.power ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -386,11 +375,10 @@ const EditCar = ({ car, id }) => {
               Fuel Type <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.fuelType && touched.fuelType
-                  ? "border-2 border-red-500"
-                  : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.fuelType && touched.fuelType
+                ? "border-2 border-red-500"
+                : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -422,11 +410,10 @@ const EditCar = ({ car, id }) => {
               Driveline <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.driveline && touched.driveline
-                  ? "border-2 border-red-500"
-                  : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.driveline && touched.driveline
+                ? "border-2 border-red-500"
+                : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -458,9 +445,8 @@ const EditCar = ({ car, id }) => {
               Seats <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.seats && touched.seats ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.seats && touched.seats ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -527,11 +513,10 @@ const EditCar = ({ car, id }) => {
               Interior Color <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.interiorColor && touched.interiorColor
-                  ? "border-2 border-red-500"
-                  : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.interiorColor && touched.interiorColor
+                ? "border-2 border-red-500"
+                : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -565,11 +550,10 @@ const EditCar = ({ car, id }) => {
               Exterior Color <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.exteriorColor && touched.exteriorColor
-                  ? "border-2 border-red-500"
-                  : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.exteriorColor && touched.exteriorColor
+                ? "border-2 border-red-500"
+                : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -603,11 +587,10 @@ const EditCar = ({ car, id }) => {
               Car Description <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.description && touched.description
-                  ? "border-2 border-red-500"
-                  : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.description && touched.description
+                ? "border-2 border-red-500"
+                : ""
+                } bg-white rounded-md text-black`}
             >
               <textarea
                 rows={20}
@@ -631,9 +614,8 @@ const EditCar = ({ car, id }) => {
               Price <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.price && touched.price ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.price && touched.price ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <input
                 value={values.price}

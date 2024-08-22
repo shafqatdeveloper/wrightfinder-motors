@@ -114,7 +114,7 @@ const Card = ({ car, delay = 0 }) => {
             Price :
           </span>
           <span>
-            <h1 className="text-lg font-bold text-[#3c2163] tracking-wide font-sans">
+            <h1 className="text-lg font-bold text-global-dark-blue tracking-wide font-sans">
               <span className="text-xl">$ </span>
               {car?.price}
             </h1>
@@ -122,7 +122,7 @@ const Card = ({ car, delay = 0 }) => {
         </div>
         <Link
           to={`/car/details/${car?._id}`}
-          className="w-full border-2 border-[#3c2163] text-white transition-all duration-300 rounded-md text-center py-2 text-lg font-medium tracking-wide font-sans bg-[#3c2163] hover:bg-[#17A8E2] hover:border-[#17A8E2]"
+          className="w-full border-2 border-global-dark-blue text-white transition-all duration-300 rounded-md text-center py-2 text-lg font-medium tracking-wide font-sans bg-global-dark-blue hover:bg-[#17A8E2] hover:border-[#17A8E2]"
         >
           <button className="w-full">Explore</button>
         </Link>

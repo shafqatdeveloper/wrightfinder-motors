@@ -75,9 +75,8 @@ const Contact = () => {
                   Name <span className="text-lg text-red-400">*</span>
                 </label>
                 <div
-                  className={`w-full ${
-                    errors.name && touched.name ? "border-2 border-red-500" : ""
-                  } bg-white rounded-md text-white relative`}
+                  className={`w-full ${errors.name && touched.name ? "border-2 border-red-500" : ""
+                    } bg-white rounded-md text-white relative`}
                 >
                   <input
                     value={values.name}
@@ -100,11 +99,10 @@ const Contact = () => {
                   Email <span className="text-lg text-red-400">*</span>
                 </label>
                 <div
-                  className={`w-full ${
-                    errors.email && touched.email
-                      ? "border-2 border-red-500"
-                      : ""
-                  } bg-white rounded-md text-white relative`}
+                  className={`w-full ${errors.email && touched.email
+                    ? "border-2 border-red-500"
+                    : ""
+                    } bg-white rounded-md text-white relative`}
                 >
                   <input
                     value={values.email}
@@ -127,12 +125,12 @@ const Contact = () => {
               <label htmlFor="subject" className="text-white">
                 Subject <span className="text-lg text-red-400">*</span>
               </label>
+
               <div
-                className={`w-full ${
-                  errors.subject && touched.subject
-                    ? "border-2 border-red-500"
-                    : ""
-                } bg-white rounded-md text-white relative`}
+                className={`w-full ${errors.subject && touched.subject
+                  ? "border-2 border-red-500"
+                  : ""
+                  } bg-white rounded-md text-white relative`}
               >
                 <input
                   value={values.subject}
@@ -155,11 +153,10 @@ const Contact = () => {
                 Message <span className="text-lg text-red-400">*</span>
               </label>
               <div
-                className={`w-full ${
-                  errors.message && touched.message
-                    ? "border-2 border-red-500"
-                    : ""
-                } bg-white rounded-md text-white relative`}
+                className={`w-full ${errors.message && touched.message
+                  ? "border-2 border-red-500"
+                  : ""
+                  } bg-white rounded-md text-white relative`}
               >
                 <textarea
                   value={values.message}
@@ -179,7 +176,7 @@ const Contact = () => {
             </div>
           </div>
           <div className="w-full flex items-center justify-center my-8">
-            <div className=" bg-[#17A8E2] h-12 rounded-md hover:bg-[#3d9fc6] flex items-center justify-center w-32">
+            <div className=" bg-[#17A8E2] h-12 rounded-md hover:bg-global-dark-blue transition-all duration-300 flex items-center justify-center w-32">
               {loading ? (
                 <Spinner></Spinner>
               ) : (

@@ -35,7 +35,7 @@ const Footer = () => {
           <div className="flex flex-col gap-1">
             <Link
               to={"/"}
-              className="text-2xl text-center sm:text-start text-[#3c2163] font-bold font-sans tracking-wide"
+              className="text-2xl text-center sm:text-start text-global-dark-blue font-bold font-sans tracking-wide"
             >
               <img
                 src={Logo}
@@ -48,9 +48,9 @@ const Footer = () => {
             <h1 className="text-xl font-bold font-sans tracking-wide">
               Contact Us
             </h1>
-            <div className="w-5 h-1 mt-0.5 bg-[#3c2163]"></div>
+            <div className="w-5 h-1 mt-0.5 bg-global-dark-blue"></div>
             <div className="flex items-center gap-3 my-5">
-              <span className="bg-[#3c2163] rounded-md p-2.5">
+              <span className="bg-global-dark-blue rounded-md p-2.5">
                 <MdPhoneInTalk size={22} color="white" />
               </span>
               <span className="flex flex-col font-medium font-sans">
@@ -66,7 +66,7 @@ const Footer = () => {
               </span>
             </div>
             <div className="flex items-center gap-3 my-5">
-              <span className="bg-[#3c2163] rounded-md p-2.5">
+              <span className="bg-global-dark-blue rounded-md p-2.5">
                 <FaWhatsapp size={22} color="white" />
               </span>
               <span className="flex flex-col font-medium font-sans">
@@ -82,7 +82,7 @@ const Footer = () => {
               </span>
             </div>
             <div className="flex items-center gap-3 my-5">
-              <span className="bg-[#3c2163] rounded-md p-2.5">
+              <span className="bg-global-dark-blue rounded-md p-2.5">
                 <IoMdMail size={22} color="white" />
               </span>
               <span className="flex flex-col font-medium font-sans">
@@ -98,7 +98,7 @@ const Footer = () => {
               <h1 className="text-xl font-bold font-sans tracking-wide">
                 Connect with Us
               </h1>
-              <div className="w-5 h-1 mt-0.5 bg-[#3c2163]"></div>
+              <div className="w-5 h-1 mt-0.5 bg-global-dark-blue"></div>
               <div className="flex items-center mt-5 gap-5">
                 <Link
                   target="_blank"
@@ -122,7 +122,7 @@ const Footer = () => {
             <h1 className="text-xl font-bold font-sans tracking-wide">
               Locate Us
             </h1>
-            <div className="w-5 h-1 mt-0.5 bg-[#3c2163]"></div>
+            <div className="w-5 h-1 mt-0.5 bg-global-dark-blue"></div>
             <div className="mt-3">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d196147.20641391812!2d-84.36697126591616!3d39.81147557059361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884080d5aedd1403%3A0xa640e392f20e4ce4!2sDayton%2C%20OH%2C%20USA!5e0!3m2!1sen!2s!4v1718465629106!5m2!1sen!2s"
@@ -150,10 +150,10 @@ const Footer = () => {
         </div>
         <h1 className="text-center pt-5 pb-2 text-black">
           All Rights Reserved &copy;
-          <span className="text-[#3c2163] font-semibold">
+          <Link to={'mailto:wrightfindermotors@gmail.com'} className="text-global-dark-blue font-semibold">
             {" "}
-            WrightfinderMotors
-          </span>
+            WrightFinderMotors
+          </Link>
         </h1>
       </div>
     </div>

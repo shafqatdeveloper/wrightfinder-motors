@@ -121,7 +121,7 @@ const Login = () => {
             </button>
           </div>
         </div>
-        <div className="w-full bg-[#17A8E2] rounded-md hover:bg-[#3c2163] text-white flex items-center justify-center mt-5">
+        <div className="w-full bg-[#17A8E2] rounded-md hover:bg-global-dark-blue text-white flex items-center justify-center mt-5">
           {loading ? (
             <Spinner></Spinner>
           ) : (

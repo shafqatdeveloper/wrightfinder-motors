@@ -66,7 +66,7 @@ const UpdateAdmin = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Wright Finder Motors"
-            className="outline-none focus:outline-none border-2 py-3 rounded-md px-1 border-[#3c2163]"
+            className="outline-none focus:outline-none border-2 py-3 rounded-md px-1 border-global-dark-blue"
           />
         </div>
         <div className="flex flex-col gap-1 w-full">
@@ -78,7 +78,7 @@ const UpdateAdmin = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Wright Finder Motors"
-            className="outline-none focus:outline-none border-2 py-3 rounded-md px-1 border-[#3c2163]"
+            className="outline-none focus:outline-none border-2 py-3 rounded-md px-1 border-global-dark-blue"
           />
         </div>
         <div className="flex flex-col gap-1 w-full">
@@ -90,7 +90,7 @@ const UpdateAdmin = () => {
             value={oldPassword}
             onChange={(e) => setOldPassword(e.target.value)}
             placeholder="************"
-            className="outline-none focus:outline-none border-2 py-3 rounded-md px-1 border-[#3c2163]"
+            className="outline-none focus:outline-none border-2 py-3 rounded-md px-1 border-global-dark-blue"
           />
         </div>
         <div className="flex flex-col gap-1 w-full">
@@ -102,13 +102,13 @@ const UpdateAdmin = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="*********"
-            className="outline-none focus:outline-none border-2 py-3 rounded-md px-1 border-[#3c2163]"
+            className="outline-none focus:outline-none border-2 py-3 rounded-md px-1 border-global-dark-blue"
           />
         </div>
         <div className="mt-5">
           <button
             type="submit"
-            className="px-12 py-3 bg-[#3C2163] rounded-md text-white"
+            className="px-12 py-3 bg-global-dark-blue rounded-md text-white"
           >
             Update
           </button>

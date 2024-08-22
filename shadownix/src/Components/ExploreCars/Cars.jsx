@@ -41,8 +41,6 @@ import { FaCar } from "react-icons/fa";
 // ];
 
 const Cars = () => {
-  // const [selectedBrand, setselectedBrand] = useState(brands[0]);
-  // const [selectedBrandName, setSelectedBrandName] = useState("All Brands");
   const [cars, setCars] = useState([]);
   // const headingRef = useRef(null);
   // const isHeadingInView = useInView(headingRef, { once: true });
@@ -71,7 +69,7 @@ const Cars = () => {
           Explore Most Popular Cars
         </h1>
         <span>
-          <BsRainbow size={55} color="#3c2163" />
+          <BsRainbow size={55} color="#1E2252" />
         </span>
       </div>
       {/* <motion.div

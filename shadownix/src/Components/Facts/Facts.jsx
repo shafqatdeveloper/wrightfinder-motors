@@ -58,7 +58,7 @@ const Facts = () => {
               key={index}
               className="bg-gray-200 hover:-translate-y-2 duration-500 cursor-pointer transition-all rounded-md px-6 py-5 sm:py-4 sm:px-3 flex items-center gap-5"
             >
-              <span className="bg-[#3c2163] hover:bg-[#17A8E2] duration-500 cursor-pointer transition-all p-6 sm:p-8 rounded-md text-white">
+              <span className="bg-global-dark-blue hover:bg-global-dark-RED duration-500 cursor-pointer transition-all p-6 sm:p-8 rounded-md text-white">
                 {fact.icon}
               </span>
               <span className="flex flex-col gap-1 text-gray-500">

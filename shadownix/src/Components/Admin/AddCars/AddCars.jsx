@@ -91,21 +91,21 @@ const AddCar = () => {
 
   const handleGalleryImagesSelect = (e) => {
     const selectedFiles = Array.from(e.target.files);
-    setGalleryImages(selectedFiles);
-    const files = Array.from(e.target.files);
-    const imageUrls = [];
+    const imageUrls = selectedFiles.map((file) => ({
+      file,
+      url: URL.createObjectURL(file),
+    }));
 
-    files.forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        imageUrls.push(e.target.result);
-        if (imageUrls.length === files.length) {
-          setImages(imageUrls);
-        }
-      };
-      reader.readAsDataURL(file);
-    });
+    setGalleryImages((prevGalleryImages) => [...prevGalleryImages, ...selectedFiles]);
+    setImages((prevImages) => [...prevImages, ...imageUrls]);
   };
+
+  const handleRemoveImage = (index) => {
+    const updatedImages = images.filter((_, i) => i !== index);
+    setImages(updatedImages);
+    setGalleryImages(updatedImages.map(image => image.file));
+  };
+
 
   const { values, errors, handleBlur, handleChange, touched, handleSubmit } =
     useFormik({
@@ -144,7 +144,7 @@ const AddCar = () => {
             toast(response.data.message, {
               theme: "dark",
             });
-            // location.reload();
+            location.reload();
           } else {
             setLoading(false);
             toast(response.data.message, {
@@ -164,10 +164,10 @@ const AddCar = () => {
 
   return (
     <div className="w-full h-full  flex flex-col items-center justify-center px-2">
-      <h1 className="mt-5 mb-10 text-4xl text-[#3c2163] font-bold font-sans">
+      <h1 className="mt-5 mb-10 text-4xl text-global-dark-blue font-bold font-sans">
         Add Car
       </h1>
-      <div className="bg-[#3c2163] w-full sm:w-2/3 md:w-2/4 p-3 h-full  my-5 rounded-md flex-col flex items-center justify-center gap-5">
+      <div className="bg-global-dark-blue w-full sm:w-2/3 md:w-2/4 p-3 h-full  my-5 rounded-md flex-col flex items-center justify-center gap-5">
         <form
           onSubmit={handleSubmit}
           className="rounded-md w-full text-white flex flex-col gap-6"
@@ -184,14 +184,22 @@ const AddCar = () => {
             />
           </div>
           {images.length > 0 && (
-            <div className="w-full grid grid-cols-3 gap-3">
+            <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-3">
               {images.map((file, index) => (
-                <img
-                  key={index}
-                  src={file}
-                  alt={`Selected ${index}`}
-                  className="w-full object-center"
-                />
+                <div key={index} className="relative">
+                  <img
+                    src={file.url}
+                    alt={`Selected ${index}`}
+                    className="w-full object-center h-32"
+                  />
+                  <button
+                    type="button"
+                    className="absolute top-1 right-1 bg-red-600 text-white rounded-full p-1"
+                    onClick={() => handleRemoveImage(index)}
+                  >
+                    <RxCross2 size={16} />
+                  </button>
+                </div>
               ))}
             </div>
           )}
@@ -201,9 +209,8 @@ const AddCar = () => {
               Car Name <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.name && touched.name ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.name && touched.name ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <input
                 value={values.name}
@@ -224,9 +231,8 @@ const AddCar = () => {
               Miles <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.miles && touched.miles ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.miles && touched.miles ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <input
                 value={values.miles}
@@ -247,9 +253,8 @@ const AddCar = () => {
               Title <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.title && touched.title ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.title && touched.title ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -277,9 +282,8 @@ const AddCar = () => {
               Style of Car <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.style && touched.style ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.style && touched.style ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -302,9 +306,8 @@ const AddCar = () => {
               Engine<span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.engine && touched.engine ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.engine && touched.engine ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -327,11 +330,10 @@ const AddCar = () => {
               Transmission <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.transmission && touched.transmission
-                  ? "border-2 border-red-500"
-                  : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.transmission && touched.transmission
+                ? "border-2 border-red-500"
+                : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -356,9 +358,8 @@ const AddCar = () => {
               Power <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.power && touched.power ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.power && touched.power ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -381,11 +382,10 @@ const AddCar = () => {
               Fuel Type <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.fuelType && touched.fuelType
-                  ? "border-2 border-red-500"
-                  : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.fuelType && touched.fuelType
+                ? "border-2 border-red-500"
+                : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -411,11 +411,10 @@ const AddCar = () => {
               Driveline <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.driveline && touched.driveline
-                  ? "border-2 border-red-500"
-                  : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.driveline && touched.driveline
+                ? "border-2 border-red-500"
+                : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -442,9 +441,8 @@ const AddCar = () => {
               Seats <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.seats && touched.seats ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.seats && touched.seats ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -506,11 +504,10 @@ const AddCar = () => {
               Interior Color <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.interiorColor && touched.interiorColor
-                  ? "border-2 border-red-500"
-                  : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.interiorColor && touched.interiorColor
+                ? "border-2 border-red-500"
+                : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -540,11 +537,10 @@ const AddCar = () => {
               Exterior Color <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.exteriorColor && touched.exteriorColor
-                  ? "border-2 border-red-500"
-                  : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.exteriorColor && touched.exteriorColor
+                ? "border-2 border-red-500"
+                : ""
+                } bg-white rounded-md text-black`}
             >
               <select
                 onChange={handleChange}
@@ -579,11 +575,10 @@ const AddCar = () => {
               Car Description <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.description && touched.description
-                  ? "border-2 border-red-500"
-                  : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.description && touched.description
+                ? "border-2 border-red-500"
+                : ""
+                } bg-white rounded-md text-black`}
             >
               <textarea
                 rows={20}
@@ -607,9 +602,8 @@ const AddCar = () => {
               Price <span className="text-lg text-red-400">*</span>
             </label>
             <div
-              className={`w-full ${
-                errors.price && touched.price ? "border-2 border-red-500" : ""
-              } bg-white rounded-md text-black`}
+              className={`w-full ${errors.price && touched.price ? "border-2 border-red-500" : ""
+                } bg-white rounded-md text-black`}
             >
               <input
                 value={values.price}
