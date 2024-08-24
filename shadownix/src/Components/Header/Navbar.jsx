@@ -20,7 +20,7 @@ const Navbar = () => {
           />
         </Link>
         <li className="flex items-center gap-3 text-sm sm:text-lg">
-          <span className="border-[1.5px] border-global-dark-blue rounded-full p-1.5">
+          <span className="border-[1.5px] border-global-dark-purple rounded-full p-1.5">
             <IoMdMail size={18} color="#3c2163" />
           </span>
           <span className="flex flex-col text-sm font-medium font-sans">
@@ -34,20 +34,20 @@ const Navbar = () => {
         <ul className="flex flex-col xsm:flex-row items-center justify-between gap-7">
           <li
             className={`${location.pathname === "/" &&
-              "text-global-dark-blue border-b-2 border-b-global-dark-blue"
+              "text-global-dark-blue border-b-2 border-b-global-dark-purple"
               } text-lg hover:scale-105 hover:border-b-2 hover:border-b-gray-500`}
           >
             <Link to={"/"}>Home</Link>
           </li>
           <li
             className={`${location.pathname === "/about" &&
-              "text-global-dark-blue border-b-2 border-b-global-dark-blue"
+              "text-global-dark-blue border-b-2 border-b-global-dark-purple"
               } text-lg hover:scale-105 hover:border-b-2 hover:border-b-gray-500`}
           >
             <Link to={"/about"}>About</Link>
           </li>
           <li className="flex items-center gap-3">
-            <span className="border-[1.5px] border-global-dark-blue rounded-full p-1.5">
+            <span className="border-[1.5px] border-global-dark-purple rounded-full p-1.5">
               <MdPhoneInTalk size={18} color="#3c2163" />
             </span>
             <span className="hidden xsm:!flex flex-col gap-0 text-sm font-medium font-sans">

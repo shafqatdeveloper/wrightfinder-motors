@@ -81,7 +81,7 @@ const Card = ({ car, delay = 0 }) => {
             </Swiper>
           )}
         </div>
-        <h1 className="text-lg font-bold">{car.name}</h1>
+        <h1 className="text-lg lg:text-xl font-bold text-global-dark-purple">{car.name}</h1>
         <div className="w-full h-[1px] bg-gray-200"></div>
         <div className="grid grid-cols-3 gap-4 text-sm capitalize text-gray-500 font-semibold">
           <span className="flex items-center gap-1">
@@ -114,7 +114,7 @@ const Card = ({ car, delay = 0 }) => {
             Price :
           </span>
           <span>
-            <h1 className="text-lg font-bold text-global-dark-blue tracking-wide font-sans">
+            <h1 className="text-lg font-bold text-global-dark-purple tracking-wide font-sans">
               <span className="text-xl">$ </span>
               {car?.price}
             </h1>
@@ -122,7 +122,7 @@ const Card = ({ car, delay = 0 }) => {
         </div>
         <Link
           to={`/car/details/${car?._id}`}
-          className="w-full border-2 border-global-dark-blue text-white transition-all duration-300 rounded-md text-center py-2 text-lg font-medium tracking-wide font-sans bg-global-dark-blue hover:bg-[#17A8E2] hover:border-[#17A8E2]"
+          className="w-full border-2 border-global-dark-RED text-white transition-all duration-300 rounded-md text-center py-2 text-lg font-medium tracking-wide font-sans bg-global-dark-RED hover:bg-red-600 hover:border-red-600"
         >
           <button className="w-full">Explore</button>
         </Link>

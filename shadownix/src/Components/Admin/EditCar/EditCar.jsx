@@ -137,10 +137,10 @@ const EditCar = ({ car, id }) => {
   const api_Url = import.meta.env.VITE_API_URL;
   return (
     <div className="w-full h-full  flex flex-col items-center justify-center px-2">
-      <h1 className="mt-5 mb-10 text-4xl text-global-dark-blue font-bold font-sans">
+      <h1 className="mt-5 mb-10 text-4xl text-global-dark-purple font-bold font-sans">
         Edit Car
       </h1>
-      <div className="bg-global-dark-blue w-full sm:w-2/3 md:w-2/4 p-3 h-full  my-5 rounded-md flex-col flex items-center justify-center gap-5">
+      <div className="bg-global-dark-purple w-full sm:w-2/3 md:w-2/4 p-3 h-full  my-5 rounded-md flex-col flex items-center justify-center gap-5">
         <form
           onSubmit={handleSubmit}
           className="rounded-md w-full text-white flex flex-col gap-6"
@@ -632,7 +632,7 @@ const EditCar = ({ car, id }) => {
             ) : null}
           </div>
           <div className="w-full flex items-center justify-center mb-8">
-            <div className="w-60 sm:w-80 xl:w-96 bg-[#17A8E2] py-2 rounded-md hover:bg-[#3d9fc6] flex items-center justify-center h-16">
+            <div className="w-60 sm:w-80 xl:w-96 bg-global-dark-RED py-2 rounded-md hover:bg-red-600 flex items-center justify-center h-16">
               {loading ? (
                 <Spinner></Spinner>
               ) : (

@@ -65,7 +65,7 @@ const RegisterForm = () => {
 
   return (
     <div className="pb-20 pt-36 sm:pt-20 w-full flex items-center justify-center">
-      <div className="bg-black p-3 rounded-md">
+      <div className="bg-global-dark-purple p-3 rounded-md">
         <form className="w-full p-2 flex flex-col items-center justify-center gap-5">
           <h1 className="text-2xl font-bold font-sans text-white">REGISTER</h1>
           <div className="w-full flex flex-col gap-1">
@@ -130,7 +130,7 @@ const RegisterForm = () => {
               </button>
             </div>
           </div>
-          <div className="w-full h-16 flex items-center justify-center bg-[#ffa837] text-white rounded-md py-3 hover:bg-[#bb833a]">
+          <div className="w-full h-16 flex items-center justify-center bg-global-dark-RED text-white rounded-md py-3 hover:bg-red-600">
             {loading ? (
               <Spinner></Spinner>
             ) : (

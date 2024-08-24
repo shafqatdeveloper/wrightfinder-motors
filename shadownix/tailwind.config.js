@@ -6,6 +6,7 @@ export default {
       colors: {
         "global-dark-blue": "#1E2252",
         "global-dark-RED": "#FF6764",
+        "global-dark-purple": "#3C2163",
       }
     },
     screens: {

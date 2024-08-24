@@ -11,18 +11,18 @@ const Hero = () => {
         <div className="">
           <div className="flex flex-col gap-3">
             <span className="bg-white rounded-full py-2 px-2 sm:px-4 flex items-center gap-2">
-              <IoMdThumbsUp size={23} color="1E2252ß" />
+              <IoMdThumbsUp size={23} color="#ff6764" />
               <h1>100% Trusted car purchase platform in the World</h1>
             </span>
             <h1 className="uppercase text-4xl sm:text-4xl md:text-5xl font-sans font-extrabold">
               Find Your Best
             </h1>
-            <h1 className="uppercase text-4xl sm:text-4xl md:text-6xl font-sans font-extrabold text-global-dark-blue">
+            <h1 className="uppercase text-4xl sm:text-4xl md:text-6xl font-sans font-extrabold text-global-dark-RED">
               Dream Cars
             </h1>
           </div>
         </div>
-        <div className="bg-global-dark-blue rounded-full p-10">
+        <div className="bg-global-dark-RED rounded-full py-0 px-10">
           <div>
             <motion.img
               initial={{ opacity: 0, y: -70 }}

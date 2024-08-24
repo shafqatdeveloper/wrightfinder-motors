@@ -73,7 +73,7 @@ const Login = () => {
   };
 
   return (
-    <div className="w-[350px] bg-black rounded-md p-3">
+    <div className="w-[350px] bg-global-dark-purple rounded-md p-3">
       <form className="w-full p-2 flex flex-col items-center justify-center gap-5">
         <h1 className="text-2xl font-bold font-sans text-white">LOGIN</h1>
         <div className="w-full flex flex-col gap-1">
@@ -121,7 +121,7 @@ const Login = () => {
             </button>
           </div>
         </div>
-        <div className="w-full bg-[#17A8E2] rounded-md hover:bg-global-dark-blue text-white flex items-center justify-center mt-5">
+        <div className="w-full bg-global-dark-RED rounded-md hover:bg-red-600 text-white flex items-center justify-center mt-5">
           {loading ? (
             <Spinner></Spinner>
           ) : (

@@ -43,7 +43,7 @@ const Details = ({ car }) => {
           </Carousel>
         </div>
         <div className="w-full md:w-1/3 p-3 sticky top-5 rounded-md mt-44 md:mt-32 bg-white">
-          <h1 className="text-xl font-bold font-sans py-3 text-global-dark-blue">
+          <h1 className="text-xl font-bold font-sans py-3 text-global-dark-purple">
             {car.name}
           </h1>
           <div className="w-full h-[1px] bg-gray-200"></div>
@@ -109,7 +109,7 @@ const Details = ({ car }) => {
                 Price :
               </span>
               <span>
-                <h1 className="text-lg font-bold text-global-dark-blue tracking-wide font-sans">
+                <h1 className="text-lg font-bold text-global-dark-purple tracking-wide font-sans">
                   <span className="text-xl">$ </span>
                   {car?.price}
                 </h1>
@@ -119,13 +119,13 @@ const Details = ({ car }) => {
         </div>
       </div>
       <div className="w-full rounded-md mt-20 sm:my-20 md:my-10 flex items-center justify-center px-2 sm:px-12 md:px-20">
-        <div className="w-full grid grid-cols-2 bg-white text-gray-500 rounded-md p-2 md:grid-cols-3 gap-3">
+        <div className="w-full grid grid-cols-2 bg-white text-gray-500 rounded-md p-3 md:grid-cols-3 gap-3">
           {car.features.map((feature, index) => (
             <div key={index} className="flex items-center gap-2">
-              <span className="bg-global-dark-blue p-1.5 rounded-full">
+              <span className="bg-global-dark-RED p-1.5 rounded-full">
                 <FaCheckDouble size={13} color="white" />
               </span>
-              <h1 className="font-medium font-sans text-global-dark-blue">
+              <h1 className="font-medium font-sans text-global-dark-purple">
                 {feature.name}
               </h1>
             </div>
@@ -139,7 +139,7 @@ const Details = ({ car }) => {
             <h1 className="text-3xl pb-2 font-sans font-extrabold ">
               Description of Car
             </h1>
-            <div className="w-14 h-1 mt-0.5 bg-global-dark-blue"></div>
+            <div className="w-14 h-1 mt-0.5 bg-global-dark-purple"></div>
           </div>
           <p>{car?.description}</p>
         </div>

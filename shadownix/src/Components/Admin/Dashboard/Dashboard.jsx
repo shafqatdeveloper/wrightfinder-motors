@@ -46,37 +46,37 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           <Link
             to={"/admin/dashboard/add-car"}
-            className="flex flex-col hover:bg-global-dark-blue hover:text-white cursor-pointer duration-300 transition-all gap-6 items-center justify-center border-2 border-black rounded-md py-6 px-12 sm:px-10 sm:py-6"
+            className="flex flex-col hover:bg-global-dark-purple hover:text-white cursor-pointer duration-300 transition-all gap-6 items-center justify-center border-2 border-black rounded-md py-6 px-12 sm:px-10 sm:py-6"
           >
             <MdOutlineAddCircleOutline size={30} />
             <h1 className="font-bold text-lg tracking-wide font-sans">
               Add a New Car
             </h1>
-            <button className="w-full text-white py-1 rounded-md bg-[#17A8E2]">
+            <button className="w-full text-white py-1 rounded-md bg-global-dark-RED">
               Visit
             </button>
           </Link>
           <Link
             to={"/admin/dashboard/all-cars"}
-            className="flex flex-col hover:bg-global-dark-blue hover:text-white cursor-pointer duration-300 transition-all gap-6 items-center justify-center border-2 border-black rounded-md py-6 px-12 sm:px-3 sm:py-6 "
+            className="flex flex-col hover:bg-global-dark-purple hover:text-white cursor-pointer duration-300 transition-all gap-6 items-center justify-center border-2 border-black rounded-md py-6 px-12 sm:px-3 sm:py-6 "
           >
             <FaCar size={30} />
             <h1 className="font-bold text-lg tracking-wide font-sans">
               View All Cars
             </h1>
-            <button className="w-full text-white py-1 rounded-md bg-[#17A8E2]">
+            <button className="w-full text-white py-1 rounded-md bg-global-dark-RED">
               View
             </button>
           </Link>
           <Link
             to={"/admin/info"}
-            className="flex flex-col hover:bg-global-dark-blue hover:text-white cursor-pointer duration-300 transition-all gap-6 items-center justify-center border-2 border-black rounded-md py-6 px-12 sm:px-3 sm:py-6 "
+            className="flex flex-col hover:bg-global-dark-purple hover:text-white cursor-pointer duration-300 transition-all gap-6 items-center justify-center border-2 border-black rounded-md py-6 px-12 sm:px-3 sm:py-6 "
           >
             <FaUserAlt size={30} />
             <h1 className="font-bold text-lg tracking-wide font-sans">
               View Admin Information
             </h1>
-            <button className="w-full text-white py-1 rounded-md bg-[#17A8E2]">
+            <button className="w-full text-white py-1 rounded-md bg-global-dark-RED">
               Info
             </button>
           </Link>
