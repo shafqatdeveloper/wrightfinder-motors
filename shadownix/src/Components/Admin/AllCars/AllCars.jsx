@@ -43,7 +43,7 @@ const AllCars = () => {
         if (error.response) {
           toast(
             error.response.data.message ||
-              "An error occurred during SOLD Request",
+            "An error occurred during SOLD Request",
             {
               theme: "dark",
             }
@@ -76,7 +76,7 @@ const AllCars = () => {
         if (error.response) {
           toast(
             error.response.data.message ||
-              "An error occurred during AV Request",
+            "An error occurred during AV Request",
             {
               theme: "dark",
             }
@@ -159,7 +159,7 @@ const AllCars = () => {
           <div className="flex space-x-3 items-center">
             <button
               onClick={() => deleteCarPostHandler(value)}
-              className="bg-red-500 text-white p-2 rounded"
+              className="bg-white text-global-dark-RED p-2 rounded"
             >
               <MdDelete size={25} />
             </button>
@@ -231,7 +231,7 @@ const AllCars = () => {
       </h1>
       <table
         {...getTableProps()}
-        className="bg-[#3c2163] w-full text-white border border-white rounded-lg shadow-md"
+        className="bg-global-dark-purple w-full text-white border border-white rounded-lg shadow-md"
       >
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -262,7 +262,7 @@ const AllCars = () => {
               <tr
                 {...row.getRowProps()}
                 className={
-                  row.index % 2 === 0 ? "bg-[#17A8E2]" : "bg-[#2b9cc9]"
+                  row.index % 2 === 0 ? "bg-global-dark-RED" : "bg-[#fb5858]"
                 }
               >
                 {row.cells.map((cell) => (
@@ -283,14 +283,14 @@ const AllCars = () => {
         <button
           onClick={() => gotoPage(0)}
           disabled={!canPreviousPage}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded"
+          className="bg-global-dark-purple hover:bg-global-dark-blue text-white px-3 py-1 rounded"
         >
           {"<<"}
         </button>
         <button
           onClick={() => previousPage()}
           disabled={!canPreviousPage}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded"
+          className="bg-global-dark-purple hover:bg-global-dark-blue text-white px-3 py-1 rounded"
         >
           {"<"}
         </button>
@@ -303,14 +303,14 @@ const AllCars = () => {
         <button
           onClick={() => nextPage()}
           disabled={!canNextPage}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded"
+          className="bg-global-dark-purple hover:bg-global-dark-blue text-white px-3 py-1 rounded"
         >
           {">"}
         </button>
         <button
           onClick={() => gotoPage(pageCount - 1)}
           disabled={!canNextPage}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded"
+          className="bg-global-dark-purple hover:bg-global-dark-blue text-white px-3 py-1 rounded"
         >
           {">>"}
         </button>

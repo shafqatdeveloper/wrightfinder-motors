@@ -29,7 +29,7 @@ const About = () => {
             >
               <Link to={"/"}>Home</Link>
               <span>/</span>
-              <Link to={"/about"} className="text-[#17A8E2] font-medium">
+              <Link to={"/about"} className="text-global-dark-RED font-medium">
                 About Us
               </Link>
             </motion.span>
