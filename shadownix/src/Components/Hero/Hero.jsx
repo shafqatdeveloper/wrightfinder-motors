@@ -11,7 +11,7 @@ const Hero = () => {
         <div className="">
           <div className="flex flex-col gap-3">
             <span className="bg-white rounded-full py-2 px-2 sm:px-4 flex items-center gap-2">
-              <IoMdThumbsUp size={23} color="#ff6764" />
+              <IoMdThumbsUp size={23} color="#FF292A" />
               <h1>100% Trusted car purchase platform in the World</h1>
             </span>
             <h1 className="uppercase text-4xl sm:text-4xl md:text-5xl font-sans font-extrabold">

@@ -69,7 +69,7 @@ const Cars = () => {
           Explore Most Popular Cars
         </h1>
         <span>
-          <BsRainbow size={55} color="#ff6764" />
+          <BsRainbow size={55} color="#FF292A" />
         </span>
       </div>
       {/* <motion.div

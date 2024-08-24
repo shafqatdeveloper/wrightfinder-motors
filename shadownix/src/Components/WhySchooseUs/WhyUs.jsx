@@ -54,7 +54,7 @@ const WhyUs = () => {
           Why Choosing us
         </h1>
         <span>
-          <BsRainbow size={55} color="#1e2252" />
+          <BsRainbow size={55} className="text-global-dark-purple" />
         </span>
       </div>
       <div className="w-full px-5 sm:px-0 sm:w-4/5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 sm:gap-8">
@@ -64,7 +64,7 @@ const WhyUs = () => {
               key={index}
               className="px-3 py-5 rounded-md bg-white flex flex-col gap-5 items-center"
             >
-              <div className="w-full bg-[#17a8e2] hover:bg-global-dark-RED cursor-pointer transition-all duration-300 py-2 rounded-md flex items-center justify-center">
+              <div className="w-full bg-[#ff3535] hover:bg-global-dark-RED cursor-pointer transition-all duration-300 py-2 rounded-md flex items-center justify-center">
                 <img
                   className="w-10 h-10"
                   src={feature.icon}

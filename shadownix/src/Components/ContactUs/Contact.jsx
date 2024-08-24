@@ -176,7 +176,7 @@ const Contact = () => {
             </div>
           </div>
           <div className="w-full flex items-center justify-center my-8">
-            <div className=" bg-[#17A8E2] h-12 rounded-md hover:bg-global-dark-blue transition-all duration-300 flex items-center justify-center w-32">
+            <div className=" bg-[#ff3535] h-12 rounded-md hover:bg-[#fa1f1f] transition-all duration-300 flex items-center justify-center w-32">
               {loading ? (
                 <Spinner></Spinner>
               ) : (
