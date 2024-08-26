@@ -262,7 +262,7 @@ const AllCars = () => {
               <tr
                 {...row.getRowProps()}
                 className={
-                  row.index % 2 === 0 ? "bg-global-dark-RED" : "bg-[#fb5858]"
+                  row.index % 2 === 0 ? "bg-global-dark-RED" : "bg-global-dark-blue"
                 }
               >
                 {row.cells.map((cell) => (
