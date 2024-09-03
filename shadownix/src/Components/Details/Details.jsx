@@ -125,7 +125,7 @@ const Details = ({ car }) => {
               <span className="bg-global-dark-RED p-1.5 rounded-full">
                 <FaCheckDouble size={13} color="white" />
               </span>
-              <h1 className="font-medium font-sans text-global-dark-purple">
+              <h1 className="font-medium text-sm sm:text-base font-sans text-global-dark-purple">
                 {feature.name}
               </h1>
             </div>

@@ -7,7 +7,7 @@ const CookiePolicy = () => {
     <div className="py-10">
       <div className="flex flex-col gap-5">
         <div className="w-full flex items-center justify-center">
-          <h1 className="text-center text-3xl font-bold w-max border-b-2 border-b-black font-sans tracking-wide">
+          <h1 className="text-center text-2xl sm:text-3xl font-bold w-max font-sans tracking-wide">
             COOKIE POLICY
           </h1>
         </div>

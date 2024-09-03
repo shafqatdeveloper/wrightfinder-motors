@@ -8,7 +8,7 @@ import Contact from "../../Components/ContactUs/Contact";
 const About = () => {
   return (
     <div className="flex bg-gray-300 flex-col gap-10">
-      <div className="mt-28 mb-20 xmd:mt-20">
+      <div className="my-14 md:my-20">
         <div className="w-full">
           <div className="w-full relative flex flex-col bg-[#210f1d] items-center py-10 gap-7 justify-center">
             <div className="w-32 h-20 blur-3xl left-3 top-5 bg-global-dark-purple absolute"></div>
